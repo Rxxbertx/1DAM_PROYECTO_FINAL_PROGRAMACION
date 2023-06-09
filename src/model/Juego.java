@@ -7,6 +7,7 @@ public abstract class Juego {
 	private int unidades;
 	private int udsUtilizadas;
 	private String incidencias;
+	private int id;
 
 	// Constructor por defecto
 	public Juego() {
@@ -14,13 +15,14 @@ public abstract class Juego {
 	}
 
 	// Constructor con parámetros
-	public Juego(String nombre, int numJugadores, int unidades, int udsUtilizadas, String incidencias) {
+	public Juego(String nombre, int numJugadores, int unidades, int udsUtilizadas, String incidencias, int id) {
 		super();
 		this.nombre = nombre;
 		this.numJugadores = numJugadores;
 		this.unidades = unidades;
 		this.udsUtilizadas = udsUtilizadas;
 		this.incidencias = incidencias;
+		this.id=id;
 	}
 
 	public String getNombre() {
@@ -61,6 +63,20 @@ public abstract class Juego {
 
 	public void setIncidencias(String incidencias) {
 		this.incidencias = incidencias;
+	}
+
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }

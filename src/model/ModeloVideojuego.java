@@ -20,12 +20,12 @@ public class ModeloVideojuego {
 	
 	public static void altaJuego(Videojuego videojuego) {
 
-		videojuegos.put(videojuego.getIdVideojuego(), videojuego);
+		videojuegos.put(videojuego.getId(), videojuego);
 
 	}
 
 	public static void bajaJuego(Videojuego videojuego) {
-		videojuegos.remove(videojuego.getIdVideojuego(), videojuego);
+		videojuegos.remove(videojuego.getId(), videojuego);
 	}
 	
 

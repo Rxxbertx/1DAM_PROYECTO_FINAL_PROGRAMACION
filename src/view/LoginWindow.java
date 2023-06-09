@@ -40,6 +40,8 @@ public class LoginWindow extends JFrame {
 	private JButton btnEntrar;
 	private JPanel panelLogin;
 	private JPanel panelCard;
+	private JLabel lblError;
+	private JButton btnVolver;
 
 	/**
 	 * Create the frame.
@@ -106,12 +108,19 @@ public class LoginWindow extends JFrame {
 		panelLogin.add(lblNewLabel_4);
 
 		btnAltaLogin = new JButton("ALTA");
+		btnAltaLogin.setContentAreaFilled(false);
 		btnAltaLogin.setForeground(new Color(128, 0, 0));
 		btnAltaLogin.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
-		btnAltaLogin.setContentAreaFilled(false);
 		btnAltaLogin.setBorder(new MatteBorder(0, 0, 3, 0, (Color) new Color(0, 0, 0)));
 		btnAltaLogin.setBounds(404, 644, 89, 43);
 		panelLogin.add(btnAltaLogin);
+
+		lblError = new JLabel("Error en el Usuario o Contraseña, si no tienes usuario puedes darte de Alta");
+		lblError.setForeground(new Color(128, 0, 0));
+		lblError.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblError.setBounds(81, 561, 517, 37);
+		panelLogin.add(lblError);
+		lblError.setVisible(false);
 
 		panelRegistrar = new JPanel();
 		panelCard.add(panelRegistrar, "panelRegistrar");
@@ -121,7 +130,7 @@ public class LoginWindow extends JFrame {
 		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.BOLD, 40));
 		lblNewLabel_1_1.setBorder(new MatteBorder(0, 0, 10, 0, (Color) new Color(128, 0, 0)));
-		lblNewLabel_1_1.setBounds(189, 75, 306, 98);
+		lblNewLabel_1_1.setBounds(226, 98, 306, 98);
 		panelRegistrar.add(lblNewLabel_1_1);
 
 		JLabel lblNewLabel_2_1 = new JLabel("Nombre");
@@ -175,6 +184,13 @@ public class LoginWindow extends JFrame {
 		textFieldContraseñaRegistro.setColumns(10);
 		textFieldContraseñaRegistro.setBounds(316, 488, 216, 43);
 		panelRegistrar.add(textFieldContraseñaRegistro);
+
+		btnVolver = new JButton("");
+		btnVolver.setBorder(null);
+		btnVolver.setContentAreaFilled(false);
+		btnVolver.setIcon(new ImageIcon(LoginWindow.class.getResource("/images/volver.png")));
+		btnVolver.setBounds(106, 131, 72, 51);
+		panelRegistrar.add(btnVolver);
 
 		JPanel panel = new JPanel();
 
@@ -282,5 +298,33 @@ public class LoginWindow extends JFrame {
 	 */
 	public JPanel getPanelCard() {
 		return panelCard;
+	}
+
+	/**
+	 * @return the lblError
+	 */
+	public JLabel getLblError() {
+		return lblError;
+	}
+
+	/**
+	 * @param lblError the lblError to set
+	 */
+	public void setLblError(JLabel lblError) {
+		this.lblError = lblError;
+	}
+
+	/**
+	 * @return the btnVolver
+	 */
+	public JButton getBtnVolver() {
+		return btnVolver;
+	}
+
+	/**
+	 * @param btnVolver the btnVolver to set
+	 */
+	public void setBtnVolver(JButton btnVolver) {
+		this.btnVolver = btnVolver;
 	}
 }
