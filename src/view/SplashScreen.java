@@ -35,7 +35,7 @@ public class SplashScreen extends JWindow {
     public void showSplash() {
         setVisible(true);
         try {
-            Thread.sleep(4000); // Tiempo en milisegundos que se mostrará el Splash Screen
+            Thread.sleep(1000); // Tiempo en milisegundos que se mostrará el Splash Screen
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
