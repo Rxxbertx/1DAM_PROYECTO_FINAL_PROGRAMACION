@@ -3,6 +3,7 @@ package controller;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.ObjectInputStream.GetField;
 
 import javax.swing.JOptionPane;
 
@@ -26,6 +27,11 @@ public class LoginWindow implements ActionListener {
 		loginWindow.getBtnAlta().addActionListener(this);
 		loginWindow.getBtnVolver().addActionListener(this);
 		loginWindow.setVisible(true);
+		
+		
+		
+		
+		
 
 	}
 
@@ -56,6 +62,8 @@ public class LoginWindow implements ActionListener {
 		}
 		if (e.getSource().equals(loginWindow.getBtnAltaLogin())) {
 
+			loginWindow.getTextFieldContraseñaLogin().setText("");
+			loginWindow.getTextFieldContraseñaRegistro().setText("");
 			((CardLayout) loginWindow.getPanelCard().getLayout()).show(loginWindow.getPanelCard(), "panelRegistrar");
 
 		}
@@ -66,7 +74,7 @@ public class LoginWindow implements ActionListener {
 			if (usuario != null) {
 
 				if (usuario instanceof Empleado)
-					new ControladorVentanaEmpleado(loginWindow);
+					new ControladorVentanaEmpleado(loginWindow, usuario);
 
 				else
 					new ControladorVentanaSocio();
