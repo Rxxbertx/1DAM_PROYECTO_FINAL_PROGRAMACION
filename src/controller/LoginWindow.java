@@ -3,7 +3,6 @@ package controller;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Timer;
 
 import javax.swing.JOptionPane;
 
@@ -67,14 +66,18 @@ public class LoginWindow implements ActionListener {
 			if (usuario != null) {
 
 				if (usuario instanceof Empleado)
-					new ControladorVentanaEmpleado();
+					new ControladorVentanaEmpleado(loginWindow);
+
 				else
 					new ControladorVentanaSocio();
+
+				loginWindow.dispose();
+
 			} else {
 				loginWindow.getLblError().setVisible(true);
 				new AnimacionShake(loginWindow.getLblError());
-				// new AnimacionShake(loginWindow.getTextFieldUsuarioLogin());
-				// new AnimacionShake(loginWindow.getTextFieldContraseñaLogin());
+				new AnimacionShake(loginWindow.getTextFieldUsuarioLogin());
+				new AnimacionShake(loginWindow.getTextFieldContraseñaLogin());
 			}
 
 		}
@@ -85,7 +88,7 @@ public class LoginWindow implements ActionListener {
 
 		if (loginWindow.getTextFieldNombreRegistro().getText().isBlank()
 				| loginWindow.getTextFieldApellidosRegistro().getText().isBlank()
-				| loginWindow.getTextFieldContraseñaRegistro().getText().isBlank()
+				| new String(loginWindow.getTextFieldContraseñaRegistro().getPassword()).isBlank()
 				| loginWindow.getTextFieldUsuarioRegistro().getText().isBlank()) {
 
 			JOptionPane.showMessageDialog(loginWindow, "COMPRUEBA LOS CAMPOS", "ALTA", 0);
@@ -94,7 +97,7 @@ public class LoginWindow implements ActionListener {
 
 			Usuario usuario = new Socio(loginWindow.getTextFieldNombreRegistro().getText(),
 					loginWindow.getTextFieldApellidosRegistro().getText(), false,
-					loginWindow.getTextFieldContraseñaRegistro().getText(),
+					new String(loginWindow.getTextFieldContraseñaRegistro().getPassword()),
 					loginWindow.getTextFieldUsuarioRegistro().getText());
 
 			modeloUsuario.añadir(loginWindow.getTextFieldUsuarioRegistro().getText(), usuario);
@@ -113,7 +116,8 @@ public class LoginWindow implements ActionListener {
 	private Usuario comprobarCredenciales() {
 
 		Usuario usuario = modeloUsuario.consultar(loginWindow.getTextFieldUsuarioLogin().getText());
-		if (usuario != null && usuario.getContraseña().equals(loginWindow.getTextFieldContraseñaLogin().getText())) {
+		if (usuario != null && usuario.getContraseña()
+				.equals(new String(loginWindow.getTextFieldContraseñaLogin().getPassword()))) {
 			return usuario;
 		}
 
