@@ -26,16 +26,17 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Insets;
 import java.awt.GridLayout;
+import javax.swing.JPasswordField;
 
 public class LoginWindow extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textFieldUsuarioLogin;
-	private JTextField textFieldContraseñaLogin;
+	private JPasswordField textFieldContraseñaLogin;
 	private JTextField textFieldNombreRegistro;
 	private JTextField textFieldApellidosRegistro;
 	private JTextField textFieldUsuarioRegistro;
-	private JTextField textFieldContraseñaRegistro;
+	private JPasswordField textFieldContraseñaRegistro;
 	private JPanel panelRegistrar;
 	private JButton btnAlta;
 	private JButton btnAltaLogin;
@@ -90,11 +91,13 @@ public class LoginWindow extends JFrame {
 		textFieldUsuarioLogin.setBounds(303, 155, 216, 43);
 		panelLogin.add(textFieldUsuarioLogin);
 
-		textFieldContraseñaLogin = new JTextField();
+		textFieldContraseñaLogin = new JPasswordField();
 		textFieldContraseñaLogin.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
 		textFieldContraseñaLogin.setColumns(10);
 		textFieldContraseñaLogin.setBounds(303, 268, 216, 43);
 		panelLogin.add(textFieldContraseñaLogin);
+		
+		
 
 		btnEntrar = new JButton("ENTRAR");
 		btnEntrar.setForeground(Color.WHITE);
@@ -181,7 +184,7 @@ public class LoginWindow extends JFrame {
 		lblNewLabel_2_1_2.setBounds(91, 385, 146, 31);
 		panelRegistrar.add(lblNewLabel_2_1_2);
 
-		textFieldContraseñaRegistro = new JTextField();
+		textFieldContraseñaRegistro = new JPasswordField();
 		textFieldContraseñaRegistro.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
 		textFieldContraseñaRegistro.setColumns(10);
 		textFieldContraseñaRegistro.setBounds(286, 379, 216, 43);
@@ -228,7 +231,7 @@ public class LoginWindow extends JFrame {
 	/**
 	 * @return the textFieldContraseñaLogin
 	 */
-	public JTextField getTextFieldContraseñaLogin() {
+	public  JPasswordField getTextFieldContraseñaLogin() {
 		return textFieldContraseñaLogin;
 	}
 
@@ -256,7 +259,7 @@ public class LoginWindow extends JFrame {
 	/**
 	 * @return the textFieldContraseñaRegistro
 	 */
-	public JTextField getTextFieldContraseñaRegistro() {
+	public JPasswordField getTextFieldContraseñaRegistro() {
 		return textFieldContraseñaRegistro;
 	}
 

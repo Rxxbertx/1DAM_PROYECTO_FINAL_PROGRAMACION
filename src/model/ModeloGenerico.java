@@ -1,3 +1,4 @@
+
 package model;
 
 import java.util.HashMap;
@@ -7,9 +8,7 @@ public class ModeloGenerico<E> {
 	private HashMap<Integer, E> elementos = new HashMap<>();
 
 	public void añadir(int i, E elemento) {
-
 		elementos.put(i, elemento);
-
 	}
 
 	public void eliminar(int i) {
@@ -24,7 +23,7 @@ public class ModeloGenerico<E> {
 	 * @return the elementos
 	 */
 	public HashMap<Integer, E> getElementos() {
-		return elementos;
+		return (HashMap<Integer, E>) elementos;
 	}
 
 	/**
@@ -33,5 +32,4 @@ public class ModeloGenerico<E> {
 	public void setElementos(HashMap<Integer, E> elementos) {
 		this.elementos = elementos;
 	}
-
 }

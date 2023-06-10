@@ -9,6 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Base64;
 
 import model.Empleado;
 import model.ModeloUsuario;
@@ -22,7 +23,7 @@ public class LecturaDatosUsuario {
 
 		modeloUsuario = new ModeloUsuario();
 
-		File ficheroDatos = new File("datosUsuario");
+		File ficheroDatos = new File("data/datosUsuario.dat");
 
 		if (ficheroDatos.exists()) {
 
@@ -33,11 +34,11 @@ public class LecturaDatosUsuario {
 				while ((linea = lector.readLine()) != null) {
 					String[] datosUsuario = linea.split(",");
 
-					String nombre = datosUsuario[0];
-					String apellido = datosUsuario[1];
-					boolean esEmpleado = Boolean.parseBoolean(datosUsuario[2]);
-					String contraseña = datosUsuario[3];
-					String nomUsuario = datosUsuario[4];
+					String nombre = new String(Base64.getDecoder().decode(datosUsuario[0]));
+					String apellido = new String(Base64.getDecoder().decode(datosUsuario[1]));
+					boolean esEmpleado = Boolean.parseBoolean(new String(Base64.getDecoder().decode(datosUsuario[2])));
+					String contraseña = new String(Base64.getDecoder().decode(datosUsuario[3]));
+					String nomUsuario = new String(Base64.getDecoder().decode(datosUsuario[4]));
 
 					if (esEmpleado) {
 						modeloUsuario.añadir(nomUsuario,
