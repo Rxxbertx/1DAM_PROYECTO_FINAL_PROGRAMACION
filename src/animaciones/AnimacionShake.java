@@ -28,7 +28,6 @@ public class AnimacionShake implements ActionListener {
 		dx = shakeDistance;
 		dy = shakeDistance;
 
-		System.out.println("dx vale " + dx);
 
 		timer = new Timer(shakeDelay, this);
 		timer.start();
