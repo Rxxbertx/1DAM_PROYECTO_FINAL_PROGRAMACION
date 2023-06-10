@@ -42,6 +42,58 @@ public class GestionJuegos extends JFrame {
 	private JTextField tNombreModificar;
 	private JTextField tUnidadesModificar;
 	private JButton btnEliminarJuego;
+	public JPanel getPanelSelccionJuego() {
+		return panelSelccionJuego;
+	}
+
+	public JPanel getPanelCard1() {
+		return panelCard1;
+	}
+
+	public JPanel getPanelSinSeleccion() {
+		return panelSinSeleccion;
+	}
+
+	public JLabel getLblMensajeSinSeleccionar() {
+		return lblMensajeSinSeleccionar;
+	}
+
+	public JPanel getPanelConSeleccion() {
+		return panelConSeleccion;
+	}
+
+	public JButton getBtnSeleccionar() {
+		return btnSeleccionar;
+	}
+
+	public JLabel getLblNombreRellenar() {
+		return lblNombreRellenar;
+	}
+
+	public JLabel getLblNumJugadoresRellenar() {
+		return lblNumJugadoresRellenar;
+	}
+
+	public JLabel getLblUnidadesRellenar() {
+		return lblUnidadesRellenar;
+	}
+
+	public JLabel getLblUdsUtilizadasRellenar() {
+		return lblUdsUtilizadasRellenar;
+	}
+
+	public JLabel getLblIncidenciasRellenar() {
+		return lblIncidenciasRellenar;
+	}
+
+	public JLabel getLblCompañiaRellenar() {
+		return lblCompañiaRellenar;
+	}
+
+	public JLabel getLblPlataformaRellenar() {
+		return lblPlataformaRellenar;
+	}
+
 	private JButton btnVerJuego;
 	private JButton btnModificarJuego;
 	private JButton btnAñadirJuego;
@@ -126,6 +178,14 @@ public class GestionJuegos extends JFrame {
 	private JPanel panelSinSeleccion;
 	private JLabel lblMensajeSinSeleccionar;
 	private JPanel panelConSeleccion;
+	private JButton btnSeleccionar;
+	private JLabel lblNombreRellenar;
+	private JLabel lblNumJugadoresRellenar;
+	private JLabel lblUnidadesRellenar;
+	private JLabel lblUdsUtilizadasRellenar;
+	private JLabel lblIncidenciasRellenar;
+	private JLabel lblCompañiaRellenar;
+	private JLabel lblPlataformaRellenar;
 
 	/**
 	 * Launch the application.
@@ -321,20 +381,9 @@ public class GestionJuegos extends JFrame {
 		JComboBox comboJuegos = new JComboBox();
 		comboJuegos.setBounds(29, 55, 265, 138);
 		panelSelccionJuego.add(comboJuegos);
-		
-		// Crear el modelo de lista personalizado
-        DefaultComboBoxModel<?> comboBoxModel = new DefaultComboBoxModel<>();
-        
-     
 
-		
-		
-		
-		
-		
-		
-		
-		JButton btnSeleccionar = new JButton("SELECCIONAR");
+     
+		btnSeleccionar = new JButton("SELECCIONAR");
 		btnSeleccionar.setForeground(Color.WHITE);
 		btnSeleccionar.setFont(new Font("Tahoma", Font.BOLD, 24));
 		btnSeleccionar.setBorderPainted(false);
@@ -369,7 +418,7 @@ public class GestionJuegos extends JFrame {
 		lblNombreInfo.setBounds(111, 102, 85, 14);
 		panelInformacion.add(lblNombreInfo);
 		
-		JLabel lblNombreRellenar = new JLabel("");
+		lblNombreRellenar = new JLabel("");
 		lblNombreRellenar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNombreRellenar.setBounds(267, 102, 340, 14);
 		panelInformacion.add(lblNombreRellenar);
@@ -404,32 +453,32 @@ public class GestionJuegos extends JFrame {
 		lblPlataformaInfo.setBounds(111, 318, 114, 14);
 		panelInformacion.add(lblPlataformaInfo);
 		
-		JLabel lblNumJugadoresRellenar = new JLabel("");
+		lblNumJugadoresRellenar = new JLabel("");
 		lblNumJugadoresRellenar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNumJugadoresRellenar.setBounds(267, 140, 340, 14);
 		panelInformacion.add(lblNumJugadoresRellenar);
 		
-		JLabel lblUnidadesRellenar = new JLabel("");
+		lblUnidadesRellenar = new JLabel("");
 		lblUnidadesRellenar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblUnidadesRellenar.setBounds(267, 176, 340, 14);
 		panelInformacion.add(lblUnidadesRellenar);
 		
-		JLabel lblUdsUtilizadasRellenar = new JLabel("");
+		lblUdsUtilizadasRellenar = new JLabel("");
 		lblUdsUtilizadasRellenar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblUdsUtilizadasRellenar.setBounds(267, 216, 340, 14);
 		panelInformacion.add(lblUdsUtilizadasRellenar);
 		
-		JLabel lblIncidenciasRellenar = new JLabel("");
+		lblIncidenciasRellenar = new JLabel("");
 		lblIncidenciasRellenar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblIncidenciasRellenar.setBounds(267, 252, 340, 14);
 		panelInformacion.add(lblIncidenciasRellenar);
 		
-		JLabel lblCompañiaRellenar = new JLabel("");
+		lblCompañiaRellenar = new JLabel("");
 		lblCompañiaRellenar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblCompañiaRellenar.setBounds(267, 287, 340, 14);
 		panelInformacion.add(lblCompañiaRellenar);
 		
-		JLabel lblPlataformaRellenar = new JLabel("");
+		lblPlataformaRellenar = new JLabel("");
 		lblPlataformaRellenar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblPlataformaRellenar.setBounds(267, 318, 340, 14);
 		panelInformacion.add(lblPlataformaRellenar);
