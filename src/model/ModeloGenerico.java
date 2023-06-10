@@ -8,7 +8,15 @@ public class ModeloGenerico<E> {
 	private HashMap<Integer, E> elementos = new HashMap<>();
 
 	public void añadir(int i, E elemento) {
-		elementos.put(i, elemento);
+
+		if (consultar(i) != null) {
+
+		} else {
+			elementos.put(i, elemento);
+			
+			
+		}
+
 	}
 
 	public void eliminar(int i) {
