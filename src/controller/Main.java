@@ -11,6 +11,7 @@ public class Main {
 
 		try {
 			UIManager.setLookAndFeel(new NimbusLookAndFeel());
+
 			new SplashScreen().showSplash();
 			new LecturaDatosUsuario();
 			new LoginWindow();
