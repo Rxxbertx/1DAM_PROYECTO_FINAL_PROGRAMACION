@@ -92,6 +92,11 @@ public class VentanaPrincipal extends JFrame {
 		lblRellenarUsuario.setBounds(336, 49, 340, 87);
 		panelBienvenida.add(lblRellenarUsuario);
 
+	JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/images/datossCentro.gif")));
+		lblNewLabel.setBounds(155, 146, 391, 427);
+		panelBienvenida.add(lblNewLabel);
+
 	}
 
 	/**
