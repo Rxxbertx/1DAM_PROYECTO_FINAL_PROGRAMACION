@@ -5,12 +5,18 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import javax.swing.border.MatteBorder;
+
+import model.Videojuego;
+
 import javax.swing.border.EtchedBorder;
+
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -18,16 +24,108 @@ import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import java.awt.SystemColor;
 import javax.swing.JSpinner;
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import java.awt.GridLayout;
+import java.awt.Rectangle;
+import java.awt.Dimension;
+import javax.swing.*;
+import java.awt.*;
 
 public class GestionJuegos extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
+	private JTextField tUnidadesAñadir;
+	private JTextField tNombreAñadir;
+	private JTextField tNombreEliminar;
+	private JTextField tUnidadesEliminar;
+	private JTextField tNombreModificar;
+	private JTextField tUnidadesModificar;
+	private JButton btnEliminarJuego;
+	private JButton btnVerJuego;
+	private JButton btnModificarJuego;
+	private JButton btnAñadirJuego;
+	private JButton btnEliminar;
+	private JComboBox cPlataformaEliminar;
+	private JComboBox cPlataformaModificar;
+
+	public JTextField gettUnidadesAñadir() {
+		return tUnidadesAñadir;
+	}
+
+	public JTextField gettNombreAñadir() {
+		return tNombreAñadir;
+	}
+
+	public JTextField gettNombreEliminar() {
+		return tNombreEliminar;
+	}
+
+	public JTextField gettUnidadesEliminar() {
+		return tUnidadesEliminar;
+	}
+
+	public JTextField gettNombreModificar() {
+		return tNombreModificar;
+	}
+
+	public JTextField gettUnidadesModificar() {
+		return tUnidadesModificar;
+	}
+
+	public JButton getBtnEliminarJuego() {
+		return btnEliminarJuego;
+	}
+
+	public JButton getBtnVerJuego() {
+		return btnVerJuego;
+	}
+
+	public JButton getBtnModificarJuego() {
+		return btnModificarJuego;
+	}
+
+	public JButton getBtnAñadirJuego() {
+		return btnAñadirJuego;
+	}
+
+	public JButton getBtnEliminar() {
+		return btnEliminar;
+	}
+
+	public JComboBox getcPlataformaEliminar() {
+		return cPlataformaEliminar;
+	}
+
+	public JComboBox getcPlataformaModificar() {
+		return cPlataformaModificar;
+	}
+
+	public JComboBox getcPlataformaAñadir() {
+		return cPlataformaAñadir;
+	}
+
+	public JSpinner getSpNumJugadoresModificar() {
+		return spNumJugadoresModificar;
+	}
+
+	public JButton getBtnModificar() {
+		return btnModificar;
+	}
+
+	public JButton getBtnAñadir() {
+		return btnAñadir;
+	}
+
+	private JComboBox cPlataformaAñadir;
+	private JSpinner spNumJugadoresModificar;
+	private JButton btnModificar;
+	private JButton btnAñadir;
+	private JPanel panelSelccionJuego;
+	private JPanel panelCard1;
+	private JPanel panelSinSeleccion;
+	private JLabel lblMensajeSinSeleccionar;
+	private JPanel panelConSeleccion;
 
 	/**
 	 * Launch the application.
@@ -49,217 +147,356 @@ public class GestionJuegos extends JFrame {
 	 * Create the frame.
 	 */
 	public GestionJuegos() {
+		
+		Border innerBorder1 = BorderFactory.createLineBorder(Color.WHITE, 3);
+		Border outerBorder1 = BorderFactory.createLineBorder(new Color(128, 0, 0), 10);
+
+		Border compoundBorder1 = BorderFactory.createCompoundBorder(innerBorder1, outerBorder1);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1049, 811);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		
-		JPanel panel = new JPanel();
-		panel.setBounds(10, 11, 1015, 114);
-		contentPane.add(panel);
-		panel.setLayout(null);
-		
-		JButton btnNewButton_1 = new JButton("");
-		btnNewButton_1.setBorderPainted(false);
-		btnNewButton_1.setContentAreaFilled(false);
-		btnNewButton_1.setIcon(new ImageIcon(GestionJuegos.class.getResource("/images/icons8-menos-64.png")));
-		btnNewButton_1.setBounds(352, 20, 90, 73);
-		panel.add(btnNewButton_1);
-		
-		JButton btnNewButton_1_1 = new JButton("");
-		btnNewButton_1_1.setBorderPainted(false);
-		btnNewButton_1_1.setContentAreaFilled(false);
-		btnNewButton_1_1.setIcon(new ImageIcon(GestionJuegos.class.getResource("/images/icons8-surprise-64.png")));
-		btnNewButton_1_1.setBounds(573, 20, 90, 73);
-		panel.add(btnNewButton_1_1);
-		
-		JButton btnNewButton_2 = new JButton("");
-		btnNewButton_2.setContentAreaFilled(false);
-		btnNewButton_2.setIcon(new ImageIcon(GestionJuegos.class.getResource("/images/icons8-edit-64.png")));
-		btnNewButton_2.setBounds(794, 20, 90, 73);
-		panel.add(btnNewButton_2);
-		btnNewButton_2.setBorderPainted(false);
-		panel.setBackground(new Color(128, 0, 0, 255)); 
-        panel.setOpaque(true);
-        
-        JButton btnNewButton_1_2 = new JButton("");
-        btnNewButton_1_2.setIcon(new ImageIcon(GestionJuegos.class.getResource("/images/icons8-más-64.png")));
-        btnNewButton_1_2.setContentAreaFilled(false);
-        btnNewButton_1_2.setBorderPainted(false);
-        btnNewButton_1_2.setBounds(131, 20, 90, 73);
-        panel.add(btnNewButton_1_2);
-        
-        JPanel panel_2 = new JPanel();
-        panel_2.setBounds(10, 11, 995, 92);
-        panel_2.setBorder(new LineBorder(new Color(255, 255, 255), 4, true));
-		panel_2.setBackground(new Color(128, 0, 0, 255)); 
+		contentPane.setLayout(new BorderLayout());
 
-        panel.add(panel_2);
+		JPanel panel = new JPanel();
+		panel.setPreferredSize(new Dimension(10, 100));
+		panel.setBounds(10, 11, 1015, 114);
+		contentPane.add(panel, BorderLayout.NORTH);
+		panel.setLayout(new GridLayout(0, 4, 0, 3));
+		Border innerBorder = BorderFactory.createLineBorder(Color.WHITE, 3);
+		Border outerBorder = BorderFactory.createLineBorder(new Color(128, 0, 0), 10);
+
+		Border compoundBorder = BorderFactory.createCompoundBorder(outerBorder, innerBorder);
+
+		panel.setBorder(compoundBorder);
+		
+				btnAñadirJuego = new JButton("");
+				btnAñadirJuego.setToolTipText("Añadir Juego");
+				btnAñadirJuego.setBounds(new Rectangle(0, 0, 0, 40));
+				btnAñadirJuego.setIcon(new ImageIcon(GestionJuegos.class.getResource("/images/icons8-más-64.png")));
+				btnAñadirJuego.setContentAreaFilled(false);
+				btnAñadirJuego.setBorderPainted(false);
+				panel.add(btnAñadirJuego);
+
+		btnEliminarJuego = new JButton("");
+		btnEliminarJuego.setToolTipText("Eliminar Juego");
+		btnEliminarJuego.setBorderPainted(false);
+		btnEliminarJuego.setContentAreaFilled(false);
+		btnEliminarJuego.setIcon(new ImageIcon(GestionJuegos.class.getResource("/images/icons8-menos-64.png")));
+		panel.add(btnEliminarJuego);
+
+		btnVerJuego = new JButton("");
+		btnVerJuego.setToolTipText("Ver Juegos");
+		btnVerJuego.setBorderPainted(false);
+		btnVerJuego.setContentAreaFilled(false);
+		btnVerJuego.setIcon(new ImageIcon(GestionJuegos.class.getResource("/images/icons8-surprise-64.png")));
+		panel.add(btnVerJuego);
+
+		btnModificarJuego = new JButton("");
+		btnModificarJuego.setToolTipText("Editar Juegos");
+		btnModificarJuego.setContentAreaFilled(false);
+		btnModificarJuego.setIcon(new ImageIcon(GestionJuegos.class.getResource("/images/icons8-edit-64.png")));
+		panel.add(btnModificarJuego);
+		btnModificarJuego.setBorderPainted(false);
+		panel.setBackground(new Color(128, 0, 0, 255));
+		panel.setOpaque(true);
+
+		JPanel panelCard = new JPanel();
+		panelCard.setBounds(10, 136, 1015, 553);
+		contentPane.add(panelCard, BorderLayout.CENTER);
+		panelCard.setBorder(new LineBorder(new Color(128, 0, 0), 4, true));
+		panelCard.setLayout(new CardLayout(0, 0));
+
+		JPanel panelEliminar = new JPanel();
+		panelCard.add(panelEliminar, "eliminar");
+		panelEliminar.setLayout(null);
+		panelEliminar.setBorder(compoundBorder1);
+
+		btnEliminar = new JButton("ELIMINAR");
+		btnEliminar.setForeground(Color.WHITE);
+		btnEliminar.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnEliminar.setBorderPainted(false);
+		btnEliminar.setBackground(new Color(128, 0, 0));
+		btnEliminar.setBounds(368, 402, 271, 77);
+		panelEliminar.add(btnEliminar);
+
+		JLabel lblNombreEliminar = new JLabel("Nombre");
+		lblNombreEliminar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
+		lblNombreEliminar.setBounds(171, 136, 146, 31);
+		panelEliminar.add(lblNombreEliminar);
+
+		tNombreEliminar = new JTextField();
+		tNombreEliminar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
+		tNombreEliminar.setBorder(new MatteBorder(0, 0, 2, 0, new Color(128, 0, 0)));
+		tNombreEliminar.setBackground(Color.WHITE);
+		tNombreEliminar.setBounds(535, 137, 302, 31);
+		panelEliminar.add(tNombreEliminar);
+
+		JLabel lblPlataformaEliminar = new JLabel("Plataforma");
+		lblPlataformaEliminar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
+		lblPlataformaEliminar.setBounds(171, 205, 146, 31);
+		panelEliminar.add(lblPlataformaEliminar);
+
+		cPlataformaEliminar = new JComboBox();
+		cPlataformaEliminar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
+		cPlataformaEliminar.setBorder(new LineBorder(new Color(128, 0, 0), 2, true));
+		cPlataformaEliminar.setBounds(535, 205, 302, 31);
+		panelEliminar.add(cPlataformaEliminar);
+
+		JLabel lblUnidadesEliminar = new JLabel("Unidades");
+		lblUnidadesEliminar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
+		lblUnidadesEliminar.setBounds(171, 275, 146, 31);
+		panelEliminar.add(lblUnidadesEliminar);
+
+		tUnidadesEliminar = new JTextField();
+		tUnidadesEliminar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
+		tUnidadesEliminar.setBorder(new MatteBorder(0, 0, 2, 0, new Color(128, 0, 0)));
+		tUnidadesEliminar.setBackground(Color.WHITE);
+		tUnidadesEliminar.setBounds(535, 275, 302, 31);
+		panelEliminar.add(tUnidadesEliminar);
+
+		JPanel panelAñadir = new JPanel();
+		panelCard.add(panelAñadir, "añadir");
+		panelAñadir.setLayout(null);
+		panelAñadir.setBorder(compoundBorder1);
+
+
+		JPanel panelModificar = new JPanel();
+		panelCard.add(panelModificar, "modificar");
+		panelModificar.setLayout(null);
+		panelModificar.setBorder(compoundBorder1);
+
+
+		JLabel lblNombreModificar = new JLabel("Nombre");
+		lblNombreModificar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
+		lblNombreModificar.setBounds(172, 121, 146, 31);
+		panelModificar.add(lblNombreModificar);
+
+		tNombreModificar = new JTextField();
+		tNombreModificar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
+		tNombreModificar.setBorder(new MatteBorder(0, 0, 2, 0, new Color(128, 0, 0)));
+		tNombreModificar.setBackground(Color.WHITE);
+		tNombreModificar.setBounds(536, 122, 302, 31);
+		panelModificar.add(tNombreModificar);
+
+		JLabel lblPlataformaModificar = new JLabel("Plataforma");
+		lblPlataformaModificar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
+		lblPlataformaModificar.setBounds(172, 190, 146, 31);
+		panelModificar.add(lblPlataformaModificar);
+
+		cPlataformaModificar = new JComboBox();
+		cPlataformaModificar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
+		cPlataformaModificar.setBorder(new LineBorder(new Color(128, 0, 0), 2, true));
+		cPlataformaModificar.setBounds(536, 190, 302, 31);
+		panelModificar.add(cPlataformaModificar);
+
+		JLabel lblUnidadesModificar = new JLabel("Unidades");
+		lblUnidadesModificar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
+		lblUnidadesModificar.setBounds(172, 260, 146, 31);
+		panelModificar.add(lblUnidadesModificar);
+
+		tUnidadesModificar = new JTextField();
+		tUnidadesModificar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
+		tUnidadesModificar.setBorder(new MatteBorder(0, 0, 2, 0, new Color(128, 0, 0)));
+		tUnidadesModificar.setBackground(Color.WHITE);
+		tUnidadesModificar.setBounds(536, 260, 302, 31);
+		panelModificar.add(tUnidadesModificar);
+
+		JLabel lblNumJugadoresModificar = new JLabel("Nº Jugadores");
+		lblNumJugadoresModificar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
+		lblNumJugadoresModificar.setBounds(172, 325, 189, 31);
+		panelModificar.add(lblNumJugadoresModificar);
+
+		JPanel panelVer = new JPanel();
+		panelCard.add(panelVer, "ver");
+		panelVer.setLayout(new BorderLayout(0, 0));
+		
+		panelSelccionJuego = new JPanel();
+		panelSelccionJuego.setPreferredSize(new Dimension(320, 10));
+		panelVer.add(panelSelccionJuego, BorderLayout.WEST);
+		panelSelccionJuego.setLayout(null);
+		
+		JComboBox comboJuegos = new JComboBox();
+		comboJuegos.setBounds(29, 55, 265, 138);
+		panelSelccionJuego.add(comboJuegos);
+		
+		// Crear el modelo de lista personalizado
+        DefaultComboBoxModel<?> comboBoxModel = new DefaultComboBoxModel<>();
         
-        JPanel panelCard = new JPanel();
-        panelCard.setBounds(10, 136, 1015, 553);
-        contentPane.add(panelCard);
-        panelCard.setBorder(new LineBorder(new Color(128, 0, 0), 4, true));
-        panelCard.setLayout(new CardLayout(0, 0));
-        
-        JPanel panelEliminar = new JPanel();
-        panelCard.add(panelEliminar, "eliminar");
-        panelEliminar.setLayout(null);
-        
-        JButton btnEliminar = new JButton("ELIMINAR");
-        btnEliminar.setForeground(Color.WHITE);
-        btnEliminar.setFont(new Font("Tahoma", Font.BOLD, 30));
-        btnEliminar.setBorderPainted(false);
-        btnEliminar.setBackground(new Color(128, 0, 0));
-        btnEliminar.setBounds(368, 402, 271, 77);
-        panelEliminar.add(btnEliminar);
-        
-        JLabel lblNewLabel_2_3 = new JLabel("Nombre");
-        lblNewLabel_2_3.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
-        lblNewLabel_2_3.setBounds(171, 136, 146, 31);
-        panelEliminar.add(lblNewLabel_2_3);
-        
-        textField = new JTextField();
-        textField.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
-        textField.setBorder(new MatteBorder(0, 0, 2, 0, new Color(128, 0, 0)));
-        textField.setBackground(Color.WHITE);
-        textField.setBounds(535, 137, 302, 31);
-        panelEliminar.add(textField);
-        
-        JLabel lblNewLabel_2_2_1 = new JLabel("Plataforma");
-        lblNewLabel_2_2_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
-        lblNewLabel_2_2_1.setBounds(171, 205, 146, 31);
-        panelEliminar.add(lblNewLabel_2_2_1);
-        
-        JComboBox comboBox_1 = new JComboBox();
-        comboBox_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
-        comboBox_1.setBorder(new LineBorder(new Color(128, 0, 0), 2, true));
-        comboBox_1.setBounds(535, 205, 302, 31);
-        panelEliminar.add(comboBox_1);
-        
-        JLabel lblNewLabel_2_1_1 = new JLabel("Unidades");
-        lblNewLabel_2_1_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
-        lblNewLabel_2_1_1.setBounds(171, 275, 146, 31);
-        panelEliminar.add(lblNewLabel_2_1_1);
-        
-        textField_3 = new JTextField();
-        textField_3.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
-        textField_3.setBorder(new MatteBorder(0, 0, 2, 0, new Color(128, 0, 0)));
-        textField_3.setBackground(Color.WHITE);
-        textField_3.setBounds(535, 275, 302, 31);
-        panelEliminar.add(textField_3);
-        
-        JPanel panelAñadir = new JPanel();
-        panelCard.add(panelAñadir, "añadir");
-        panelAñadir.setLayout(null);
-        
-        JPanel panelModificar = new JPanel();
-        panelCard.add(panelModificar, "modificar");
-        panelModificar.setLayout(null);
-        
-        JLabel lblNewLabel_2_3_1 = new JLabel("Nombre");
-        lblNewLabel_2_3_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
-        lblNewLabel_2_3_1.setBounds(172, 121, 146, 31);
-        panelModificar.add(lblNewLabel_2_3_1);
-        
-        textField_4 = new JTextField();
-        textField_4.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
-        textField_4.setBorder(new MatteBorder(0, 0, 2, 0, new Color(128, 0, 0)));
-        textField_4.setBackground(Color.WHITE);
-        textField_4.setBounds(536, 122, 302, 31);
-        panelModificar.add(textField_4);
-        
-        JLabel lblNewLabel_2_2_1_1 = new JLabel("Plataforma");
-        lblNewLabel_2_2_1_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
-        lblNewLabel_2_2_1_1.setBounds(172, 190, 146, 31);
-        panelModificar.add(lblNewLabel_2_2_1_1);
-        
-        JComboBox comboBox_1_1 = new JComboBox();
-        comboBox_1_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
-        comboBox_1_1.setBorder(new LineBorder(new Color(128, 0, 0), 2, true));
-        comboBox_1_1.setBounds(536, 190, 302, 31);
-        panelModificar.add(comboBox_1_1);
-        
-        JLabel lblNewLabel_2_1_1_1 = new JLabel("Unidades");
-        lblNewLabel_2_1_1_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
-        lblNewLabel_2_1_1_1.setBounds(172, 260, 146, 31);
-        panelModificar.add(lblNewLabel_2_1_1_1);
-        
-        textField_5 = new JTextField();
-        textField_5.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
-        textField_5.setBorder(new MatteBorder(0, 0, 2, 0, new Color(128, 0, 0)));
-        textField_5.setBackground(Color.WHITE);
-        textField_5.setBounds(536, 260, 302, 31);
-        panelModificar.add(textField_5);
-        
-        JLabel lblNewLabel_2_1_1_1_1 = new JLabel("Nº Jugadores");
-        lblNewLabel_2_1_1_1_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
-        lblNewLabel_2_1_1_1_1.setBounds(172, 325, 189, 31);
-        panelModificar.add(lblNewLabel_2_1_1_1_1);
-        
-       
-        
-        JPanel panelVer = new JPanel();
-        panelCard.add(panelVer, "ver");
-        panelVer.setLayout(null);
-        
-        JLabel lblNewLabel_2 = new JLabel("Nombre");
-        lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
-        lblNewLabel_2.setBounds(174, 132, 146, 31);
-        panelAñadir.add(lblNewLabel_2);
-        
-        JLabel lblNewLabel_2_1 = new JLabel("Unidades");
-        lblNewLabel_2_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
-        lblNewLabel_2_1.setBounds(174, 271, 146, 31);
-        panelAñadir.add(lblNewLabel_2_1);
-        
-        JLabel lblNewLabel_2_2 = new JLabel("Plataforma");
-        lblNewLabel_2_2.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
-        lblNewLabel_2_2.setBounds(174, 201, 146, 31);
-        panelAñadir.add(lblNewLabel_2_2);
-        
-        JComboBox comboBox = new JComboBox();
-        comboBox.setBounds(538, 201, 302, 31);
-        comboBox.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
-        comboBox.setBorder(new LineBorder(new Color(128, 0, 0), 2, true));
-        panelAñadir.add(comboBox);
-        
-        textField_1 = new JTextField();
-        textField_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
-        textField_1.setBorder(new MatteBorder(0, 0, 2, 0, new Color(128, 0, 0)));
-        textField_1.setBackground(Color.white);
-        textField_1.setBounds(538, 271, 302, 31);
-        panelAñadir.add(textField_1);
-        
-        JButton btnAceptar = new JButton("ACEPTAR");
-        btnAceptar.setForeground(Color.WHITE);
-        btnAceptar.setFont(new Font("Tahoma", Font.BOLD, 30));
-        btnAceptar.setBorderPainted(false);
-        btnAceptar.setBackground(new Color(128, 0, 0));
-        btnAceptar.setBounds(368, 397, 271, 77);
-        panelAñadir.add(btnAceptar);
-        
-        textField_2 = new JTextField();
-        textField_2.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
-        textField_2.setBorder(new MatteBorder(0, 0, 2, 0, new Color(128, 0, 0)));
-        textField_2.setBackground(Color.WHITE);
-        textField_2.setBounds(538, 133, 302, 31);
-        panelAñadir.add(textField_2);
-        
-        JSpinner spinner = new JSpinner();
-        spinner.setBounds(536, 325, 302, 31);
-        panelModificar.add(spinner);
-        spinner.setBorder(new MatteBorder(2, 2, 2, 0, new Color(128, 0, 0)));
-        
-        JButton btnModificar = new JButton("MODIFICAR");
-        btnModificar.setForeground(Color.WHITE);
-        btnModificar.setFont(new Font("Tahoma", Font.BOLD, 30));
-        btnModificar.setBorderPainted(false);
-        btnModificar.setBackground(new Color(128, 0, 0));
-        btnModificar.setBounds(368, 411, 271, 77);
-        panelModificar.add(btnModificar);
+     
+
+		
+		
+		
+		
+		
+		
+		
+		JButton btnSeleccionar = new JButton("SELECCIONAR");
+		btnSeleccionar.setForeground(Color.WHITE);
+		btnSeleccionar.setFont(new Font("Tahoma", Font.BOLD, 24));
+		btnSeleccionar.setBorderPainted(false);
+		btnSeleccionar.setBackground(new Color(128, 0, 0));
+		btnSeleccionar.setBounds(41, 240, 240, 46);
+		panelSelccionJuego.add(btnSeleccionar);
+		
+		panelCard1 = new JPanel();
+		panelVer.add(panelCard1);
+		panelCard1.setLayout(new CardLayout(0, 0));
+		
+		
+		
+		panelCard1.setBorder(compoundBorder1);
+		panelSelccionJuego.setBorder(compoundBorder1);
+
+		
+		panelSinSeleccion = new JPanel();
+		panelCard1.add(panelSinSeleccion, "sin seleccion");
+		panelSinSeleccion.setLayout(new BorderLayout(0, 0));
+		
+		panelConSeleccion = new JPanel();
+		panelCard1.add(panelConSeleccion, "con seleccion");
+		panelConSeleccion.setLayout(new BorderLayout(0, 0));
+		
+		JPanel panelInformacion = new JPanel();
+		panelConSeleccion.add(panelInformacion, BorderLayout.CENTER);
+		panelInformacion.setLayout(null);
+		
+		JLabel lblNombreInfo = new JLabel("Nombre: ");
+		lblNombreInfo.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNombreInfo.setBounds(111, 102, 85, 14);
+		panelInformacion.add(lblNombreInfo);
+		
+		JLabel lblNombreRellenar = new JLabel("");
+		lblNombreRellenar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNombreRellenar.setBounds(267, 102, 340, 14);
+		panelInformacion.add(lblNombreRellenar);
+		
+		JLabel lblNumJugadoresInfo = new JLabel("Num jugadores:");
+		lblNumJugadoresInfo.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNumJugadoresInfo.setBounds(111, 138, 114, 14);
+		panelInformacion.add(lblNumJugadoresInfo);
+		
+		JLabel lblUnidadesInfo = new JLabel("Unidades:");
+		lblUnidadesInfo.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblUnidadesInfo.setBounds(111, 174, 114, 14);
+		panelInformacion.add(lblUnidadesInfo);
+		
+		JLabel lblUdsUtilizadasInfo = new JLabel("Uds Utilizadas: ");
+		lblUdsUtilizadasInfo.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblUdsUtilizadasInfo.setBounds(111, 214, 114, 14);
+		panelInformacion.add(lblUdsUtilizadasInfo);
+		
+		JLabel lblIncidenciasInfo = new JLabel("Incidencias:");
+		lblIncidenciasInfo.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblIncidenciasInfo.setBounds(111, 250, 114, 14);
+		panelInformacion.add(lblIncidenciasInfo);
+		
+		JLabel lblCompañiaInfo = new JLabel("Compañía: ");
+		lblCompañiaInfo.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblCompañiaInfo.setBounds(111, 285, 114, 14);
+		panelInformacion.add(lblCompañiaInfo);
+		
+		JLabel lblPlataformaInfo = new JLabel("Plataforma: ");
+		lblPlataformaInfo.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblPlataformaInfo.setBounds(111, 318, 114, 14);
+		panelInformacion.add(lblPlataformaInfo);
+		
+		JLabel lblNumJugadoresRellenar = new JLabel("");
+		lblNumJugadoresRellenar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNumJugadoresRellenar.setBounds(267, 140, 340, 14);
+		panelInformacion.add(lblNumJugadoresRellenar);
+		
+		JLabel lblUnidadesRellenar = new JLabel("");
+		lblUnidadesRellenar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblUnidadesRellenar.setBounds(267, 176, 340, 14);
+		panelInformacion.add(lblUnidadesRellenar);
+		
+		JLabel lblUdsUtilizadasRellenar = new JLabel("");
+		lblUdsUtilizadasRellenar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblUdsUtilizadasRellenar.setBounds(267, 216, 340, 14);
+		panelInformacion.add(lblUdsUtilizadasRellenar);
+		
+		JLabel lblIncidenciasRellenar = new JLabel("");
+		lblIncidenciasRellenar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblIncidenciasRellenar.setBounds(267, 252, 340, 14);
+		panelInformacion.add(lblIncidenciasRellenar);
+		
+		JLabel lblCompañiaRellenar = new JLabel("");
+		lblCompañiaRellenar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblCompañiaRellenar.setBounds(267, 287, 340, 14);
+		panelInformacion.add(lblCompañiaRellenar);
+		
+		JLabel lblPlataformaRellenar = new JLabel("");
+		lblPlataformaRellenar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblPlataformaRellenar.setBounds(267, 318, 340, 14);
+		panelInformacion.add(lblPlataformaRellenar);
+		
+		
+		
+		lblMensajeSinSeleccionar = new JLabel("<html><center>No ha seleccionado ningún juego, por favor elija uno<br>del desplegable y presione el botón <font color='black'><b>\"Seleccionar\"</b></font><br></center></html>");
+		lblMensajeSinSeleccionar.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblMensajeSinSeleccionar.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMensajeSinSeleccionar.setForeground(new Color(139, 0, 0));
+		lblMensajeSinSeleccionar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		panelSinSeleccion.add(lblMensajeSinSeleccionar);
+
+		JLabel lblNombreAñadir = new JLabel("Nombre");
+		lblNombreAñadir.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
+		lblNombreAñadir.setBounds(174, 132, 146, 31);
+		panelAñadir.add(lblNombreAñadir);
+
+		JLabel lblUnidadewsAñadir = new JLabel("Unidades");
+		lblUnidadewsAñadir.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
+		lblUnidadewsAñadir.setBounds(174, 271, 146, 31);
+		panelAñadir.add(lblUnidadewsAñadir);
+
+		JLabel lblPlatafomaAñadir = new JLabel("Plataforma");
+		lblPlatafomaAñadir.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
+		lblPlatafomaAñadir.setBounds(174, 201, 146, 31);
+		panelAñadir.add(lblPlatafomaAñadir);
+
+		cPlataformaAñadir = new JComboBox();
+		cPlataformaAñadir.setBounds(538, 201, 302, 31);
+		cPlataformaAñadir.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
+		cPlataformaAñadir.setBorder(new LineBorder(new Color(128, 0, 0), 2, true));
+		panelAñadir.add(cPlataformaAñadir);
+
+		tUnidadesAñadir = new JTextField();
+		tUnidadesAñadir.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
+		tUnidadesAñadir.setBorder(new MatteBorder(0, 0, 2, 0, new Color(128, 0, 0)));
+		tUnidadesAñadir.setBackground(Color.white);
+		tUnidadesAñadir.setBounds(538, 271, 302, 31);
+		panelAñadir.add(tUnidadesAñadir);
+
+		btnAñadir = new JButton("AÑADIR");
+		btnAñadir.setForeground(Color.WHITE);
+		btnAñadir.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnAñadir.setBorderPainted(false);
+		btnAñadir.setBackground(new Color(128, 0, 0));
+		btnAñadir.setBounds(368, 397, 271, 77);
+		panelAñadir.add(btnAñadir);
+
+		tNombreAñadir = new JTextField();
+		tNombreAñadir.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
+		tNombreAñadir.setBorder(new MatteBorder(0, 0, 2, 0, new Color(128, 0, 0)));
+		tNombreAñadir.setBackground(Color.WHITE);
+		tNombreAñadir.setBounds(538, 133, 302, 31);
+		panelAñadir.add(tNombreAñadir);
+
+		spNumJugadoresModificar = new JSpinner();
+		spNumJugadoresModificar.setBounds(536, 325, 302, 31);
+		panelModificar.add(spNumJugadoresModificar);
+		spNumJugadoresModificar.setBorder(new MatteBorder(2, 2, 2, 0, new Color(128, 0, 0)));
+
+		btnModificar = new JButton("MODIFICAR");
+		btnModificar.setForeground(Color.WHITE);
+		btnModificar.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnModificar.setBorderPainted(false);
+		btnModificar.setBackground(new Color(128, 0, 0));
+		btnModificar.setBounds(368, 411, 271, 77);
+		panelModificar.add(btnModificar);
 	}
 }
