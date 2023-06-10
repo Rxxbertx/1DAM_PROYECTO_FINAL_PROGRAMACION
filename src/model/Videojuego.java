@@ -5,6 +5,7 @@ public class Videojuego extends Juego {
 	private String compañia;
 	private String[] plataforma;
 	private String platSelecciona;
+	private String imagen;
 
 	/**
 	 * 
@@ -12,6 +13,8 @@ public class Videojuego extends Juego {
 	public Videojuego() {
 		super();
 	}
+
+	
 
 	// Constructor con parámetros
 	public Videojuego(String nombre, int numJugadores, int unidades, int udsUtilizadas, String incidencias,
