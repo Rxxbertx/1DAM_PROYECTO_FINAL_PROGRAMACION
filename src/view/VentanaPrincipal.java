@@ -26,29 +26,17 @@ import java.awt.Toolkit;
 public class VentanaPrincipal extends JFrame {
 
 	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaPrincipal frame = new VentanaPrincipal();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private JButton btnGestionUsuarios;
+	private JButton btnGestionJuegos;
+	private JLabel lblRellenarUsuario;
 
 	/**
 	 * Create the frame.
 	 */
 	public VentanaPrincipal() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaPrincipal.class.getResource("/images/icons8-play-games-96.png")));
-		
+		setIconImage(Toolkit.getDefaultToolkit()
+				.getImage(VentanaPrincipal.class.getResource("/images/icons8-play-games-96.png")));
+
 		Border innerBorder = BorderFactory.createLineBorder(Color.WHITE, 3);
 		Border outerBorder = BorderFactory.createLineBorder(new Color(128, 0, 0), 10);
 
@@ -56,61 +44,100 @@ public class VentanaPrincipal extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 945, 609);
 		contentPane = new JPanel();
-		
-		contentPane.setBorder(new LineBorder(new Color(128, 0, 0), 6, true));
 
+		contentPane.setBorder(new LineBorder(new Color(128, 0, 0), 6, true));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
-		
+
 		JToolBar toolBar = new JToolBar();
 		toolBar.setOrientation(SwingConstants.VERTICAL);
 		toolBar.setFloatable(false);
 		contentPane.add(toolBar, BorderLayout.WEST);
 		toolBar.setBorder(compoundBorder);
-		
-		JButton btnGestionJuegos = new JButton("New button");
+
+		btnGestionJuegos = new JButton("New button");
 		btnGestionJuegos.setAlignmentY(2.0f);
 		btnGestionJuegos.setText("Juegos   ");
-		
+
 		btnGestionJuegos.setVerticalAlignment(SwingConstants.BOTTOM);
 		btnGestionJuegos.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/images/icons8-play-games-96.png")));
 		toolBar.add(btnGestionJuegos);
-		
+
 		btnGestionJuegos.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnGestionJuegos.setBorder(new LineBorder(Color.white, 4, true));
-		
-		JButton btnGestionUsuarios = new JButton("Usuarios");
-		btnGestionUsuarios.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/images/icons8-llamada-de-conferencia-96.png")));
+
+		btnGestionUsuarios = new JButton("Usuarios");
+		btnGestionUsuarios.setIcon(
+				new ImageIcon(VentanaPrincipal.class.getResource("/images/icons8-llamada-de-conferencia-96.png")));
 		toolBar.add(btnGestionUsuarios);
 		btnGestionUsuarios.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnGestionUsuarios.setBorder(new LineBorder(Color.white, 4, true));
-		
+
 		JPanel panelBienvenida = new JPanel();
 		contentPane.add(panelBienvenida, BorderLayout.CENTER);
 		panelBienvenida.setBorder(compoundBorder);
 		panelBienvenida.setLayout(null);
-		
+
 		JLabel lblBienvenida = new JLabel("<html>BIENVENID<font color='black'>@</font></html>");
 		lblBienvenida.setForeground(new Color(128, 0, 0));
 		lblBienvenida.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 40));
-		lblBienvenida.setBounds(68, 49, 588, 87);
+		lblBienvenida.setBounds(88, 49, 588, 87);
 		panelBienvenida.add(lblBienvenida);
-		
-		JLabel lblRellenarUsuario = new JLabel("");
+
+		lblRellenarUsuario = new JLabel("");
+		lblRellenarUsuario.setHorizontalAlignment(SwingConstants.CENTER);
 		lblRellenarUsuario.setForeground(new Color(0, 0, 0));
-		lblRellenarUsuario.setFont(new Font("Tahoma", Font.ITALIC, 24));
-		lblRellenarUsuario.setBounds(112, 137, 418, 87);
+		lblRellenarUsuario.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 24));
+		lblRellenarUsuario.setBounds(336, 49, 340, 87);
 		panelBienvenida.add(lblRellenarUsuario);
-		
-		JLabel lblNewLabel = new JLabel("");
+
+	JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/images/datossCentro.gif")));
 		lblNewLabel.setBounds(155, 146, 391, 427);
 		panelBienvenida.add(lblNewLabel);
-		
 
+	}
 
+	/**
+	 * @return the btnGestionUsuarios
+	 */
+	public JButton getBtnGestionUsuarios() {
+		return btnGestionUsuarios;
+	}
 
+	/**
+	 * @param btnGestionUsuarios the btnGestionUsuarios to set
+	 */
+	public void setBtnGestionUsuarios(JButton btnGestionUsuarios) {
+		this.btnGestionUsuarios = btnGestionUsuarios;
+	}
 
+	/**
+	 * @return the btnGestionJuegos
+	 */
+	public JButton getBtnGestionJuegos() {
+		return btnGestionJuegos;
+	}
+
+	/**
+	 * @param btnGestionJuegos the btnGestionJuegos to set
+	 */
+	public void setBtnGestionJuegos(JButton btnGestionJuegos) {
+		this.btnGestionJuegos = btnGestionJuegos;
+	}
+
+	/**
+	 * @return the lblRellenarUsuario
+	 */
+	public JLabel getLblRellenarUsuario() {
+		return lblRellenarUsuario;
+	}
+
+	/**
+	 * @param lblRellenarUsuario the lblRellenarUsuario to set
+	 */
+	public void setLblRellenarUsuario(JLabel lblRellenarUsuario) {
+		this.lblRellenarUsuario = lblRellenarUsuario;
 	}
 }
