@@ -7,8 +7,10 @@ import java.util.Timer;
 
 import javax.swing.JOptionPane;
 
+import animaciones.AnimacionShake;
 import model.Empleado;
 import model.ModeloUsuario;
+import model.Socio;
 import model.Usuario;
 
 public class LoginWindow implements ActionListener {
@@ -39,8 +41,18 @@ public class LoginWindow implements ActionListener {
 
 		if (e.getSource().equals(loginWindow.getBtnAlta())) {
 
-			new JOptionPane().showMessageDialog(loginWindow, "DADO DE ALTA CORRECTAMENTE", "ALTA", 0);
-			((CardLayout) loginWindow.getPanelCard().getLayout()).show(loginWindow.getPanelCard(), "panelLogin");
+			if (modeloUsuario.consultar(loginWindow.getTextFieldUsuarioRegistro().getText()) != null) {
+				JOptionPane.showMessageDialog(loginWindow, "ESE NOMBRE DE USUARIO YA EXISTE", "ALTA", 0);
+			} else {
+
+				if (añadirUsuario()) {
+					((CardLayout) loginWindow.getPanelCard().getLayout()).show(loginWindow.getPanelCard(),
+							"panelLogin");
+					loginWindow.getLblError().setVisible(false);
+				} else {
+					// Otra lógica en caso de que no se cumpla la condición
+				}
+			}
 
 		}
 		if (e.getSource().equals(loginWindow.getBtnAltaLogin())) {
@@ -60,7 +72,39 @@ public class LoginWindow implements ActionListener {
 					new ControladorVentanaSocio();
 			} else {
 				loginWindow.getLblError().setVisible(true);
+				new AnimacionShake(loginWindow.getLblError());
+				// new AnimacionShake(loginWindow.getTextFieldUsuarioLogin());
+				// new AnimacionShake(loginWindow.getTextFieldContraseñaLogin());
 			}
+
+		}
+
+	}
+
+	private boolean añadirUsuario() {
+
+		if (loginWindow.getTextFieldNombreRegistro().getText().isBlank()
+				| loginWindow.getTextFieldApellidosRegistro().getText().isBlank()
+				| loginWindow.getTextFieldContraseñaRegistro().getText().isBlank()
+				| loginWindow.getTextFieldUsuarioRegistro().getText().isBlank()) {
+
+			JOptionPane.showMessageDialog(loginWindow, "COMPRUEBA LOS CAMPOS", "ALTA", 0);
+			return false;
+		} else {
+
+			Usuario usuario = new Socio(loginWindow.getTextFieldNombreRegistro().getText(),
+					loginWindow.getTextFieldApellidosRegistro().getText(), false,
+					loginWindow.getTextFieldContraseñaRegistro().getText(),
+					loginWindow.getTextFieldUsuarioRegistro().getText());
+
+			modeloUsuario.añadir(loginWindow.getTextFieldUsuarioRegistro().getText(), usuario);
+
+			new ControladorEscrituraUsuario(usuario);
+
+			JOptionPane.showMessageDialog(loginWindow, "DADO DE ALTA CORRECTAMENTE", "ALTA", 1);
+
+			loginWindow.getTextFieldUsuarioLogin().setText(loginWindow.getTextFieldUsuarioRegistro().getText());
+			return true;
 
 		}
 
@@ -69,7 +113,7 @@ public class LoginWindow implements ActionListener {
 	private Usuario comprobarCredenciales() {
 
 		Usuario usuario = modeloUsuario.consultar(loginWindow.getTextFieldUsuarioLogin().getText());
-		if (usuario != null && usuario.getContraseña().equals(loginWindow.getTextFieldContraseñaLogin())) {
+		if (usuario != null && usuario.getContraseña().equals(loginWindow.getTextFieldContraseñaLogin().getText())) {
 			return usuario;
 		}
 

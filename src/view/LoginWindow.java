@@ -24,6 +24,8 @@ import javax.swing.Box;
 import javax.swing.border.LineBorder;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.Insets;
+import java.awt.GridLayout;
 
 public class LoginWindow extends JFrame {
 
@@ -51,7 +53,7 @@ public class LoginWindow extends JFrame {
 		setBackground(new Color(128, 0, 0));
 		setFont(new Font("Arial", Font.PLAIN, 15));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1049, 811);
+		setBounds(100, 100, 945, 609);
 		contentPane = new JPanel();
 		contentPane.setBorder(new LineBorder(new Color(128, 0, 0), 12, true));
 		setContentPane(contentPane);
@@ -69,29 +71,29 @@ public class LoginWindow extends JFrame {
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 40));
 		lblNewLabel_1.setBorder(new MatteBorder(0, 0, 10, 0, (Color) new Color(128, 0, 0)));
-		lblNewLabel_1.setBounds(187, 38, 306, 98);
+		lblNewLabel_1.setBounds(123, 38, 330, 59);
 		panelLogin.add(lblNewLabel_1);
 
 		JLabel lblNewLabel_2 = new JLabel("Usuario");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
-		lblNewLabel_2.setBounds(118, 246, 146, 31);
+		lblNewLabel_2.setBounds(81, 161, 146, 31);
 		panelLogin.add(lblNewLabel_2);
 
 		JLabel lblNewLabel_3 = new JLabel("Contraseña");
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
-		lblNewLabel_3.setBounds(118, 356, 146, 37);
+		lblNewLabel_3.setBounds(81, 271, 146, 37);
 		panelLogin.add(lblNewLabel_3);
 
 		textFieldUsuarioLogin = new JTextField();
 		textFieldUsuarioLogin.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
 		textFieldUsuarioLogin.setColumns(10);
-		textFieldUsuarioLogin.setBounds(340, 240, 216, 43);
+		textFieldUsuarioLogin.setBounds(303, 155, 216, 43);
 		panelLogin.add(textFieldUsuarioLogin);
 
 		textFieldContraseñaLogin = new JTextField();
 		textFieldContraseñaLogin.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
 		textFieldContraseñaLogin.setColumns(10);
-		textFieldContraseñaLogin.setBounds(340, 353, 216, 43);
+		textFieldContraseñaLogin.setBounds(303, 268, 216, 43);
 		panelLogin.add(textFieldContraseñaLogin);
 
 		btnEntrar = new JButton("ENTRAR");
@@ -99,12 +101,12 @@ public class LoginWindow extends JFrame {
 		btnEntrar.setFont(new Font("Tahoma", Font.BOLD, 30));
 		btnEntrar.setBorderPainted(false);
 		btnEntrar.setBackground(new Color(128, 0, 0));
-		btnEntrar.setBounds(204, 476, 271, 77);
+		btnEntrar.setBounds(152, 353, 271, 77);
 		panelLogin.add(btnEntrar);
 
 		JLabel lblNewLabel_4 = new JLabel("No tienes cuenta? Date de ");
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
-		lblNewLabel_4.setBounds(129, 651, 279, 31);
+		lblNewLabel_4.setBounds(81, 470, 279, 31);
 		panelLogin.add(lblNewLabel_4);
 
 		btnAltaLogin = new JButton("ALTA");
@@ -112,13 +114,13 @@ public class LoginWindow extends JFrame {
 		btnAltaLogin.setForeground(new Color(128, 0, 0));
 		btnAltaLogin.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
 		btnAltaLogin.setBorder(new MatteBorder(0, 0, 3, 0, (Color) new Color(0, 0, 0)));
-		btnAltaLogin.setBounds(404, 644, 89, 43);
+		btnAltaLogin.setBounds(356, 463, 89, 43);
 		panelLogin.add(btnAltaLogin);
 
 		lblError = new JLabel("Error en el Usuario o Contraseña, si no tienes usuario puedes darte de Alta");
 		lblError.setForeground(new Color(128, 0, 0));
 		lblError.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblError.setBounds(81, 561, 517, 37);
+		lblError.setBounds(14, 421, 548, 37);
 		panelLogin.add(lblError);
 		lblError.setVisible(false);
 
@@ -130,29 +132,29 @@ public class LoginWindow extends JFrame {
 		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.BOLD, 40));
 		lblNewLabel_1_1.setBorder(new MatteBorder(0, 0, 10, 0, (Color) new Color(128, 0, 0)));
-		lblNewLabel_1_1.setBounds(226, 98, 306, 98);
+		lblNewLabel_1_1.setBounds(196, 27, 306, 98);
 		panelRegistrar.add(lblNewLabel_1_1);
 
 		JLabel lblNewLabel_2_1 = new JLabel("Nombre");
 		lblNewLabel_2_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
-		lblNewLabel_2_1.setBounds(121, 276, 146, 31);
+		lblNewLabel_2_1.setBounds(91, 167, 146, 31);
 		panelRegistrar.add(lblNewLabel_2_1);
 
 		JLabel lblNewLabel_3_1 = new JLabel("Apellidos");
 		lblNewLabel_3_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
-		lblNewLabel_3_1.setBounds(121, 351, 146, 37);
+		lblNewLabel_3_1.setBounds(91, 242, 146, 37);
 		panelRegistrar.add(lblNewLabel_3_1);
 
 		textFieldNombreRegistro = new JTextField();
 		textFieldNombreRegistro.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
 		textFieldNombreRegistro.setColumns(10);
-		textFieldNombreRegistro.setBounds(316, 270, 216, 43);
+		textFieldNombreRegistro.setBounds(286, 161, 216, 43);
 		panelRegistrar.add(textFieldNombreRegistro);
 
 		textFieldApellidosRegistro = new JTextField();
 		textFieldApellidosRegistro.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
 		textFieldApellidosRegistro.setColumns(10);
-		textFieldApellidosRegistro.setBounds(316, 348, 216, 43);
+		textFieldApellidosRegistro.setBounds(286, 239, 216, 43);
 		panelRegistrar.add(textFieldApellidosRegistro);
 
 		btnAlta = new JButton("ALTA");
@@ -160,36 +162,36 @@ public class LoginWindow extends JFrame {
 		btnAlta.setFont(new Font("Tahoma", Font.BOLD, 30));
 		btnAlta.setBorderPainted(false);
 		btnAlta.setBackground(new Color(128, 0, 0));
-		btnAlta.setBounds(204, 595, 271, 77);
+		btnAlta.setBounds(152, 444, 271, 77);
 		panelRegistrar.add(btnAlta);
 
 		JLabel lblNewLabel_2_1_1 = new JLabel("Usuario");
 		lblNewLabel_2_1_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
-		lblNewLabel_2_1_1.setBounds(121, 423, 146, 31);
+		lblNewLabel_2_1_1.setBounds(91, 314, 146, 31);
 		panelRegistrar.add(lblNewLabel_2_1_1);
 
 		textFieldUsuarioRegistro = new JTextField();
 		textFieldUsuarioRegistro.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
 		textFieldUsuarioRegistro.setColumns(10);
-		textFieldUsuarioRegistro.setBounds(316, 417, 216, 43);
+		textFieldUsuarioRegistro.setBounds(286, 308, 216, 43);
 		panelRegistrar.add(textFieldUsuarioRegistro);
 
 		JLabel lblNewLabel_2_1_2 = new JLabel("Contraseña");
 		lblNewLabel_2_1_2.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
-		lblNewLabel_2_1_2.setBounds(121, 494, 146, 31);
+		lblNewLabel_2_1_2.setBounds(91, 385, 146, 31);
 		panelRegistrar.add(lblNewLabel_2_1_2);
 
 		textFieldContraseñaRegistro = new JTextField();
 		textFieldContraseñaRegistro.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
 		textFieldContraseñaRegistro.setColumns(10);
-		textFieldContraseñaRegistro.setBounds(316, 488, 216, 43);
+		textFieldContraseñaRegistro.setBounds(286, 379, 216, 43);
 		panelRegistrar.add(textFieldContraseñaRegistro);
 
 		btnVolver = new JButton("");
 		btnVolver.setBorder(null);
 		btnVolver.setContentAreaFilled(false);
 		btnVolver.setIcon(new ImageIcon(LoginWindow.class.getResource("/images/volver.png")));
-		btnVolver.setBounds(106, 131, 72, 51);
+		btnVolver.setBounds(76, 60, 72, 51);
 		panelRegistrar.add(btnVolver);
 
 		JPanel panel = new JPanel();
