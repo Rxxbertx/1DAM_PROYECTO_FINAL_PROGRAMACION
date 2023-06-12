@@ -20,8 +20,10 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import animaciones.AnimacionShake;
 import model.Juego;
 import model.ModeloGenerico;
+import model.ModeloIncidencias;
+import model.ModeloPrestamo;
+import model.Prestamo;
 import model.Videojuego;
-import objetosModificados.ValorEnBlanco;
 import objetosModificados.renderizadoDeCeldaComboBox;
 import utilidades.utilidades;
 import view.GestionJuegos;
@@ -33,9 +35,15 @@ public class ControladorGestionJuegos implements ActionListener, ItemListener {
 
 	private GestionJuegos ventanaGestionJuegos;
 
+	private ModeloPrestamo prestamos;
+
+	private ModeloIncidencias incidencias;
+
 	public ControladorGestionJuegos(VentanaPrincipal ventanaEmpleado) {
 
 		juegos = new ModeloGenerico<>();
+		prestamos = new ModeloPrestamo();
+		incidencias = new ModeloIncidencias();
 
 		ventanaGestionJuegos = new GestionJuegos();
 		ventanaGestionJuegos.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -57,8 +65,8 @@ public class ControladorGestionJuegos implements ActionListener, ItemListener {
 	private void configuracionesGenerales() {
 		ventanaGestionJuegos.getModeloComboJuegos().addAll(añadirJuegos());
 
-		ventanaGestionJuegos.getcPlataformaAñadir().setModel(new DefaultComboBoxModel<String>(new String[] { "Pc",
-				"Movil", "PS2", "PS3", "PS4", "PS5", "Xbox Series X", "Nintendo Switch", "Xbox One", "Desconocido" }));
+		ventanaGestionJuegos.getcPlataformaAñadir().setModel(new DefaultComboBoxModel<>(new String[] { "Pc", "Movil",
+				"PS2", "PS3", "PS4", "PS5", "Xbox Series X", "Nintendo Switch", "Xbox One", "Desconocido" }));
 		ventanaGestionJuegos.getcPlataformaModificar().setModel(ventanaGestionJuegos.getcPlataformaAñadir().getModel());
 
 	}
@@ -122,7 +130,7 @@ public class ControladorGestionJuegos implements ActionListener, ItemListener {
 				ventanaGestionJuegos.getLblNombreRellenar().setText(juego.getNombre());
 
 				ventanaGestionJuegos.getLblIncidenciasRellenar()
-						.setText(String.valueOf(utilidades.extraerIncidenciasTotalesUnidades(juego.getUnidades())));
+						.setText(String.valueOf(incidencias.obtenerIncidenciasJuegoSinResolver(juego).size()));
 				ventanaGestionJuegos.getLblNumJugadoresRellenar().setText(String.valueOf(juego.getNumJugadores()));
 
 				ventanaGestionJuegos.getLblUnidadesRellenar().setText(String.valueOf(juego.getUnidades().size()));
@@ -140,6 +148,14 @@ public class ControladorGestionJuegos implements ActionListener, ItemListener {
 				}
 
 			}
+
+		}
+
+		if (e.getSource().equals(ventanaGestionJuegos.getBtnVerIncidencias())) {
+
+			Juego juego = utilidades.obtenerElementoJuegoComboBox(ventanaGestionJuegos.getComboJuegos());
+
+			new ControladorVentanaVerIncidencias(juego, ventanaGestionJuegos);
 
 		}
 
@@ -168,10 +184,11 @@ public class ControladorGestionJuegos implements ActionListener, ItemListener {
 					&& ventanaGestionJuegos.getComboBoxUnidades().getSelectedIndex() != -1) {
 
 				Juego temp = utilidades.obtenerElementoJuegoComboBox(ventanaGestionJuegos.getComboJuegos_1());
-				System.out.println(ventanaGestionJuegos.getComboBoxUnidades().getSelectedIndex());
-				temp.eliminarUnidad(ventanaGestionJuegos.getComboBoxUnidades().getSelectedIndex());
+				int i = ventanaGestionJuegos.getComboBoxUnidades().getSelectedIndex();
+				temp.eliminarUnidad(i);
 
-				crearDatosParaComboBoxUnidades();
+				ventanaGestionJuegos.getComboBoxUnidades().removeItemAt(i);
+
 				EscrituraElementos.ModificacionArchivo(juegos);
 
 			}
@@ -191,15 +208,6 @@ public class ControladorGestionJuegos implements ActionListener, ItemListener {
 
 					ventanaGestionJuegos.getModeloComboJuegos()
 							.removeElementAt(ventanaGestionJuegos.getComboJuegos_1().getSelectedIndex());
-
-					// Verificar si el JComboBox está vacío
-					if (ventanaGestionJuegos.getModeloComboJuegos().getSize() == 0) {
-						// Establecer la selección en nulo o en un valor predeterminado
-
-						ventanaGestionJuegos.getModeloComboJuegos().addElement(new Videojuego());
-						ventanaGestionJuegos.getModeloComboJuegos().removeAllElements();
-
-					}
 
 					EscrituraElementos.ModificacionArchivo(juegos);
 				}
@@ -265,19 +273,12 @@ public class ControladorGestionJuegos implements ActionListener, ItemListener {
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	private void cambioPanel(JPanel panel, String nombrePanel) {
 
 		switch (nombrePanel) {
 		case "ver":
-
-			int i = ventanaGestionJuegos.getComboJuegos().getItemCount();
-			if (i > 0) {
-				ventanaGestionJuegos.getComboJuegos().setSelectedIndex(0);
-			} else {
-				ventanaGestionJuegos.getComboJuegos().setSelectedItem("");
-			}
 
 			break;
 		case "añadir":
@@ -294,11 +295,6 @@ public class ControladorGestionJuegos implements ActionListener, ItemListener {
 
 			break;
 		case "eliminar":
-
-			if (ventanaGestionJuegos.getComboJuegos_1().getItemCount() > 0) {
-				// ventanaGestionJuegos.getComboJuegos_1().setSelectedIndex(0);
-				crearDatosParaComboBoxUnidades();
-			}
 
 			break;
 		case "conSeleccion":
@@ -325,6 +321,7 @@ public class ControladorGestionJuegos implements ActionListener, ItemListener {
 			JOptionPane.showMessageDialog(ventanaGestionJuegos, "JUEGO INTRODUCIDO CORRECTAMENTE");
 
 			ventanaGestionJuegos.getModeloComboJuegos().addElement(juego);
+			ventanaGestionJuegos.getModeloComboJuegos().setSelectedItem(juego);
 
 			try {
 				new EscrituraElementos(juego);
@@ -370,14 +367,33 @@ public class ControladorGestionJuegos implements ActionListener, ItemListener {
 
 			if (ventanaGestionJuegos.getComboBoxUnidades().getSelectedIndex() != -1) {
 
-				Juego temp = utilidades.obtenerElementoJuegoComboBox(ventanaGestionJuegos.getComboJuegos_1());
+				Juego juego = utilidades.obtenerElementoJuegoComboBox(ventanaGestionJuegos.getComboJuegos_1());
+				Prestamo prestamo = prestamos.obtenerPrestamoUnidad(juego,
+						ventanaGestionJuegos.getComboBoxUnidades().getSelectedIndex());
 
-				ventanaGestionJuegos.gettEstadoPrestamo().setText("Desconocido");
-				ventanaGestionJuegos.gettNombreEliminar().setText(temp.getNombre());
+				if (prestamo != null) {
+
+					ventanaGestionJuegos.gettEstadoPrestamo()
+							.setText("Prestado a " + prestamo.getUsuario().getNombre());
+				} else {
+					ventanaGestionJuegos.gettEstadoPrestamo().setText("Sin prestar");
+
+				}
+
+				ventanaGestionJuegos.gettNombreEliminar().setText(juego.getNombre());
+
 				ventanaGestionJuegos.gettPlataformaEliminar()
-						.setText(temp instanceof Videojuego ? ((Videojuego) temp).getPlatSelecciona() : "Error");
+						.setText(juego instanceof Videojuego ? ((Videojuego) juego).getPlatSelecciona() : "Error");
 
 			} else {
+
+				if (ventanaGestionJuegos.getModeloComboJuegos().getSize() >= 1) {
+
+				} else {
+					ventanaGestionJuegos.getModeloComboJuegos()
+							.removeElementAt(ventanaGestionJuegos.getComboJuegos_1().getSelectedIndex());
+
+				}
 
 				ventanaGestionJuegos.gettEstadoPrestamo().setText("");
 				ventanaGestionJuegos.gettNombreEliminar().setText("");
@@ -399,7 +415,6 @@ public class ControladorGestionJuegos implements ActionListener, ItemListener {
 				ventanaGestionJuegos.gettNombreEliminar().setText("");
 				ventanaGestionJuegos.gettPlataformaEliminar().setText("");
 				ventanaGestionJuegos.getComboBoxUnidades().removeAllItems();
-				ventanaGestionJuegos.getComboBoxUnidades().setSelectedIndex(-1);
 
 			}
 
@@ -408,18 +423,18 @@ public class ControladorGestionJuegos implements ActionListener, ItemListener {
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	private void crearDatosParaComboBoxUnidades() {
 
 		DefaultComboBoxModel<Integer> unidades = new DefaultComboBoxModel<>();
 
 		unidades.addAll(utilidades.extraerNumeroUnidades(
-				((Juego) ventanaGestionJuegos.getComboJuegos_1().getSelectedItem()).getUnidades()));
+				((Juego) ventanaGestionJuegos.getModeloComboJuegos().getSelectedItem()).getUnidades()));
 
 		if (unidades.getSize() <= 0) {
 
-			ventanaGestionJuegos.getComboBoxUnidades().setSelectedIndex(-1);
+			ventanaGestionJuegos.getComboBoxUnidades().setModel(unidades);
 
 		} else {
 

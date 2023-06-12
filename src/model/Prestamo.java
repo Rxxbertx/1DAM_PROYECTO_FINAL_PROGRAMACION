@@ -1,14 +1,18 @@
 package model;
 
+import model.Juego.Unidad;
+
 public class Prestamo {
 	private String fechaInicio;
 	private String fechaFin;
 	private Usuario usuario;
+	private Unidad unidad;
 
-	public Prestamo(String fechaInicio, String fechaFin, Usuario usuario) {
+	public Prestamo(String fechaInicio, String fechaFin, Usuario usuario,Unidad unidad) {
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
 		this.usuario = usuario;
+		this.unidad=unidad;
 	}
 
 	public String getFechaInicio() {

@@ -3,6 +3,7 @@ package utilidades;
 import java.awt.Image;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.swing.ImageIcon;
