@@ -14,9 +14,9 @@ import objetosModificados.ObjectOutputStreamNoHead;
 public class EscrituraElementos {
 
 	private FileOutputStream acceso;
-	private ObjectOutputStream lectura;
+	private ObjectOutputStream escritura;
 
-	public EscrituraElementos(ModeloGenerico<Juego> modelo, Juego juego) throws IOException {
+	public EscrituraElementos(Juego juego) throws IOException {
 
 		File fichero = new File("data/elementos.dat");
 
@@ -24,20 +24,62 @@ public class EscrituraElementos {
 
 			acceso = new FileOutputStream(fichero);
 
-			lectura = new ObjectOutputStream(acceso);
+			escritura = new ObjectOutputStream(acceso);
 
-			lectura.writeObject(juego);
+			escritura.writeObject(juego);
 
 		} else {
 
 			acceso = new FileOutputStream(fichero, true);
 
-			lectura = new ObjectOutputStreamNoHead(acceso);
+			escritura = new ObjectOutputStreamNoHead(acceso);
 
-			lectura.writeObject(juego);
+			escritura.writeObject(juego);
 
 		}
 
+		escritura.close();
+		acceso.close();
+
+	}
+
+	public static void ModificacionArchivo(ModeloGenerico<Juego> modelo) {
+
+		File fichero = new File("data/elementos_copia.dat");
+		FileOutputStream acceso;
+		ObjectOutputStream escritura;
+
+		try {
+			acceso = new FileOutputStream(fichero);
+			escritura = new ObjectOutputStream(acceso);
+
+			for (Juego juego : modelo.getElementos().values()) {
+
+				escritura.writeObject(juego);
+
+			}
+
+			escritura.close();
+			acceso.close();
+
+			sobrescribirArchivoOriginal();
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	public static void sobrescribirArchivoOriginal() throws IOException {
+		File archivoOriginal = new File("data/elementos.dat");
+		File archivoCopia = new File("data/elementos_copia.dat");
+
+		if (archivoOriginal.exists()) {
+			archivoOriginal.delete();
+		}
+
+		archivoCopia.renameTo(archivoOriginal);
 	}
 
 }

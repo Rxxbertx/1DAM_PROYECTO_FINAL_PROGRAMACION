@@ -5,7 +5,7 @@ import java.util.Map.Entry;
 
 public class ModeloVideojuego {
 	
-	private static HashMap<Integer, Videojuego> videojuegos = new HashMap<Integer, Videojuego>();
+	private static HashMap<String, Videojuego> videojuegos = new HashMap<String, Videojuego>();
 
 	/**
 	 * @param videojuegos
@@ -14,7 +14,7 @@ public class ModeloVideojuego {
 		videojuegos = new HashMap<Integer, Videojuego>();
 	}
 
-	public HashMap<Integer, Videojuego> getVideojuegos() {
+	public HashMap<String, Videojuego> getVideojuegos() {
 		return videojuegos;
 	}
 	
@@ -31,8 +31,8 @@ public class ModeloVideojuego {
 
 	public static Videojuego consultarJuegos(Videojuego videojuego, String nombre) {
 
-		for (Entry<Integer, Videojuego> entry : videojuegos.entrySet()) {
-			Integer key = entry.getKey();
+		for (Entry<String, Videojuego> entry : videojuegos.entrySet()) {
+			String key = entry.getKey();
 			Videojuego val = entry.getValue();
 			if (val.getNombre().equals(nombre)) {
 				return val;

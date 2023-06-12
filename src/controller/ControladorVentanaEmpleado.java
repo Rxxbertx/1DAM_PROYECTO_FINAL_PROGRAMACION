@@ -14,12 +14,12 @@ import view.VentanaPrincipal;
 public class ControladorVentanaEmpleado implements ActionListener {
 
 	private VentanaPrincipal ventanaEmpleado;
-	public ControladorVentanaEmpleado(view.LoginWindow loginWindow, Usuario usuario) {
 
-		
+	public ControladorVentanaEmpleado(view.LoginWindow loginWindow, Usuario usuario) {
 
 		ventanaEmpleado = new VentanaPrincipal();
 		ventanaEmpleado.setLocationRelativeTo(loginWindow);
+		loginWindow.dispose();
 		ventanaEmpleado.getBtnGestionJuegos().addActionListener(this);
 		ventanaEmpleado.getBtnGestionUsuarios().addActionListener(this);
 		ventanaEmpleado.getLblRellenarUsuario().setText(usuario.getNombre());

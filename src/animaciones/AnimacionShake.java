@@ -17,13 +17,13 @@ public class AnimacionShake implements ActionListener {
 	private int dy;
 	private Timer timer;
 
-	public AnimacionShake(Component component) {
+	public AnimacionShake(Component component,int shakeDistance, int shakeDelay, int shakeCount) {
 		this.component = component;
 		originalX = component.getX();
 		originalY = component.getY();
-		shakeDistance = 2;
-		shakeCount = 20;
-		shakeDelay = 30;
+		this.shakeDistance = shakeDistance;
+		this.shakeCount = shakeCount;
+		this.shakeDelay = shakeDelay;
 		count = 0;
 		dx = shakeDistance;
 		dy = shakeDistance;

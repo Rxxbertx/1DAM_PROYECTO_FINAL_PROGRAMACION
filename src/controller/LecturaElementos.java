@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -27,23 +28,30 @@ public class LecturaElementos {
 
 			Object datos;
 
-			do {
+			try {
+				while (true) {
+					datos = lectura.readObject();
 
-				datos = lectura.readObject();
+					if (datos instanceof Juego) {
 
-				if (datos instanceof Juego) {
+						modeloDatos.añadir(((Juego) (datos)).getId(), (Juego) datos);
 
-					modeloDatos.añadir(((Juego) (datos)).getId(), (Juego) datos);
-
+					}
 				}
+			} catch (EOFException eof) {
 
-			} while (datos != null);
+				System.out.println("Fin de fichero");
+
+			}
+
+			lectura.close();
+			acceso.close();
 
 		}
 
 	}
 
-	public HashMap<Integer, Juego> devolverElementos() {
+	public HashMap<String, Juego> devolverElementos() {
 
 		return modeloDatos.getElementos();
 
