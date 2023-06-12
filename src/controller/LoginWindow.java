@@ -27,11 +27,6 @@ public class LoginWindow implements ActionListener {
 		loginWindow.getBtnAlta().addActionListener(this);
 		loginWindow.getBtnVolver().addActionListener(this);
 		loginWindow.setVisible(true);
-		
-		
-		
-		
-		
 
 	}
 
@@ -77,15 +72,15 @@ public class LoginWindow implements ActionListener {
 					new ControladorVentanaEmpleado(loginWindow, usuario);
 
 				else
-					new ControladorVentanaSocio();
+					new ControladorVentanaSocio(loginWindow, usuario);
 
 				loginWindow.dispose();
 
 			} else {
 				loginWindow.getLblError().setVisible(true);
 				new AnimacionShake(loginWindow.getLblError(), 2, 30, 20);
-				new AnimacionShake(loginWindow.getTextFieldUsuarioLogin(),2, 30, 20);
-				new AnimacionShake(loginWindow.getTextFieldContraseñaLogin(),2, 30, 20);
+				new AnimacionShake(loginWindow.getTextFieldUsuarioLogin(), 2, 30, 20);
+				new AnimacionShake(loginWindow.getTextFieldContraseñaLogin(), 2, 30, 20);
 			}
 
 		}

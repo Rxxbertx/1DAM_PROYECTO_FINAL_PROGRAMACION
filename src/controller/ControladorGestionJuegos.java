@@ -339,7 +339,7 @@ public class ControladorGestionJuegos implements ActionListener, ItemListener {
 
 		for (int i = 1; i <= unidades; i++) {
 
-			juego.agregarUnidad(new Juego.Unidad("Unidad " + i, i));
+			juego.agregarUnidad(new Juego.Unidad("Unidad " + i, i, juego.getId()));
 
 		}
 
@@ -374,7 +374,7 @@ public class ControladorGestionJuegos implements ActionListener, ItemListener {
 				if (prestamo != null) {
 
 					ventanaGestionJuegos.gettEstadoPrestamo()
-							.setText("Prestado a " + prestamo.getUsuario().getNombre());
+							.setText("Prestado a " + prestamo.getUsuario());
 				} else {
 					ventanaGestionJuegos.gettEstadoPrestamo().setText("Sin prestar");
 

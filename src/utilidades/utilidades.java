@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
+import javax.swing.JList;
 
 import model.Juego;
 import model.Juego.Unidad;
@@ -41,6 +42,12 @@ public class utilidades {
 	public static Juego obtenerElementoJuegoComboBox(JComboBox<Juego> combo) {
 
 		return ((Juego) combo.getSelectedItem());
+
+	}
+
+	public static Juego obtenerElementoJuegoJList(JList<Juego> lista) {
+
+		return ((Juego) lista.getSelectedValue());
 
 	}
 

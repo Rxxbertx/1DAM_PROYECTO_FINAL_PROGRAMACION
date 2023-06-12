@@ -14,7 +14,6 @@ public class Main {
 
 			new SplashScreen().showSplash();
 			new LecturaDatosUsuario();
-			
 			new LoginWindow();
 		} catch (Exception e) {
 			// TODO: handle exception
