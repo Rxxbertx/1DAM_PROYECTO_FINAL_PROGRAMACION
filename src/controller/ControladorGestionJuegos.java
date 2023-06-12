@@ -3,23 +3,31 @@ package controller;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map.Entry;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.WindowConstants;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
+import animaciones.AnimacionShake;
 import model.Juego;
 import model.ModeloGenerico;
 import model.Videojuego;
+import objetosModificados.ValorEnBlanco;
+import objetosModificados.renderizadoDeCeldaComboBox;
+import utilidades.utilidades;
 import view.GestionJuegos;
 import view.VentanaPrincipal;
 
-public class ControladorGestionJuegos implements ActionListener {
+public class ControladorGestionJuegos implements ActionListener, ItemListener {
 
 	private ModeloGenerico<Juego> juegos;
 
@@ -28,67 +36,61 @@ public class ControladorGestionJuegos implements ActionListener {
 	public ControladorGestionJuegos(VentanaPrincipal ventanaEmpleado) {
 
 		juegos = new ModeloGenerico<>();
+
 		ventanaGestionJuegos = new GestionJuegos();
+		ventanaGestionJuegos.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		ventanaGestionJuegos.setLocationRelativeTo(ventanaEmpleado);
-		ventanaGestionJuegos.getBtnAñadirJuego().addActionListener(this);
-		ventanaGestionJuegos.getBtnEliminarJuego().addActionListener(this);
-		ventanaGestionJuegos.getBtnModificarJuego().addActionListener(this);
-		ventanaGestionJuegos.getBtnVerJuego().addActionListener(this);
-		ventanaGestionJuegos.getBtnAñadir().addActionListener(this);
-		ventanaGestionJuegos.getBtnEliminar().addActionListener(this);
-		ventanaGestionJuegos.getBtnModificar().addActionListener(this);
-		ventanaGestionJuegos.getBtnSeleccionar().addActionListener(this);
 
-		// ventanaGestionJuegos.getModeloComboJuegos().addAll(añadirLabels());
+		configurarPanelVer();
+		configurarPanelModificar();
+		configurarPanelAñadir();
+		configurarPanelEliminar();
 
-		((CardLayout) ventanaGestionJuegos.getPanelCard().getLayout()).show(ventanaGestionJuegos.getPanelCard(), "ver");
+		configuracionesGenerales();
+
+		cambioPanel(ventanaGestionJuegos.getPanelCard(), "ver");
 
 		ventanaGestionJuegos.setVisible(true);
 
-		/*
-		 * try { juegos.setElementos(new LecturaElementos().devolverElementos());
-		 * 
-		 * } catch (ClassNotFoundException | IOException e) { // TODO Auto-generated
-		 * catch block e.printStackTrace(); }
-		 */
+	}
 
-		/*
-		 * Juego juego1 = new Videojuego("Need For Speed: No Limits", 1, 20, 0, "",
-		 * "EA", new String[] { "Pc", "Movil" }, "", 0, "images/nfsNoLimits.gif");
-		 * 
-		 * juegos.añadir(1, juego1);
-		 * 
-		 * JLabel temp = new JLabel(new ImageIcon(((Videojuego) juego1).getImagen()));
-		 * temp.setText("  " + juego1.getNombre());
-		 * temp.setHorizontalTextPosition(SwingConstants.RIGHT);
-		 * 
-		 * ventanaGestionJuegos.getModeloComboJuegos().addElement(temp);
-		 * 
-		 * try { new EscrituraElementos(juegos, juego1); } catch (IOException e) { //
-		 * TODO Auto-generated catch block e.printStackTrace(); }
-		 */
+	private void configuracionesGenerales() {
+		ventanaGestionJuegos.getModeloComboJuegos().addAll(añadirJuegos());
+
+		ventanaGestionJuegos.getcPlataformaAñadir().setModel(new DefaultComboBoxModel<String>(new String[] { "Pc",
+				"Movil", "PS2", "PS3", "PS4", "PS5", "Xbox Series X", "Nintendo Switch", "Xbox One", "Desconocido" }));
+		ventanaGestionJuegos.getcPlataformaModificar().setModel(ventanaGestionJuegos.getcPlataformaAñadir().getModel());
 
 	}
 
-	/*
-	 * private Collection<? extends JLabel> añadirLabels() {
-	 * 
-	 * ArrayList<JLabel> datos = new ArrayList<>();
-	 * 
-	 * if (!juegos.getElementos().isEmpty()) { for (Entry<Integer, Juego> entry :
-	 * juegos.getElementos().entrySet()) {
-	 * 
-	 * Integer key = entry.getKey(); Juego val = entry.getValue();
-	 * 
-	 * JLabel temp = new JLabel( val instanceof Videojuego ? new
-	 * ImageIcon(((Videojuego) val).getImagen()) : null); temp.setText("  " +
-	 * val.getNombre()); temp.setHorizontalTextPosition(SwingConstants.RIGHT);
-	 * temp.setVerticalAlignment(SwingConstants.CENTER); datos.add(temp);
-	 * 
-	 * } }
-	 * 
-	 * return datos; }
-	 */
+	private void configurarPanelEliminar() {
+		ventanaGestionJuegos.getBtnEliminarJuego().addActionListener(this);
+		ventanaGestionJuegos.getBtnEliminar().addActionListener(this);
+		ventanaGestionJuegos.getBtnEliminarTodos().addActionListener(this);
+		ventanaGestionJuegos.getComboJuegos_1().setRenderer(new renderizadoDeCeldaComboBox());
+		ventanaGestionJuegos.getComboJuegos_1().addItemListener(this);
+		ventanaGestionJuegos.getComboBoxUnidades().addItemListener(this);
+	}
+
+	private void configurarPanelAñadir() {
+		ventanaGestionJuegos.getBtnAñadirJuego().addActionListener(this);
+		ventanaGestionJuegos.getBtnAñadir().addActionListener(this);
+		ventanaGestionJuegos.getBtnSeleccionarImagen().addActionListener(this);
+	}
+
+	private void configurarPanelModificar() {
+		ventanaGestionJuegos.getBtnModificarJuego().addActionListener(this);
+		ventanaGestionJuegos.getBtnModificar().addActionListener(this);
+	}
+
+	private void configurarPanelVer() {
+
+		ventanaGestionJuegos.getComboJuegos().setRenderer(new renderizadoDeCeldaComboBox());
+		ventanaGestionJuegos.getBtnVerJuego().addActionListener(this);
+		ventanaGestionJuegos.getBtnSeleccionar().addActionListener(this);
+		ventanaGestionJuegos.getBtnVerIncidencias().addActionListener(this);
+
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -104,8 +106,40 @@ public class ControladorGestionJuegos implements ActionListener {
 
 		if (e.getSource().equals(ventanaGestionJuegos.getBtnVerJuego())) {
 
-			((CardLayout) ventanaGestionJuegos.getPanelCard().getLayout()).show(ventanaGestionJuegos.getPanelCard(),
-					"ver");
+			cambioPanel(ventanaGestionJuegos.getPanelCard(), "ver");
+			cambioPanel(ventanaGestionJuegos.getPanelCard1(), "sinSeleccion");
+
+		}
+
+		if (e.getSource().equals(ventanaGestionJuegos.getBtnSeleccionar())) {
+
+			if (ventanaGestionJuegos.getComboJuegos().getSelectedIndex() != -1) {
+
+				cambioPanel(ventanaGestionJuegos.getPanelCard1(), "conSeleccion");
+
+				Juego juego = (Juego) ventanaGestionJuegos.getComboJuegos().getSelectedItem();
+
+				ventanaGestionJuegos.getLblNombreRellenar().setText(juego.getNombre());
+
+				ventanaGestionJuegos.getLblIncidenciasRellenar()
+						.setText(String.valueOf(utilidades.extraerIncidenciasTotalesUnidades(juego.getUnidades())));
+				ventanaGestionJuegos.getLblNumJugadoresRellenar().setText(String.valueOf(juego.getNumJugadores()));
+
+				ventanaGestionJuegos.getLblUnidadesRellenar().setText(String.valueOf(juego.getUnidades().size()));
+				ventanaGestionJuegos.getLblUdsUtilizadasRellenar().setText(String.valueOf(juego.getUdsUtilizadas()));
+
+				if (utilidades.extraerIncidenciasTotalesUnidades(juego.getUnidades()) <= 0) {
+					ventanaGestionJuegos.getBtnVerIncidencias().setEnabled(false);
+				}
+
+				if (juego instanceof Videojuego) {
+
+					ventanaGestionJuegos.getLblPlataformaRellenar().setText(((Videojuego) juego).getPlatSelecciona());
+					ventanaGestionJuegos.getLblCompañiaRellenar().setText(((Videojuego) juego).getCompañia());
+
+				}
+
+			}
 
 		}
 
@@ -115,9 +149,7 @@ public class ControladorGestionJuegos implements ActionListener {
 
 		if (e.getSource().equals(ventanaGestionJuegos.getBtnModificarJuego())) {
 
-			((CardLayout) ventanaGestionJuegos.getPanelCard().getLayout()).show(ventanaGestionJuegos.getPanelCard(),
-					"modificar");
-
+			cambioPanel(ventanaGestionJuegos.getPanelCard(), "modificar");
 		}
 
 	}
@@ -126,8 +158,53 @@ public class ControladorGestionJuegos implements ActionListener {
 
 		if (e.getSource().equals(ventanaGestionJuegos.getBtnEliminarJuego())) {
 
-			((CardLayout) ventanaGestionJuegos.getPanelCard().getLayout()).show(ventanaGestionJuegos.getPanelCard(),
-					"eliminar");
+			cambioPanel(ventanaGestionJuegos.getPanelCard(), "eliminar");
+
+		}
+
+		if (e.getSource().equals(ventanaGestionJuegos.getBtnEliminar())) {
+
+			if (ventanaGestionJuegos.getComboJuegos_1().getSelectedIndex() != -1
+					&& ventanaGestionJuegos.getComboBoxUnidades().getSelectedIndex() != -1) {
+
+				Juego temp = utilidades.obtenerElementoJuegoComboBox(ventanaGestionJuegos.getComboJuegos_1());
+				System.out.println(ventanaGestionJuegos.getComboBoxUnidades().getSelectedIndex());
+				temp.eliminarUnidad(ventanaGestionJuegos.getComboBoxUnidades().getSelectedIndex());
+
+				crearDatosParaComboBoxUnidades();
+				EscrituraElementos.ModificacionArchivo(juegos);
+
+			}
+
+		}
+
+		if (e.getSource().equals(ventanaGestionJuegos.getBtnEliminarTodos())) {
+
+			if (ventanaGestionJuegos.getComboJuegos_1().getSelectedIndex() != -1
+					&& ventanaGestionJuegos.getComboBoxUnidades().getSelectedIndex() != -1) {
+
+				int i = JOptionPane.showConfirmDialog(ventanaGestionJuegos,
+						"ADEVERTENCIA VAS A ELIMINAR EL ARTICULO ENTERO");
+				if (i == JOptionPane.YES_OPTION) {
+					juegos.eliminar(
+							utilidades.obtenerElementoJuegoComboBox(ventanaGestionJuegos.getComboJuegos_1()).getId());
+
+					ventanaGestionJuegos.getModeloComboJuegos()
+							.removeElementAt(ventanaGestionJuegos.getComboJuegos_1().getSelectedIndex());
+
+					// Verificar si el JComboBox está vacío
+					if (ventanaGestionJuegos.getModeloComboJuegos().getSize() == 0) {
+						// Establecer la selección en nulo o en un valor predeterminado
+
+						ventanaGestionJuegos.getModeloComboJuegos().addElement(new Videojuego());
+						ventanaGestionJuegos.getModeloComboJuegos().removeAllElements();
+
+					}
+
+					EscrituraElementos.ModificacionArchivo(juegos);
+				}
+
+			}
 
 		}
 
@@ -137,9 +214,217 @@ public class ControladorGestionJuegos implements ActionListener {
 
 		if (e.getSource().equals(ventanaGestionJuegos.getBtnAñadirJuego())) {
 
-			((CardLayout) ventanaGestionJuegos.getPanelCard().getLayout()).show(ventanaGestionJuegos.getPanelCard(),
-					"añadir");
+			cambioPanel(ventanaGestionJuegos.getPanelCard(), "añadir");
 
+		}
+
+		if (e.getSource().equals(ventanaGestionJuegos.getBtnAñadir())) {
+
+			String nombre = ventanaGestionJuegos.gettNombreAñadir().getText();
+			String plataforma = ventanaGestionJuegos.getcPlataformaAñadir().getSelectedItem().toString();
+			int jugadores = (int) ventanaGestionJuegos.getNumJugadoresAlta().getValue();
+			int unidades = (int) ventanaGestionJuegos.getNumUnidadesAlta().getValue();
+			String compañia = ventanaGestionJuegos.getCompañiaAlta().getText();
+			String imagen = ventanaGestionJuegos.getLblImagenAñadir().getToolTipText();
+
+			if (nombre.isBlank() | plataforma.isBlank() | jugadores <= 0 | unidades <= 0 | compañia.isBlank()) {
+
+				new AnimacionShake(ventanaGestionJuegos, 5, 50, 10);
+				JOptionPane.showMessageDialog(ventanaGestionJuegos,
+						"ERROR EN LA CREACION, FALTAN CAMPOS POR COMPLETAR");
+
+			} else {
+
+				String id = utilidades.generarIdJuego(nombre, plataforma, jugadores);
+
+				añadirJuego(id, nombre, jugadores, unidades, compañia, plataforma, imagen);
+
+			}
+
+		}
+
+		if (e.getSource().equals(ventanaGestionJuegos.getBtnSeleccionarImagen())) {
+
+			JFileChooser ficheros = new JFileChooser(new File("src/images"));
+			ficheros.addChoosableFileFilter(new FileNameExtensionFilter("Imagen file", "jpg", "jpeg", "png"));
+			ficheros.setAcceptAllFileFilterUsed(false);
+			File fichero;
+
+			int i = ficheros.showOpenDialog(ventanaGestionJuegos);
+			if (i == JFileChooser.APPROVE_OPTION) {
+
+				fichero = ficheros.getSelectedFile();
+
+				ventanaGestionJuegos.getLblImagenAñadir()
+						.setIcon(utilidades.resizeIcon(new ImageIcon(fichero.getPath()), 100, 100));
+				ventanaGestionJuegos.getLblImagenAñadir().setToolTipText(fichero.getPath());
+
+			}
+		}
+
+	}
+
+	/**
+	 * 
+	 */
+	private void cambioPanel(JPanel panel, String nombrePanel) {
+
+		switch (nombrePanel) {
+		case "ver":
+
+			int i = ventanaGestionJuegos.getComboJuegos().getItemCount();
+			if (i > 0) {
+				ventanaGestionJuegos.getComboJuegos().setSelectedIndex(0);
+			} else {
+				ventanaGestionJuegos.getComboJuegos().setSelectedItem("");
+			}
+
+			break;
+		case "añadir":
+
+			ventanaGestionJuegos.gettNombreAñadir().setText("");
+			ventanaGestionJuegos.getNumJugadoresAlta().setValue(0);
+			ventanaGestionJuegos.getNumUnidadesAlta().setValue(0);
+			ventanaGestionJuegos.getCompañiaAlta().setText("");
+			ventanaGestionJuegos.getLblImagenAñadir().setToolTipText("");
+			ventanaGestionJuegos.getLblImagenAñadir().setIcon(null);
+
+			break;
+		case "modificar":
+
+			break;
+		case "eliminar":
+
+			if (ventanaGestionJuegos.getComboJuegos_1().getItemCount() > 0) {
+				// ventanaGestionJuegos.getComboJuegos_1().setSelectedIndex(0);
+				crearDatosParaComboBoxUnidades();
+			}
+
+			break;
+		case "conSeleccion":
+
+			ventanaGestionJuegos.getBtnVerIncidencias().setEnabled(true);
+
+			break;
+
+		default:
+			break;
+		}
+
+		((CardLayout) panel.getLayout()).show(panel, nombrePanel);
+	}
+
+	private void añadirJuego(String id, String nombre, int jugadores, int unidades, String compañia, String plataforma,
+			String imagen) {
+
+		Juego juego = new Videojuego(nombre, jugadores, unidades, 0, compañia, plataforma, id, imagen);
+
+		generarUnidades(juego, unidades);
+
+		if (juegos.añadir(id, juego)) {
+			JOptionPane.showMessageDialog(ventanaGestionJuegos, "JUEGO INTRODUCIDO CORRECTAMENTE");
+
+			ventanaGestionJuegos.getModeloComboJuegos().addElement(juego);
+
+			try {
+				new EscrituraElementos(juego);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		} else {
+			JOptionPane.showMessageDialog(ventanaGestionJuegos, "JUEGO YA EXISTENTE");
+		}
+
+	}
+
+	private void generarUnidades(Juego juego, int unidades) {
+
+		for (int i = 1; i <= unidades; i++) {
+
+			juego.agregarUnidad(new Juego.Unidad("Unidad " + i, i));
+
+		}
+
+	}
+
+	private Collection<? extends Juego> añadirJuegos() {
+
+		try {
+			juegos.setElementos(new LecturaElementos().devolverElementos());
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return juegos.getElementos().values();
+	}
+
+	@Override
+	public void itemStateChanged(ItemEvent e) {
+
+		if (e.getSource().equals(ventanaGestionJuegos.getComboBoxUnidades())) {
+
+			if (ventanaGestionJuegos.getComboBoxUnidades().getSelectedIndex() != -1) {
+
+				Juego temp = utilidades.obtenerElementoJuegoComboBox(ventanaGestionJuegos.getComboJuegos_1());
+
+				ventanaGestionJuegos.gettEstadoPrestamo().setText("Desconocido");
+				ventanaGestionJuegos.gettNombreEliminar().setText(temp.getNombre());
+				ventanaGestionJuegos.gettPlataformaEliminar()
+						.setText(temp instanceof Videojuego ? ((Videojuego) temp).getPlatSelecciona() : "Error");
+
+			} else {
+
+				ventanaGestionJuegos.gettEstadoPrestamo().setText("");
+				ventanaGestionJuegos.gettNombreEliminar().setText("");
+				ventanaGestionJuegos.gettPlataformaEliminar().setText("");
+
+			}
+
+		}
+
+		if (e.getSource().equals(ventanaGestionJuegos.getComboJuegos_1())) {
+
+			if (ventanaGestionJuegos.getComboJuegos_1().getSelectedIndex() != -1) {
+
+				crearDatosParaComboBoxUnidades();
+
+			} else {
+
+				ventanaGestionJuegos.gettEstadoPrestamo().setText("");
+				ventanaGestionJuegos.gettNombreEliminar().setText("");
+				ventanaGestionJuegos.gettPlataformaEliminar().setText("");
+				ventanaGestionJuegos.getComboBoxUnidades().removeAllItems();
+				ventanaGestionJuegos.getComboBoxUnidades().setSelectedIndex(-1);
+
+			}
+
+		}
+
+	}
+
+	/**
+	 * 
+	 */
+	private void crearDatosParaComboBoxUnidades() {
+
+		DefaultComboBoxModel<Integer> unidades = new DefaultComboBoxModel<>();
+
+		unidades.addAll(utilidades.extraerNumeroUnidades(
+				((Juego) ventanaGestionJuegos.getComboJuegos_1().getSelectedItem()).getUnidades()));
+
+		if (unidades.getSize() <= 0) {
+
+			ventanaGestionJuegos.getComboBoxUnidades().setSelectedIndex(-1);
+
+		} else {
+
+			ventanaGestionJuegos.getComboBoxUnidades().setModel(unidades);
+			ventanaGestionJuegos.getComboBoxUnidades().setSelectedIndex(0);
 		}
 
 	}

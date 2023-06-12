@@ -1,13 +1,18 @@
 package model;
 
-public abstract class Juego {
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+public abstract class Juego implements Serializable {
 
 	private String nombre;
 	private int numJugadores;
-	private int unidades;
 	private int udsUtilizadas;
-	private String incidencias;
-	private int id;
+	private List<Unidad> unidades;
+	private int uds;
+	private String id;
 
 	// Constructor por defecto
 	public Juego() {
@@ -15,14 +20,22 @@ public abstract class Juego {
 	}
 
 	// Constructor con parámetros
-	public Juego(String nombre, int numJugadores, int unidades, int udsUtilizadas, String incidencias, int id) {
+	public Juego(String nombre, int numJugadores, int uds, int udsUtilizadas, String id) {
 		super();
 		this.nombre = nombre;
 		this.numJugadores = numJugadores;
-		this.unidades = unidades;
+		this.uds = uds;
 		this.udsUtilizadas = udsUtilizadas;
-		this.incidencias = incidencias;
-		this.id=id;
+		this.id = id;
+		this.unidades = new ArrayList<>();
+	}
+
+	public void agregarUnidad(Unidad unidad) {
+		unidades.add(unidad);
+	}
+	
+	public void eliminarUnidad(int i) {
+		unidades.remove(i);
 	}
 
 	public String getNombre() {
@@ -41,14 +54,6 @@ public abstract class Juego {
 		this.numJugadores = numJugadores;
 	}
 
-	public int getUnidades() {
-		return unidades;
-	}
-
-	public void setUnidades(int unidades) {
-		this.unidades = unidades;
-	}
-
 	public int getUdsUtilizadas() {
 		return udsUtilizadas;
 	}
@@ -57,26 +62,98 @@ public abstract class Juego {
 		this.udsUtilizadas = udsUtilizadas;
 	}
 
-	public String getIncidencias() {
-		return incidencias;
-	}
-
-	public void setIncidencias(String incidencias) {
-		this.incidencias = incidencias;
-	}
-
 	/**
 	 * @return the id
 	 */
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
+	}
+
+	// unidades
+
+	public static class Unidad implements Serializable {
+		private String nombre;
+		private int id;
+		private List<Incidencia> incidencias;
+		private Prestamo prestamo;
+
+		public Unidad(String nombre, int numero) {
+			this.nombre = nombre;
+			this.id = numero;
+			this.incidencias = new ArrayList<>();
+		}
+
+		public Prestamo getPrestamo() {
+			return prestamo;
+		}
+
+		public void setPrestamo(Prestamo prestamo) {
+			this.prestamo = prestamo;
+		}
+
+		public int getId() {
+			// TODO Auto-generated method stub
+			return id;
+		}
+
+		public void agregarIncidencia(Incidencia incidencia) {
+			incidencias.add(incidencia);
+		}
+
+		public List<Incidencia> obtenerIncidencias() {
+			return incidencias;
+		}
+
+		public Integer getIncidendiasNumero() {
+
+			if (obtenerIncidencias().isEmpty()) {
+				return 0;
+			} else {
+				return obtenerIncidencias().size();
+			}
+
+		}
+	}
+
+	// incidencias
+
+	// Clase para representar las incidencias de una unidad
+	public static class Incidencia  implements Serializable{
+		private String descripcion;
+		private boolean resuelta;
+
+		public Incidencia(String descripcion) {
+			this.descripcion = descripcion;
+			this.resuelta = false;
+		}
+
+		public void marcarComoResuelta() {
+			resuelta = true;
+		}
+
+		// Resto de los métodos y atributos de la clase Incidencia...
+	}
+
+	/**
+	 * @return the unidades
+	 */
+	public List<Unidad> getUnidades() {
+		
+		if (unidades!=null) {
+			return unidades;
+		}else {
+			return new ArrayList<>();
+		}
+		
+		
+		
 	}
 
 }

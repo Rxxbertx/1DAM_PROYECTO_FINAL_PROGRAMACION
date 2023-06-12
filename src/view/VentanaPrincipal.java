@@ -9,6 +9,9 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
+
+import utilidades.utilidades;
+
 import javax.swing.JToolBar;
 import javax.swing.JButton;
 import java.awt.BorderLayout;
@@ -22,6 +25,7 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import javax.swing.border.CompoundBorder;
 
 public class VentanaPrincipal extends JFrame {
 
@@ -76,7 +80,7 @@ public class VentanaPrincipal extends JFrame {
 
 		JPanel panelBienvenida = new JPanel();
 		contentPane.add(panelBienvenida, BorderLayout.CENTER);
-		panelBienvenida.setBorder(compoundBorder);
+		panelBienvenida.setBorder(new CompoundBorder(new LineBorder(new Color(255, 255, 255), 3), null));
 		panelBienvenida.setLayout(null);
 
 		JLabel lblBienvenida = new JLabel("<html>BIENVENID<font color='black'>@</font></html>");
@@ -93,8 +97,8 @@ public class VentanaPrincipal extends JFrame {
 		panelBienvenida.add(lblRellenarUsuario);
 
 	JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/images/datossCentro.gif")));
-		lblNewLabel.setBounds(155, 146, 391, 427);
+		lblNewLabel.setIcon( utilidades.resizeIcon(new ImageIcon("src/images/ventanaPrincipalLogo.png"), 2000, 500)) ;
+		lblNewLabel.setBounds(-54, 138, 1057, 619);
 		panelBienvenida.add(lblNewLabel);
 
 	}
