@@ -1,16 +1,10 @@
 package controller;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
 
-import model.Juego;
-import model.ModeloGenerico;
 import model.ModeloPrestamo;
 import model.Prestamo;
 

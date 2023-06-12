@@ -1,9 +1,7 @@
 package utilidades;
 
 import java.awt.Image;
-
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.swing.ImageIcon;
@@ -12,6 +10,7 @@ import javax.swing.JList;
 
 import model.Juego;
 import model.Juego.Unidad;
+import model.Prestamo;
 
 public class utilidades {
 
@@ -32,8 +31,8 @@ public class utilidades {
 			id += var[i].length();
 		}
 
-		for (int i = 0; i < var2.length; i++) {
-			id += var2[i];
+		for (String element : var2) {
+			id += element;
 		}
 
 		return id + jugadores;
@@ -47,7 +46,7 @@ public class utilidades {
 
 	public static Juego obtenerElementoJuegoJList(JList<Juego> lista) {
 
-		return ((Juego) lista.getSelectedValue());
+		return (lista.getSelectedValue());
 
 	}
 
@@ -76,6 +75,25 @@ public class utilidades {
 		}
 
 		return i;
+
+	}
+
+	public static int extraerUnidadPrestada(Juego juego, Prestamo prestamo) {
+
+		juego.setUdsUtilizadas(-1);
+
+		int j = -1;
+
+		for (int i = 0; i < juego.getUnidades().size(); i++) {
+
+			Unidad unidad = juego.obtenerUnidad(i);
+			if (unidad.getId() == prestamo.getUnidad()) {
+				unidad.setPrestamo(null);
+				j = i;
+			}
+
+		}
+		return j;
 
 	}
 

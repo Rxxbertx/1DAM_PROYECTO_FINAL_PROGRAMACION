@@ -7,11 +7,11 @@ import java.util.List;
 public abstract class Juego implements Serializable {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = -6025569216836396211L;
 	/**
-	 * 
+	 *
 	 */
 
 	private String nombre;
@@ -70,7 +70,7 @@ public abstract class Juego implements Serializable {
 	}
 
 	public void setUdsUtilizadas(int udsUtilizadas) {
-		this.udsUtilizadas = udsUtilizadas;
+		this.udsUtilizadas += udsUtilizadas;
 	}
 
 	/**
@@ -91,7 +91,7 @@ public abstract class Juego implements Serializable {
 
 	public static class Unidad implements Serializable {
 		/**
-		 * 
+		 *
 		 */
 		private static final long serialVersionUID = -3519533619257921015L;
 		private String nombre;
@@ -175,7 +175,7 @@ public abstract class Juego implements Serializable {
 	// Clase para representar las incidencias de una unidad
 	public static class Incidencia implements Serializable {
 		/**
-		 * 
+		 *
 		 */
 		private static final long serialVersionUID = 4603311692135041971L;
 		private String descripcion;

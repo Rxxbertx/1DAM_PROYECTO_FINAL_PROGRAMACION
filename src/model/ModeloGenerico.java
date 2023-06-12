@@ -31,7 +31,7 @@ public class ModeloGenerico<E> {
 	 * @return the elementos
 	 */
 	public HashMap<String, E> getElementos() {
-		return (HashMap<String, E>) elementos;
+		return elementos;
 	}
 
 	/**

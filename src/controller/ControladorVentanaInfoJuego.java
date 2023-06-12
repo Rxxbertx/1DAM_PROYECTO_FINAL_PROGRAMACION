@@ -10,7 +10,7 @@ public class ControladorVentanaInfoJuego {
 		// TODO Auto-generated constructor stub
 	}
 
-	
-	
-	
+
+
+
 }

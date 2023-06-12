@@ -1,9 +1,6 @@
 package model;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-
-import model.Juego.Unidad;
 
 public class Prestamo {
 	private LocalDateTime fechaInicio;

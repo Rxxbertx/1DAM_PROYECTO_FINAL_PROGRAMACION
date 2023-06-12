@@ -1,37 +1,35 @@
 package view;
 
-import java.awt.EventQueue;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JToolBar;
+import javax.swing.SwingConstants;
+import javax.swing.WindowConstants;
 import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
+import javax.swing.border.CompoundBorder;
 import javax.swing.border.LineBorder;
-import javax.swing.border.MatteBorder;
 
 import utilidades.utilidades;
 
-import javax.swing.JToolBar;
-import javax.swing.JButton;
-import java.awt.BorderLayout;
-import java.awt.Color;
-
-import javax.swing.SwingConstants;
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Rectangle;
-import java.awt.Toolkit;
-import javax.swing.border.CompoundBorder;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.Box;
-
 public class VentanaPrincipalEmpleado extends JFrame {
 
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 5638688507211410883L;
 	private JPanel contentPane;
 	private JButton btnGestionUsuarios;
 	private JLabel lblRellenarUsuario;
@@ -57,7 +55,7 @@ public class VentanaPrincipalEmpleado extends JFrame {
 		Border outerBorder = BorderFactory.createLineBorder(new Color(128, 0, 0), 10);
 
 		Border compoundBorder = BorderFactory.createCompoundBorder(innerBorder, outerBorder);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setBounds(100, 100, 945, 609);
 		contentPane = new JPanel();
 
@@ -72,38 +70,39 @@ public class VentanaPrincipalEmpleado extends JFrame {
 		toolBar.setFloatable(false);
 		contentPane.add(toolBar, BorderLayout.WEST);
 		toolBar.setBorder(compoundBorder);
-		
+
 		verticalGlue = Box.createVerticalGlue();
 		toolBar.add(verticalGlue);
-		
+
 		btnGestionJuegos = new JButton("Juegos");
 		btnGestionJuegos.setIcon(new ImageIcon(VentanaPrincipalEmpleado.class.getResource("/images/icons8-play-games-96.png")));
 		btnGestionJuegos.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnGestionJuegos.setBorder(null);
 		toolBar.add(btnGestionJuegos);
-		
+
 		verticalGlue_1 = Box.createVerticalGlue();
 		toolBar.add(verticalGlue_1);
-		
+
 		btnGestionIncidencias = new JButton("Incidencias");
 		btnGestionIncidencias.setIcon(new ImageIcon(VentanaPrincipalEmpleado.class.getResource("/images/icons8-warning-96.png")));
 		btnGestionIncidencias.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnGestionIncidencias.setBorder(null);
 		toolBar.add(btnGestionIncidencias);
-		
+
 		btnGestionPrestamos = new JButton("Prestamos");
 		btnGestionPrestamos.setIcon(new ImageIcon(VentanaPrincipalEmpleado.class.getResource("/images/icons8-inbox-settings-96.png")));
 		btnGestionPrestamos.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 			}
 		} );
-		
+
 		verticalGlue_2 = Box.createVerticalGlue();
 		toolBar.add(verticalGlue_2);
 		btnGestionPrestamos.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnGestionPrestamos.setBorder(null);
 		toolBar.add(btnGestionPrestamos);
-		
+
 		verticalGlue_3 = Box.createVerticalGlue();
 		toolBar.add(verticalGlue_3);
 
@@ -113,16 +112,16 @@ public class VentanaPrincipalEmpleado extends JFrame {
 		toolBar.add(btnGestionUsuarios);
 		btnGestionUsuarios.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnGestionUsuarios.setBorder(null);
-		
+
 		verticalGlue_4 = Box.createVerticalGlue();
 		toolBar.add(verticalGlue_4);
-		
+
 		btnGestionSalir = new JButton("Salir");
 		btnGestionSalir.setIcon(new ImageIcon(VentanaPrincipalEmpleado.class.getResource("/images/icons8-exit-96(1).png")));
 		btnGestionSalir.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnGestionSalir.setBorder(null);
 		toolBar.add(btnGestionSalir);
-		
+
 		verticalGlue_5 = Box.createVerticalGlue();
 		toolBar.add(verticalGlue_5);
 

@@ -1,30 +1,34 @@
 package view;
 
-import java.awt.EventQueue;
-
-import javax.swing.BorderFactory;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.CardLayout;
 import java.awt.Color;
-import javax.swing.JButton;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.SwingConstants;
-import javax.swing.border.MatteBorder;
-import javax.swing.JScrollPane;
-import java.awt.GridLayout;
 import java.awt.Component;
-import javax.swing.BoxLayout;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridLayout;
+
+import javax.swing.BorderFactory;
 import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.SwingConstants;
+import javax.swing.WindowConstants;
+import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.MatteBorder;
 
 public class VentanaPrinicipalSocio extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7103505920094447842L;
 	private JPanel contentPane;
 	private JButton btnAjustesCuenta;
 	private JButton btnVerJuegos;
@@ -52,7 +56,7 @@ public class VentanaPrinicipalSocio extends JFrame {
 		Border outerBorder1 = BorderFactory.createLineBorder(new Color(128, 0, 0), 8);
 
 		Border compoundBorder1 = BorderFactory.createCompoundBorder(innerBorder1, outerBorder1);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setBounds(100, 100, 945, 609);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -96,7 +100,7 @@ public class VentanaPrinicipalSocio extends JFrame {
 		panelBienvenida = new JPanel();
 		panelBienvenida.setPreferredSize(new Dimension(10, 120));
 		panelCompleto.add(panelBienvenida, BorderLayout.NORTH);
-		panelBienvenida.setBorder(new MatteBorder(8, 0, 8, 8, (Color) new Color(128, 0, 0)));
+		panelBienvenida.setBorder(new MatteBorder(8, 0, 8, 8, new Color(128, 0, 0)));
 		panelBienvenida.setLayout(null);
 
 		lblBienvenido = new JLabel("<html>BIENVENID<font color='black'>@</font></html>");
@@ -155,7 +159,7 @@ public class VentanaPrinicipalSocio extends JFrame {
 
 		lblNombreRellenar = new JLabel("");
 		lblNombreRellenar.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		lblNombreRellenar.setBorder(new MatteBorder(0, 0, 4, 0, (Color) new Color(128, 0, 0)));
+		lblNombreRellenar.setBorder(new MatteBorder(0, 0, 4, 0, new Color(128, 0, 0)));
 		lblNombreRellenar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNombreRellenar.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblNombreRellenar.setBounds(305, 82, 266, 37);
@@ -163,14 +167,14 @@ public class VentanaPrinicipalSocio extends JFrame {
 
 		lblApellidosRellenar = new JLabel("");
 		lblApellidosRellenar.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		lblApellidosRellenar.setBorder(new MatteBorder(0, 0, 4, 0, (Color) new Color(128, 0, 0)));
+		lblApellidosRellenar.setBorder(new MatteBorder(0, 0, 4, 0, new Color(128, 0, 0)));
 		lblApellidosRellenar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblApellidosRellenar.setBounds(305, 198, 266, 37);
 		panelAjustesCuenta.add(lblApellidosRellenar);
 
 		lblUsuarioRellenar2 = new JLabel("");
 		lblUsuarioRellenar2.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		lblUsuarioRellenar2.setBorder(new MatteBorder(0, 0, 4, 0, (Color) new Color(128, 0, 0)));
+		lblUsuarioRellenar2.setBorder(new MatteBorder(0, 0, 4, 0, new Color(128, 0, 0)));
 		lblUsuarioRellenar2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblUsuarioRellenar2.setBounds(305, 314, 266, 37);
 		panelAjustesCuenta.add(lblUsuarioRellenar2);
@@ -241,6 +245,7 @@ public class VentanaPrinicipalSocio extends JFrame {
 
 	}
 
+	@Override
 	public JPanel getContentPane() {
 		return contentPane;
 	}

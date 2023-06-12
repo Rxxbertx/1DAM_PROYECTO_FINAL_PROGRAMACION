@@ -1,9 +1,11 @@
 package controller;
 
 import java.awt.CardLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -19,13 +21,12 @@ import model.Usuario;
 import model.Videojuego;
 import utilidades.utilidades;
 import view.LoginWindow;
-import view.VentanaPrincipalEmpleado;
 import view.VentanaPrinicipalSocio;
 
 public class ControladorVentanaSocio implements ActionListener {
 
 	private VentanaPrinicipalSocio ventana;
-	private ModeloGenerico juegos;
+	private ModeloGenerico<Juego> juegos;
 	private ModeloPrestamo prestamos;
 	private Usuario usuario;
 
@@ -56,15 +57,15 @@ public class ControladorVentanaSocio implements ActionListener {
 	private void comprobarPrestamos() {
 
 		Prestamo prestamo = prestamos.obtenerPrestamoActivoUsuario(usuario);
-		Juego juego = (Juego) juegos.consultar(prestamo.getIdJuego());
-		Videojuego videojuego = (Videojuego) juego;
 
 		if (prestamo != null) {
 
+			Juego juego = juegos.consultar(prestamo.getIdJuego());
+			Videojuego videojuego = (Videojuego) juego;
 			cambioPanel(ventana.getPanelCard(), "juego");
 
 			ventana.getBtnJuegoPrestado()
-					.setIcon(utilidades.resizeIcon(new ImageIcon(videojuego.getImagen()), 150, 150));
+					.setIcon(utilidades.resizeIcon(new ImageIcon(videojuego.getImagen()), 200, 200));
 			ventana.getBtnJuegoPrestado().setText(videojuego.getNombre() + "Unidad: (" + prestamo.getUnidad() + ")");
 
 		} else {
@@ -120,6 +121,33 @@ public class ControladorVentanaSocio implements ActionListener {
 		accionesPanelVer(e);
 		accionesPanelInfo(e);
 		accionesPanelSalir(e);
+		accionesPanelInicio(e);
+
+	}
+
+	private void accionesPanelInicio(ActionEvent e) {
+
+		if (e.getSource().equals(ventana.getBtnDevolver())) {
+
+			Prestamo prestamo = prestamos.obtenerPrestamoActivoUsuario(usuario);
+
+			if (prestamo != null) {
+
+				Juego juego = juegos.consultar(prestamo.getIdJuego());
+
+				utilidades.extraerUnidadPrestada(juego, prestamo);
+
+				prestamo.setFechaFin(LocalDateTime.now());
+
+				EscrituraPrestamo.ModificacionArchivo(prestamos);
+				EscrituraElementos.ModificacionArchivo(juegos);
+				comprobarPrestamos();
+
+			} else {
+				cambioPanel(ventana.getPanelCard(), "inicio");
+			}
+
+		}
 
 	}
 
@@ -131,6 +159,10 @@ public class ControladorVentanaSocio implements ActionListener {
 
 		if (e.getSource().equals(ventana.getBtnSalirNo())) {
 			comprobarPrestamos();
+		}
+
+		if (e.getSource().equals(ventana.getBtnSalir())) {
+			cambioPanel(ventana.getPanelCard(), "salir");
 		}
 
 	}
@@ -163,18 +195,9 @@ public class ControladorVentanaSocio implements ActionListener {
 			ventana.getLblUsuarioRellenar2().setText(usuario.getNomUsuario());
 
 			break;
-		case "salir":
-
-			break;
 		case "ver":
 
 			añadirJuegosVentana();
-
-			break;
-		case "eliminar":
-
-			break;
-		case "conSeleccion":
 
 			break;
 
@@ -187,27 +210,46 @@ public class ControladorVentanaSocio implements ActionListener {
 
 	private void añadirJuegosVentana() {
 
-		for (Object juego : juegos.getElementos().values()) {
+		try {
 
-			Videojuego temp = (Videojuego) juego;
+			ventana.getPanelJuegos().removeAll();
+			for (Object juego : new LecturaElementos().devolverElementos().values()) {
 
-			JButton boton = new JButton();
-			boton.setText(temp.getNombre());
-			boton.setIcon(utilidades.resizeIcon(new ImageIcon(temp.getImagen()), 100, 100));
-			boton.setVerticalTextPosition(SwingConstants.BOTTOM);
+				Videojuego temp = (Videojuego) juego;
 
-			// Agregar ActionListener al botón
-			boton.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					// Código a ejecutar cuando se hace clic en el botón
-					new ControladorVentanaInfoJuego(usuario, temp, ventana);
+				JButton boton = new JButton();
+				boton.setText(
 
-				}
-			});
+						"<html> <center>" + temp.getNombre() + "<br>" + "(" + temp.getPlatSelecciona() + ")" + "<br>"
+								+ "Num Jugadores: " + temp.getNumJugadores() + " </center></html>");
+				boton.setIcon(utilidades.resizeIcon(new ImageIcon(temp.getImagen()), 200, 200));
 
-			ventana.getPanelJuegos().add(boton);
+				boton.setHorizontalAlignment(SwingConstants.CENTER);
+				boton.setVerticalAlignment(SwingConstants.CENTER);
+				boton.setHorizontalTextPosition(SwingConstants.CENTER);
+				boton.setVerticalTextPosition(SwingConstants.BOTTOM);
 
+				boton.setFont(new Font("Tahoma", Font.BOLD, 15));
+
+				// Agregar ActionListener al botón
+				boton.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						// Código a ejecutar cuando se hace clic en el botón
+						new ControladorVentanaInfoJuego(usuario, temp, ventana);
+
+					}
+				});
+
+				ventana.getPanelJuegos().add(boton);
+
+			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 	}

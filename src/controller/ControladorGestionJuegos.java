@@ -130,13 +130,13 @@ public class ControladorGestionJuegos implements ActionListener, ItemListener {
 				ventanaGestionJuegos.getLblNombreRellenar().setText(juego.getNombre());
 
 				ventanaGestionJuegos.getLblIncidenciasRellenar()
-						.setText(String.valueOf(incidencias.obtenerIncidenciasJuegoSinResolver(juego).size()));
+						.setText(String.valueOf(incidencias.obtenerNumeroIncidenciasJuegoSinResolver(juego)));
 				ventanaGestionJuegos.getLblNumJugadoresRellenar().setText(String.valueOf(juego.getNumJugadores()));
 
 				ventanaGestionJuegos.getLblUnidadesRellenar().setText(String.valueOf(juego.getUnidades().size()));
 				ventanaGestionJuegos.getLblUdsUtilizadasRellenar().setText(String.valueOf(juego.getUdsUtilizadas()));
 
-				if (utilidades.extraerIncidenciasTotalesUnidades(juego.getUnidades()) <= 0) {
+				if (incidencias.obtenerNumeroIncidenciasJuegoSinResolver(juego) <= 0) {
 					ventanaGestionJuegos.getBtnVerIncidencias().setEnabled(false);
 				}
 
@@ -373,8 +373,7 @@ public class ControladorGestionJuegos implements ActionListener, ItemListener {
 
 				if (prestamo != null) {
 
-					ventanaGestionJuegos.gettEstadoPrestamo()
-							.setText("Prestado a " + prestamo.getUsuario());
+					ventanaGestionJuegos.gettEstadoPrestamo().setText("Prestado a " + prestamo.getUsuario());
 				} else {
 					ventanaGestionJuegos.gettEstadoPrestamo().setText("Sin prestar");
 

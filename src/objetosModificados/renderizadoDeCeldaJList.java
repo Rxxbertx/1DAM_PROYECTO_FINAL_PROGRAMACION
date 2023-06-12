@@ -16,6 +16,11 @@ import utilidades.utilidades;
 
 public class renderizadoDeCeldaJList extends JLabel implements ListCellRenderer<Object> {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6328457360576448181L;
+
 	public renderizadoDeCeldaJList() {
 
 		setHorizontalAlignment(CENTER);
@@ -39,10 +44,10 @@ public class renderizadoDeCeldaJList extends JLabel implements ListCellRenderer<
 			ImageIcon icon = new ImageIcon(
 					selectedIndex instanceof Videojuego ? ((Videojuego) (selectedIndex)).getImagen()
 							: "src/images/default.png");
-			
+
 			String nombre = selectedIndex.getNombre();
 			String plataforma = ((Videojuego) (selectedIndex)).getImagen();
-			
+
 			setIcon(utilidades.resizeIcon(icon, 100, 100));
 			setText(nombre + " Plataforma: " + plataforma + "UNIDADES UTILIZADAS: " + selectedIndex.getUdsUtilizadas());
 			setFont(new Font("Arial", Font.BOLD, 20));

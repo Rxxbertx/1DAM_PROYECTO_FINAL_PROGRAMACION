@@ -16,6 +16,11 @@ import utilidades.utilidades;
 
 public class renderizadoDeCeldaComboBox extends JLabel implements ListCellRenderer<Object> {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2712515309007098711L;
+
 	public renderizadoDeCeldaComboBox() {
 
 		setHorizontalAlignment(CENTER);

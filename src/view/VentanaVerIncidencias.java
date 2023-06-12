@@ -1,22 +1,25 @@
 package view;
 
-import java.awt.EventQueue;
-
-import javax.swing.DefaultListModel;
-import javax.swing.JDialog;
 import java.awt.BorderLayout;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import java.awt.Font;
 import java.awt.Color;
+import java.awt.Font;
+
+import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.MatteBorder;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JTable;
 
 public class VentanaVerIncidencias extends JDialog {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8370585255026925011L;
+
 	private JTable table;
 
 	private final String[] CABECERA = { "UNIDAD", "ESTADO", "INCIDENCIA" };
@@ -44,7 +47,7 @@ public class VentanaVerIncidencias extends JDialog {
 
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBorder(new CompoundBorder(new EmptyBorder(5, 5, 5, 5),
-				new MatteBorder(4, 4, 4, 3, (Color) new Color(128, 0, 0))));
+				new MatteBorder(4, 4, 4, 3, new Color(128, 0, 0))));
 		getContentPane().add(scrollPane, BorderLayout.CENTER);
 
 		table = new JTable();

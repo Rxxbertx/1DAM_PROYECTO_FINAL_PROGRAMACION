@@ -4,8 +4,9 @@ import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.Timer;
+
 import javax.swing.JButton;
+import javax.swing.Timer;
 
 public class ZoomAnimation implements ActionListener {
 	private Component component;
@@ -23,6 +24,7 @@ public class ZoomAnimation implements ActionListener {
 		timer.start();
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		int zoomSteps = 10; // Número de pasos para hacer zoom
 
