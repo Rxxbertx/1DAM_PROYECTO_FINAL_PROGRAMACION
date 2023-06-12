@@ -84,10 +84,11 @@ public class GestionJuegos extends JFrame {
 	private JLabel lblImagenAñadir;
 	private JLabel lblNombreEliminar;
 	private JLabel lblPlataformaEliminar;
+	private JPanel panelAñadir;
+	private JPanel panelModificar;
+	private JPanel panelVer;
+	private JPanel panelInformacion;
 
-	/**
-	 * Create the frame.
-	 */
 	public GestionJuegos() {
 
 		Border innerBorder1 = BorderFactory.createLineBorder(Color.WHITE, 3);
@@ -231,12 +232,12 @@ public class GestionJuegos extends JFrame {
 		btnEliminarTodos.setBounds(72, 362, 236, 42);
 		panelEliminar.add(btnEliminarTodos);
 
-		JPanel panelAñadir = new JPanel();
+		panelAñadir = new JPanel();
 		panelCard.add(panelAñadir, "añadir");
 		panelAñadir.setLayout(null);
 		panelAñadir.setBorder(compoundBorder1);
 
-		JPanel panelModificar = new JPanel();
+		panelModificar = new JPanel();
 		panelCard.add(panelModificar, "modificar");
 		panelModificar.setLayout(null);
 		panelModificar.setBorder(compoundBorder1);
@@ -281,7 +282,7 @@ public class GestionJuegos extends JFrame {
 		lblNumJugadoresModificar.setBounds(172, 278, 189, 31);
 		panelModificar.add(lblNumJugadoresModificar);
 
-		JPanel panelVer = new JPanel();
+		panelVer = new JPanel();
 		panelCard.add(panelVer, "ver");
 		panelVer.setLayout(new BorderLayout(0, 0));
 
@@ -322,7 +323,7 @@ public class GestionJuegos extends JFrame {
 		panelCard1.add(panelConSeleccion, "conSeleccion");
 		panelConSeleccion.setLayout(new BorderLayout(0, 0));
 
-		JPanel panelInformacion = new JPanel();
+		panelInformacion = new JPanel();
 		panelConSeleccion.add(panelInformacion, BorderLayout.CENTER);
 		panelInformacion.setLayout(null);
 
@@ -436,10 +437,10 @@ public class GestionJuegos extends JFrame {
 		lblUnidadewsAñadir.setBounds(339, 369, 146, 31);
 		panelAñadir.add(lblUnidadewsAñadir);
 
-		JLabel lblPlatafomaAñadir = new JLabel("Plataforma");
-		lblPlatafomaAñadir.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
-		lblPlatafomaAñadir.setBounds(339, 289, 146, 31);
-		panelAñadir.add(lblPlatafomaAñadir);
+		JLabel lblPlataformaAñadir = new JLabel("Plataforma");
+		lblPlataformaAñadir.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
+		lblPlataformaAñadir.setBounds(339, 289, 146, 31);
+		panelAñadir.add(lblPlataformaAñadir);
 
 		cPlataformaAñadir = new JComboBox<>();
 		cPlataformaAñadir.setBounds(538, 289, 302, 31);
@@ -465,7 +466,8 @@ public class GestionJuegos extends JFrame {
 		lblImagenAñadir = new JLabel("");
 		lblImagenAñadir.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblImagenAñadir.setHorizontalAlignment(SwingConstants.CENTER);
-		lblImagenAñadir.setBorder(new TitledBorder(new LineBorder(new Color(128, 0, 0), 4, true), "Imagen", TitledBorder.CENTER, TitledBorder.TOP, null, null));
+		lblImagenAñadir.setBorder(new TitledBorder(new LineBorder(new Color(128, 0, 0), 4, true), "Imagen",
+				TitledBorder.CENTER, TitledBorder.TOP, null, null));
 		lblImagenAñadir.setBounds(92, 44, 150, 150);
 		panelAñadir.add(lblImagenAñadir);
 
@@ -516,6 +518,22 @@ public class GestionJuegos extends JFrame {
 		btnModificar.setBackground(new Color(128, 0, 0));
 		btnModificar.setBounds(321, 346, 271, 77);
 		panelModificar.add(btnModificar);
+	}
+
+	public JPanel getPanelAñadir() {
+		return panelAñadir;
+	}
+
+	public JPanel getPanelModificar() {
+		return panelModificar;
+	}
+
+	public JPanel getPanelVer() {
+		return panelVer;
+	}
+
+	public JPanel getPanelInformacion() {
+		return panelInformacion;
 	}
 
 	/**
@@ -599,8 +617,6 @@ public class GestionJuegos extends JFrame {
 		return lblPlataformaRellenar;
 	}
 
-
-
 	public JTextField gettNombreAñadir() {
 		return tNombreAñadir;
 	}
@@ -640,8 +656,6 @@ public class GestionJuegos extends JFrame {
 	public JButton getBtnEliminar() {
 		return btnEliminar;
 	}
-
-
 
 	public JComboBox<String> getcPlataformaModificar() {
 		return cPlataformaModificar;

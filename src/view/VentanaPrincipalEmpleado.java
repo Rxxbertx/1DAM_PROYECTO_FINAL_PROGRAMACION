@@ -43,10 +43,8 @@ public class VentanaPrincipalEmpleado extends JFrame {
 	private Component verticalGlue_4;
 	private Component verticalGlue_5;
 	private JButton btnGestionJuegos;
+	private JPanel panelBienvenida;
 
-	/**
-	 * Create the frame.
-	 */
 	public VentanaPrincipalEmpleado() {
 		setIconImage(Toolkit.getDefaultToolkit()
 				.getImage(VentanaPrincipalEmpleado.class.getResource("/images/icons8-play-games-96.png")));
@@ -75,7 +73,8 @@ public class VentanaPrincipalEmpleado extends JFrame {
 		toolBar.add(verticalGlue);
 
 		btnGestionJuegos = new JButton("Juegos");
-		btnGestionJuegos.setIcon(new ImageIcon(VentanaPrincipalEmpleado.class.getResource("/images/icons8-play-games-96.png")));
+		btnGestionJuegos
+				.setIcon(new ImageIcon(VentanaPrincipalEmpleado.class.getResource("/images/icons8-play-games-96.png")));
 		btnGestionJuegos.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnGestionJuegos.setBorder(null);
 		toolBar.add(btnGestionJuegos);
@@ -84,13 +83,15 @@ public class VentanaPrincipalEmpleado extends JFrame {
 		toolBar.add(verticalGlue_1);
 
 		btnGestionIncidencias = new JButton("Incidencias");
-		btnGestionIncidencias.setIcon(new ImageIcon(VentanaPrincipalEmpleado.class.getResource("/images/icons8-warning-96.png")));
+		btnGestionIncidencias
+				.setIcon(new ImageIcon(VentanaPrincipalEmpleado.class.getResource("/images/icons8-warning-96.png")));
 		btnGestionIncidencias.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnGestionIncidencias.setBorder(null);
 		toolBar.add(btnGestionIncidencias);
 
 		btnGestionPrestamos = new JButton("Prestamos");
-		btnGestionPrestamos.setIcon(new ImageIcon(VentanaPrincipalEmpleado.class.getResource("/images/icons8-inbox-settings-96.png")));
+		btnGestionPrestamos.setIcon(
+				new ImageIcon(VentanaPrincipalEmpleado.class.getResource("/images/icons8-inbox-settings-96.png")));
 		btnGestionPrestamos.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -107,8 +108,8 @@ public class VentanaPrincipalEmpleado extends JFrame {
 		toolBar.add(verticalGlue_3);
 
 		btnGestionUsuarios = new JButton("Usuarios");
-		btnGestionUsuarios.setIcon(
-				new ImageIcon(VentanaPrincipalEmpleado.class.getResource("/images/icons8-llamada-de-conferencia-96.png")));
+		btnGestionUsuarios.setIcon(new ImageIcon(
+				VentanaPrincipalEmpleado.class.getResource("/images/icons8-llamada-de-conferencia-96.png")));
 		toolBar.add(btnGestionUsuarios);
 		btnGestionUsuarios.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnGestionUsuarios.setBorder(null);
@@ -117,7 +118,8 @@ public class VentanaPrincipalEmpleado extends JFrame {
 		toolBar.add(verticalGlue_4);
 
 		btnGestionSalir = new JButton("Salir");
-		btnGestionSalir.setIcon(new ImageIcon(VentanaPrincipalEmpleado.class.getResource("/images/icons8-exit-96(1).png")));
+		btnGestionSalir
+				.setIcon(new ImageIcon(VentanaPrincipalEmpleado.class.getResource("/images/icons8-exit-96(1).png")));
 		btnGestionSalir.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnGestionSalir.setBorder(null);
 		toolBar.add(btnGestionSalir);
@@ -125,7 +127,7 @@ public class VentanaPrincipalEmpleado extends JFrame {
 		verticalGlue_5 = Box.createVerticalGlue();
 		toolBar.add(verticalGlue_5);
 
-		JPanel panelBienvenida = new JPanel();
+		panelBienvenida = new JPanel();
 		contentPane.add(panelBienvenida, BorderLayout.CENTER);
 		panelBienvenida.setBorder(new CompoundBorder(new LineBorder(new Color(255, 255, 255), 3), null));
 		panelBienvenida.setLayout(null);
@@ -143,11 +145,27 @@ public class VentanaPrincipalEmpleado extends JFrame {
 		lblRellenarUsuario.setBounds(336, 49, 340, 87);
 		panelBienvenida.add(lblRellenarUsuario);
 
-	JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon( utilidades.resizeIcon(new ImageIcon("src/images/ventanaPrincipalLogo.png"), 2000, 500)) ;
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(utilidades.resizeIcon(new ImageIcon("src/images/ventanaPrincipalLogo.png"), 2000, 500));
 		lblNewLabel.setBounds(-54, 138, 1057, 619);
 		panelBienvenida.add(lblNewLabel);
 
+	}
+
+	public JButton getBtnGestionSalir() {
+		return btnGestionSalir;
+	}
+
+	public JButton getBtnGestionPrestamos() {
+		return btnGestionPrestamos;
+	}
+
+	public JButton getBtnGestionIncidencias() {
+		return btnGestionIncidencias;
+	}
+
+	public JPanel getPanelBienvenida() {
+		return panelBienvenida;
 	}
 
 	/**
