@@ -27,7 +27,7 @@ import model.Videojuego;
 import objetosModificados.renderizadoDeCeldaComboBox;
 import utilidades.utilidades;
 import view.GestionJuegos;
-import view.VentanaPrincipal;
+import view.VentanaPrincipalEmpleado;
 
 public class ControladorGestionJuegos implements ActionListener, ItemListener {
 
@@ -39,7 +39,7 @@ public class ControladorGestionJuegos implements ActionListener, ItemListener {
 
 	private ModeloIncidencias incidencias;
 
-	public ControladorGestionJuegos(VentanaPrincipal ventanaEmpleado) {
+	public ControladorGestionJuegos(VentanaPrincipalEmpleado ventanaEmpleado) {
 
 		juegos = new ModeloGenerico<>();
 		prestamos = new ModeloPrestamo();

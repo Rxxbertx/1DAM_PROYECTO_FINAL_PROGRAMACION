@@ -36,17 +36,12 @@ public class ControladorVentanaVerIncidencias {
 				descPrestamo = "Prestado A: " + prestamo.getUsuario();
 			}
 
-			List<Incidencia> incidencia = unidad.obtenerIncidencias();
 			int j = 1;
 			String descIncidencias = "";
-			for (Incidencia incidencia2 : incidencia) {
+			for (Incidencia incidencia2 : unidad.obtenerIncidenciasSinResolver()) {
 
-				if (incidencia2.isResuelta()) {
-
-				} else {
-					descIncidencias += j + "-  " + incidencia2.getDescripcion() + "\n";
-					j++;
-				}
+				descIncidencias += j + "-  " + incidencia2.getDescripcion() + "\n";
+				j++;
 
 			}
 

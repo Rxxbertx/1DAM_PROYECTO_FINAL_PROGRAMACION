@@ -9,15 +9,15 @@ import animaciones.ZoomAnimation;
 import model.Juego;
 import model.ModeloGenerico;
 import model.Usuario;
-import view.VentanaPrincipal;
+import view.VentanaPrincipalEmpleado;
 
 public class ControladorVentanaEmpleado implements ActionListener {
 
-	private VentanaPrincipal ventanaEmpleado;
+	private VentanaPrincipalEmpleado ventanaEmpleado;
 
 	public ControladorVentanaEmpleado(view.LoginWindow loginWindow, Usuario usuario) {
 
-		ventanaEmpleado = new VentanaPrincipal();
+		ventanaEmpleado = new VentanaPrincipalEmpleado();
 		ventanaEmpleado.setLocationRelativeTo(loginWindow);
 		loginWindow.dispose();
 		ventanaEmpleado.getBtnGestionJuegos().addActionListener(this);
