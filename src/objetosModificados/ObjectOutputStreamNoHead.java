@@ -8,6 +8,8 @@ public class ObjectOutputStreamNoHead extends ObjectOutputStream {
 
 	public ObjectOutputStreamNoHead(FileOutputStream acceso) throws IOException {
 
+		super(acceso);
+
 	}
 
 	public void writeStreamHeader() {

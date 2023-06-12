@@ -5,11 +5,10 @@ import java.io.Serializable;
 public class Videojuego extends Juego implements Serializable {
 
 	private String compañia;
-	private String[] plataforma;
 	private String platSelecciona;
 	private String imagen;
 
-	/**
+	/** 
 	 * 
 	 */
 	public Videojuego() {
@@ -17,11 +16,11 @@ public class Videojuego extends Juego implements Serializable {
 	}
 
 	// Constructor con parámetros
-	public Videojuego(String nombre, int numJugadores, int unidades, int udsUtilizadas, String incidencias,
-			String compañia, String[] plataforma, String platSelecciona, int id, String imagen) {
-		super(nombre, numJugadores, unidades, udsUtilizadas, incidencias, id);
+	public Videojuego(String nombre, int numJugadores, int unidades, int udsUtilizadas,
+			String compañia,String platSelecciona, String id, String imagen) {
+		super(nombre, numJugadores, unidades, udsUtilizadas, id);
 		this.compañia = compañia;
-		this.plataforma = plataforma;
+
 		this.platSelecciona = platSelecciona;
 		this.setImagen(imagen);
 	}
@@ -34,13 +33,6 @@ public class Videojuego extends Juego implements Serializable {
 		this.compañia = compañia;
 	}
 
-	public String[] getPlataforma() {
-		return plataforma;
-	}
-
-	public void setPlataforma(String[] plataforma) {
-		this.plataforma = plataforma;
-	}
 
 	public String getPlatSelecciona() {
 		return platSelecciona;

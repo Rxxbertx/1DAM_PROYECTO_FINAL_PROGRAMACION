@@ -83,9 +83,9 @@ public class LoginWindow implements ActionListener {
 
 			} else {
 				loginWindow.getLblError().setVisible(true);
-				new AnimacionShake(loginWindow.getLblError());
-				new AnimacionShake(loginWindow.getTextFieldUsuarioLogin());
-				new AnimacionShake(loginWindow.getTextFieldContraseñaLogin());
+				new AnimacionShake(loginWindow.getLblError(), 2, 30, 20);
+				new AnimacionShake(loginWindow.getTextFieldUsuarioLogin(),2, 30, 20);
+				new AnimacionShake(loginWindow.getTextFieldContraseñaLogin(),2, 30, 20);
 			}
 
 		}

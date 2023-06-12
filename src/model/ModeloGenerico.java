@@ -5,39 +5,43 @@ import java.util.HashMap;
 
 public class ModeloGenerico<E> {
 
-	private HashMap<Integer, E> elementos = new HashMap<>();
+	private HashMap<String, E> elementos = new HashMap<>();
 
-	public void añadir(int i, E elemento) {
+	public boolean añadir(String i, E elemento) {
 
 		if (consultar(i) != null) {
-
+			return false;
 		} else {
 			elementos.put(i, elemento);
-			
-			
+			return true;
+
 		}
 
 	}
 
-	public void eliminar(int i) {
-		elementos.remove(i);
+	public void eliminar(String string) {
+		elementos.remove(string);
 	}
 
-	public E consultar(int i) {
+	public E consultar(String i) {
 		return elementos.get(i);
 	}
 
 	/**
 	 * @return the elementos
 	 */
-	public HashMap<Integer, E> getElementos() {
-		return (HashMap<Integer, E>) elementos;
+	public HashMap<String, E> getElementos() {
+		return (HashMap<String, E>) elementos;
 	}
 
 	/**
 	 * @param elementos the elementos to set
 	 */
-	public void setElementos(HashMap<Integer, E> elementos) {
-		this.elementos = elementos;
+	public void setElementos(HashMap<String, E> elementos) {
+
+		if (elementos != null) {
+			this.elementos = elementos;
+		}
+
 	}
 }
