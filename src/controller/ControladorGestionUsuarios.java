@@ -1,10 +1,10 @@
 package controller;
 
-import view.VentanaPrincipal;
+import view.VentanaPrincipalEmpleado;
 
 public class ControladorGestionUsuarios {
 
-	public ControladorGestionUsuarios(VentanaPrincipal ventanaEmpleado) {
+	public ControladorGestionUsuarios(VentanaPrincipalEmpleado ventanaEmpleado) {
 		// TODO Auto-generated constructor stub
 	}
 

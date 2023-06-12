@@ -26,20 +26,32 @@ import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import javax.swing.border.CompoundBorder;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.Box;
 
-public class VentanaPrincipal extends JFrame {
+public class VentanaPrincipalEmpleado extends JFrame {
 
 	private JPanel contentPane;
 	private JButton btnGestionUsuarios;
-	private JButton btnGestionJuegos;
 	private JLabel lblRellenarUsuario;
+	private JButton btnGestionSalir;
+	private JButton btnGestionPrestamos;
+	private JButton btnGestionIncidencias;
+	private Component verticalGlue;
+	private Component verticalGlue_1;
+	private Component verticalGlue_2;
+	private Component verticalGlue_3;
+	private Component verticalGlue_4;
+	private Component verticalGlue_5;
+	private JButton btnGestionJuegos;
 
 	/**
 	 * Create the frame.
 	 */
-	public VentanaPrincipal() {
+	public VentanaPrincipalEmpleado() {
 		setIconImage(Toolkit.getDefaultToolkit()
-				.getImage(VentanaPrincipal.class.getResource("/images/icons8-play-games-96.png")));
+				.getImage(VentanaPrincipalEmpleado.class.getResource("/images/icons8-play-games-96.png")));
 
 		Border innerBorder = BorderFactory.createLineBorder(Color.WHITE, 3);
 		Border outerBorder = BorderFactory.createLineBorder(new Color(128, 0, 0), 10);
@@ -55,28 +67,64 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 
 		JToolBar toolBar = new JToolBar();
+		toolBar.setOpaque(false);
 		toolBar.setOrientation(SwingConstants.VERTICAL);
 		toolBar.setFloatable(false);
 		contentPane.add(toolBar, BorderLayout.WEST);
 		toolBar.setBorder(compoundBorder);
-
-		btnGestionJuegos = new JButton("New button");
-		btnGestionJuegos.setAlignmentY(2.0f);
-		btnGestionJuegos.setText("Juegos   ");
-
-		btnGestionJuegos.setVerticalAlignment(SwingConstants.BOTTOM);
-		btnGestionJuegos.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/images/icons8-play-games-96.png")));
-		toolBar.add(btnGestionJuegos);
-
+		
+		verticalGlue = Box.createVerticalGlue();
+		toolBar.add(verticalGlue);
+		
+		btnGestionJuegos = new JButton("Juegos");
+		btnGestionJuegos.setIcon(new ImageIcon(VentanaPrincipalEmpleado.class.getResource("/images/icons8-play-games-96.png")));
 		btnGestionJuegos.setFont(new Font("Tahoma", Font.BOLD, 18));
-		btnGestionJuegos.setBorder(new LineBorder(Color.white, 4, true));
+		btnGestionJuegos.setBorder(null);
+		toolBar.add(btnGestionJuegos);
+		
+		verticalGlue_1 = Box.createVerticalGlue();
+		toolBar.add(verticalGlue_1);
+		
+		btnGestionIncidencias = new JButton("Incidencias");
+		btnGestionIncidencias.setIcon(new ImageIcon(VentanaPrincipalEmpleado.class.getResource("/images/icons8-warning-96.png")));
+		btnGestionIncidencias.setFont(new Font("Tahoma", Font.BOLD, 18));
+		btnGestionIncidencias.setBorder(null);
+		toolBar.add(btnGestionIncidencias);
+		
+		btnGestionPrestamos = new JButton("Prestamos");
+		btnGestionPrestamos.setIcon(new ImageIcon(VentanaPrincipalEmpleado.class.getResource("/images/icons8-inbox-settings-96.png")));
+		btnGestionPrestamos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		} );
+		
+		verticalGlue_2 = Box.createVerticalGlue();
+		toolBar.add(verticalGlue_2);
+		btnGestionPrestamos.setFont(new Font("Tahoma", Font.BOLD, 18));
+		btnGestionPrestamos.setBorder(null);
+		toolBar.add(btnGestionPrestamos);
+		
+		verticalGlue_3 = Box.createVerticalGlue();
+		toolBar.add(verticalGlue_3);
 
 		btnGestionUsuarios = new JButton("Usuarios");
 		btnGestionUsuarios.setIcon(
-				new ImageIcon(VentanaPrincipal.class.getResource("/images/icons8-llamada-de-conferencia-96.png")));
+				new ImageIcon(VentanaPrincipalEmpleado.class.getResource("/images/icons8-llamada-de-conferencia-96.png")));
 		toolBar.add(btnGestionUsuarios);
 		btnGestionUsuarios.setFont(new Font("Tahoma", Font.BOLD, 18));
-		btnGestionUsuarios.setBorder(new LineBorder(Color.white, 4, true));
+		btnGestionUsuarios.setBorder(null);
+		
+		verticalGlue_4 = Box.createVerticalGlue();
+		toolBar.add(verticalGlue_4);
+		
+		btnGestionSalir = new JButton("Salir");
+		btnGestionSalir.setIcon(new ImageIcon(VentanaPrincipalEmpleado.class.getResource("/images/icons8-exit-96(1).png")));
+		btnGestionSalir.setFont(new Font("Tahoma", Font.BOLD, 18));
+		btnGestionSalir.setBorder(null);
+		toolBar.add(btnGestionSalir);
+		
+		verticalGlue_5 = Box.createVerticalGlue();
+		toolBar.add(verticalGlue_5);
 
 		JPanel panelBienvenida = new JPanel();
 		contentPane.add(panelBienvenida, BorderLayout.CENTER);
