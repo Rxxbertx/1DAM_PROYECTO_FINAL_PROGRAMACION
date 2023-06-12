@@ -2,10 +2,7 @@ package objetosModificados;
 
 import java.awt.Component;
 import java.awt.Font;
-import java.awt.Image;
 
-import javax.swing.DefaultListCellRenderer;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -28,6 +25,7 @@ public class renderizadoDeCeldaComboBox extends JLabel implements ListCellRender
 
 	}
 
+	@Override
 	public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
 			boolean cellHasFocus) {
 		// Get the selected index. (The index param isn't
@@ -47,6 +45,9 @@ public class renderizadoDeCeldaComboBox extends JLabel implements ListCellRender
 			setText(nombre);
 			setFont(new Font("Arial", Font.BOLD, 20));
 			setBorder(new EmptyBorder(0, 0, 0, 0));
+		} else {
+			setIcon(null);
+			setText(null);
 		}
 
 		return this;

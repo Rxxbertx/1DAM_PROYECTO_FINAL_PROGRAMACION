@@ -2,7 +2,6 @@ package model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public abstract class Juego implements Serializable {
@@ -33,9 +32,13 @@ public abstract class Juego implements Serializable {
 	public void agregarUnidad(Unidad unidad) {
 		unidades.add(unidad);
 	}
-	
+
 	public void eliminarUnidad(int i) {
 		unidades.remove(i);
+	}
+
+	public Unidad obtenerUnidad(int i) {
+		return unidades.get(i);
 	}
 
 	public String getNombre() {
@@ -111,6 +114,21 @@ public abstract class Juego implements Serializable {
 			return incidencias;
 		}
 
+		public List<Incidencia> obtenerIncidenciasSinResolver() {
+
+			ArrayList<Incidencia> sinResolver = new ArrayList<>();
+
+			for (Incidencia incidencia : incidencias) {
+				if (!incidencia.isResuelta()) {
+
+					sinResolver.add(incidencia);
+
+				}
+			}
+			return sinResolver;
+
+		}
+
 		public Integer getIncidendiasNumero() {
 
 			if (obtenerIncidencias().isEmpty()) {
@@ -125,7 +143,7 @@ public abstract class Juego implements Serializable {
 	// incidencias
 
 	// Clase para representar las incidencias de una unidad
-	public static class Incidencia  implements Serializable{
+	public static class Incidencia implements Serializable {
 		private String descripcion;
 		private boolean resuelta;
 
@@ -138,6 +156,20 @@ public abstract class Juego implements Serializable {
 			resuelta = true;
 		}
 
+		/**
+		 * @return the descripcion
+		 */
+		public String getDescripcion() {
+			return descripcion;
+		}
+
+		/**
+		 * @return the resuelta
+		 */
+		public boolean isResuelta() {
+			return resuelta;
+		}
+
 		// Resto de los métodos y atributos de la clase Incidencia...
 	}
 
@@ -145,15 +177,13 @@ public abstract class Juego implements Serializable {
 	 * @return the unidades
 	 */
 	public List<Unidad> getUnidades() {
-		
-		if (unidades!=null) {
+
+		if (unidades != null) {
 			return unidades;
-		}else {
+		} else {
 			return new ArrayList<>();
 		}
-		
-		
-		
+
 	}
 
 }
