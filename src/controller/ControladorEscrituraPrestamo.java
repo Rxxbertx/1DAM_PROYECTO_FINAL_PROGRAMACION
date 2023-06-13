@@ -8,11 +8,11 @@ import java.io.IOException;
 import model.ModeloPrestamo;
 import model.Prestamo;
 
-public class EscrituraPrestamo {
+public class ControladorEscrituraPrestamo {
 
 	private BufferedWriter escritura;
 
-	public EscrituraPrestamo(Prestamo prestamo) {
+	public ControladorEscrituraPrestamo(Prestamo prestamo) {
 
 		File ficheroDatos = new File("data/prestamos.dat");
 

@@ -16,7 +16,7 @@ import model.Prestamo;
 import model.Videojuego;
 import objetosModificados.renderizaDeImagenTabla;
 import utilidades.utilidades;
-import view.GestionPrestamo;
+import view.VentanaGestionPrestamo;
 import view.VentanaHistorialPrestamos;
 
 public class ControladorVerHistorialPrestamos {
@@ -25,17 +25,17 @@ public class ControladorVerHistorialPrestamos {
 	private ModeloPrestamo prestamos;
 	private ModeloGenerico<Juego> juegos;
 
-	public ControladorVerHistorialPrestamos(GestionPrestamo root) {
+	public ControladorVerHistorialPrestamos(VentanaGestionPrestamo root) {
 
 		// Definir los nombres de las columnas
 
 		ventana = new VentanaHistorialPrestamos();
 
 		prestamos = new ModeloPrestamo();
-		new LecturaPrestamo();
+		new ControladorLecturaPrestamo();
 		juegos = new ModeloGenerico<Juego>();
 		try {
-			juegos.setElementos(new LecturaElementos().devolverElementos());
+			juegos.setElementos(new ControladorLecturaElementos().devolverElementos());
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

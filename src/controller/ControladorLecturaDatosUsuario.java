@@ -10,11 +10,11 @@ import model.Empleado;
 import model.ModeloUsuario;
 import model.Socio;
 
-public class LecturaDatosUsuario {
+public class ControladorLecturaDatosUsuario {
 
 	private ModeloUsuario modeloUsuario;
 
-	public LecturaDatosUsuario() {
+	public ControladorLecturaDatosUsuario() {
 
 		modeloUsuario = new ModeloUsuario();
 

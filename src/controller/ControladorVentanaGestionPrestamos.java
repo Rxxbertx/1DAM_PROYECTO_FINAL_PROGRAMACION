@@ -13,16 +13,16 @@ import model.Juego;
 import model.ModeloGenerico;
 import objetosModificados.renderizadoDeCeldaJList;
 import utilidades.utilidades;
-import view.GestionJuegos;
-import view.GestionPrestamo;
+import view.VentanaGestionJuegos;
+import view.VentanaGestionPrestamo;
 import view.VentanaPrincipalEmpleado;
 
-public class ControladorGestionPrestamos implements ActionListener {
+public class ControladorVentanaGestionPrestamos implements ActionListener {
 
-	private GestionPrestamo ventana;
+	private VentanaGestionPrestamo ventana;
 	private ModeloGenerico<Juego> juegos;
 
-	public ControladorGestionPrestamos(VentanaPrincipalEmpleado ventanaEmpleado) {
+	public ControladorVentanaGestionPrestamos(VentanaPrincipalEmpleado ventanaEmpleado) {
 
 		configuracionInicial(ventanaEmpleado);
 
@@ -33,11 +33,11 @@ public class ControladorGestionPrestamos implements ActionListener {
 
 	private void configuracionInicial(VentanaPrincipalEmpleado ventanaEmpleado) {
 
-		ventana = new GestionPrestamo();
+		ventana = new VentanaGestionPrestamo();
 
 		juegos = new ModeloGenerico<>();
 		try {
-			juegos.setElementos(new LecturaElementos().devolverElementos());
+			juegos.setElementos(new ControladorLecturaElementos().devolverElementos());
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

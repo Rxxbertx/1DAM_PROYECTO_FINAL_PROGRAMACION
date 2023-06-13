@@ -23,7 +23,7 @@ import model.Usuario;
 import model.Videojuego;
 import objetosModificados.renderizadoDeCeldaJListUnidadCentrado;
 import utilidades.utilidades;
-import view.GestionPrestamo;
+import view.VentanaGestionPrestamo;
 import view.VentanaInfoPrestamos;
 import view.VentanaPrinicipalSocio;
 
@@ -34,7 +34,7 @@ public class ControladorVentanaInfoJuegoEmpleado implements ActionListener, List
 	private Videojuego videojuego;
 	private ModeloPrestamo prestamos;
 
-	public ControladorVentanaInfoJuegoEmpleado(Juego temp, ModeloGenerico<Juego> juegos, GestionPrestamo root) {
+	public ControladorVentanaInfoJuegoEmpleado(Juego temp, ModeloGenerico<Juego> juegos, VentanaGestionPrestamo root) {
 
 		this.juegos = juegos;
 
@@ -53,7 +53,7 @@ public class ControladorVentanaInfoJuegoEmpleado implements ActionListener, List
 
 	private void configuracionGeneral() {
 
-		new LecturaPrestamo();
+		new ControladorLecturaPrestamo();
 
 		ventana.getLbImagenJuego().setIcon(utilidades.resizeIcon(new ImageIcon(videojuego.getImagen()), 150, 150));
 		ventana.getLblCompañiaRellenar().setText(videojuego.getCompañia());
@@ -87,8 +87,8 @@ public class ControladorVentanaInfoJuegoEmpleado implements ActionListener, List
 
 			prestamo.setFechaFin(LocalDateTime.now());
 
-			EscrituraPrestamo.ModificacionArchivo(prestamos);
-			EscrituraElementos.ModificacionArchivo(juegos);
+			ControladorEscrituraPrestamo.ModificacionArchivo(prestamos);
+			ControladorEscrituraElementos.ModificacionArchivo(juegos);
 
 			ventana.getListJuegos().clearSelection();
 

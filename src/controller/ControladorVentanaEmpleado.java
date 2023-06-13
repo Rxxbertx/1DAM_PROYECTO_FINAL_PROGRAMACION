@@ -5,14 +5,14 @@ import java.awt.event.ActionListener;
 
 import animaciones.ZoomAnimation;
 import model.Usuario;
-import view.LoginWindow;
+import view.VentanaLoginWindow;
 import view.VentanaPrincipalEmpleado;
 
 public class ControladorVentanaEmpleado implements ActionListener {
 
 	private VentanaPrincipalEmpleado ventanaEmpleado;
 
-	public ControladorVentanaEmpleado(view.LoginWindow loginWindow, Usuario usuario) {
+	public ControladorVentanaEmpleado(view.VentanaLoginWindow loginWindow, Usuario usuario) {
 
 		ventanaEmpleado = new VentanaPrincipalEmpleado();
 		ventanaEmpleado.setLocationRelativeTo(loginWindow);
@@ -32,21 +32,22 @@ public class ControladorVentanaEmpleado implements ActionListener {
 
 		if (e.getSource().equals(ventanaEmpleado.getBtnGestionJuegos())) {
 
-			new ControladorGestionJuegos(ventanaEmpleado);
+			new ControladorVentanaGestionJuegos(ventanaEmpleado);
 
 		}
 		if (e.getSource().equals(ventanaEmpleado.getBtnGestionUsuarios())) {
 
-			new ControladorGestionUsuarios(ventanaEmpleado);
+			new ControladorVentanaGestionUsuarios(ventanaEmpleado);
 
 		}
 
 		if (e.getSource().equals(ventanaEmpleado.getBtnGestionPrestamos())) {
-			new ControladorGestionPrestamos(ventanaEmpleado);
+			new ControladorVentanaGestionPrestamos(ventanaEmpleado);
 		}
 
 		if (e.getSource().equals(ventanaEmpleado.getBtnGestionIncidencias())) {
-			// todo
+
+			new ControladorVentanaGestionIncidencias(ventanaEmpleado);
 		}
 
 		if (e.getSource().equals(ventanaEmpleado.getBtnGestionSalir())) {
