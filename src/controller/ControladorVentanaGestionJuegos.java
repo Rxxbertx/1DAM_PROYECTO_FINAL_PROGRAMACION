@@ -26,14 +26,14 @@ import model.Prestamo;
 import model.Videojuego;
 import objetosModificados.renderizadoDeCeldaComboBox;
 import utilidades.utilidades;
-import view.GestionJuegos;
+import view.VentanaGestionJuegos;
 import view.VentanaPrincipalEmpleado;
 
 public class ControladorVentanaGestionJuegos implements ActionListener, ItemListener {
 
 	private ModeloGenerico<Juego> juegos;
 
-	private GestionJuegos ventanaGestionJuegos;
+	private VentanaGestionJuegos ventanaGestionJuegos;
 
 	private ModeloPrestamo prestamos;
 
@@ -45,7 +45,7 @@ public class ControladorVentanaGestionJuegos implements ActionListener, ItemList
 		prestamos = new ModeloPrestamo();
 		incidencias = new ModeloIncidencias();
 
-		ventanaGestionJuegos = new GestionJuegos();
+		ventanaGestionJuegos = new VentanaGestionJuegos();
 		ventanaGestionJuegos.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		ventanaGestionJuegos.setLocationRelativeTo(ventanaEmpleado);
 

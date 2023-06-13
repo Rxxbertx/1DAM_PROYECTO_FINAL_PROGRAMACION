@@ -13,13 +13,13 @@ import model.Juego;
 import model.ModeloGenerico;
 import objetosModificados.renderizadoDeCeldaJList;
 import utilidades.utilidades;
-import view.GestionJuegos;
-import view.GestionPrestamo;
+import view.VentanaGestionJuegos;
+import view.VentanaGestionPrestamo;
 import view.VentanaPrincipalEmpleado;
 
 public class ControladorVentanaGestionPrestamos implements ActionListener {
 
-	private GestionPrestamo ventana;
+	private VentanaGestionPrestamo ventana;
 	private ModeloGenerico<Juego> juegos;
 
 	public ControladorVentanaGestionPrestamos(VentanaPrincipalEmpleado ventanaEmpleado) {
@@ -33,7 +33,7 @@ public class ControladorVentanaGestionPrestamos implements ActionListener {
 
 	private void configuracionInicial(VentanaPrincipalEmpleado ventanaEmpleado) {
 
-		ventana = new GestionPrestamo();
+		ventana = new VentanaGestionPrestamo();
 
 		juegos = new ModeloGenerico<>();
 		try {

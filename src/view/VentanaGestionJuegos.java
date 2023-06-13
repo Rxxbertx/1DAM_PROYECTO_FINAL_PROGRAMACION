@@ -31,7 +31,7 @@ import javax.swing.border.TitledBorder;
 import model.Juego;
 import java.awt.Toolkit;
 
-public class GestionJuegos extends JFrame {
+public class VentanaGestionJuegos extends JFrame {
 
 	/**
 	 * 
@@ -90,8 +90,12 @@ public class GestionJuegos extends JFrame {
 	private JPanel panelVer;
 	private JPanel panelInformacion;
 
+<<<<<<< Updated upstream:src/view/GestionJuegos.java
 	public GestionJuegos() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(GestionJuegos.class.getResource("/images/icons8-play-games-96.png")));
+=======
+	public VentanaGestionJuegos() {
+>>>>>>> Stashed changes:src/view/VentanaGestionJuegos.java
 
 		Border innerBorder1 = BorderFactory.createLineBorder(Color.WHITE, 3);
 		Border outerBorder1 = BorderFactory.createLineBorder(new Color(128, 0, 0), 10);
@@ -120,7 +124,7 @@ public class GestionJuegos extends JFrame {
 		btnAñadirJuego = new JButton("");
 		btnAñadirJuego.setToolTipText("Añadir Juego");
 		btnAñadirJuego.setBounds(new Rectangle(0, 0, 0, 40));
-		btnAñadirJuego.setIcon(new ImageIcon(GestionJuegos.class.getResource("/images/icons8-más-64.png")));
+		btnAñadirJuego.setIcon(new ImageIcon(VentanaGestionJuegos.class.getResource("/images/icons8-más-64.png")));
 		btnAñadirJuego.setContentAreaFilled(false);
 		btnAñadirJuego.setBorderPainted(false);
 		panel.add(btnAñadirJuego);
@@ -129,20 +133,20 @@ public class GestionJuegos extends JFrame {
 		btnEliminarJuego.setToolTipText("Eliminar Juego");
 		btnEliminarJuego.setBorderPainted(false);
 		btnEliminarJuego.setContentAreaFilled(false);
-		btnEliminarJuego.setIcon(new ImageIcon(GestionJuegos.class.getResource("/images/icons8-menos-64.png")));
+		btnEliminarJuego.setIcon(new ImageIcon(VentanaGestionJuegos.class.getResource("/images/icons8-menos-64.png")));
 		panel.add(btnEliminarJuego);
 
 		btnVerJuego = new JButton("");
 		btnVerJuego.setToolTipText("Ver Juegos");
 		btnVerJuego.setBorderPainted(false);
 		btnVerJuego.setContentAreaFilled(false);
-		btnVerJuego.setIcon(new ImageIcon(GestionJuegos.class.getResource("/images/icons8-surprise-64.png")));
+		btnVerJuego.setIcon(new ImageIcon(VentanaGestionJuegos.class.getResource("/images/icons8-surprise-64.png")));
 		panel.add(btnVerJuego);
 
 		btnModificarJuego = new JButton("");
 		btnModificarJuego.setToolTipText("Editar Juegos");
 		btnModificarJuego.setContentAreaFilled(false);
-		btnModificarJuego.setIcon(new ImageIcon(GestionJuegos.class.getResource("/images/icons8-edit-64.png")));
+		btnModificarJuego.setIcon(new ImageIcon(VentanaGestionJuegos.class.getResource("/images/icons8-edit-64.png")));
 		panel.add(btnModificarJuego);
 		btnModificarJuego.setBorderPainted(false);
 		panel.setBackground(new Color(128, 0, 0, 255));
