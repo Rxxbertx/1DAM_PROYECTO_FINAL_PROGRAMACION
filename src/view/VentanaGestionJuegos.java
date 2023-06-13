@@ -90,12 +90,9 @@ public class VentanaGestionJuegos extends JFrame {
 	private JPanel panelVer;
 	private JPanel panelInformacion;
 
-<<<<<<< Updated upstream:src/view/GestionJuegos.java
-	public GestionJuegos() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(GestionJuegos.class.getResource("/images/icons8-play-games-96.png")));
-=======
+
 	public VentanaGestionJuegos() {
->>>>>>> Stashed changes:src/view/VentanaGestionJuegos.java
+
 
 		Border innerBorder1 = BorderFactory.createLineBorder(Color.WHITE, 3);
 		Border outerBorder1 = BorderFactory.createLineBorder(new Color(128, 0, 0), 10);

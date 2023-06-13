@@ -68,12 +68,8 @@ public class VentanaGestionPrestamo extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-<<<<<<< Updated upstream:src/view/GestionPrestamo.java
-	public GestionPrestamo() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(GestionPrestamo.class.getResource("/images/icons8-play-games-96.png")));
-=======
+
 	public VentanaGestionPrestamo() {
->>>>>>> Stashed changes:src/view/VentanaGestionPrestamo.java
 		Border innerBorder1 = BorderFactory.createLineBorder(Color.WHITE, 2);
 		Border outerBorder2 = BorderFactory.createLineBorder(new Color(128, 0, 0), 8);
 
