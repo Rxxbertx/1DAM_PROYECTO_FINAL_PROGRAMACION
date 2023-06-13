@@ -105,6 +105,7 @@ public abstract class Juego implements Serializable {
 			this.id = numero;
 			this.incidencias = new ArrayList<>();
 			this.setIdJuego(idJuego);
+			this.prestamo = getPrestamo();
 		}
 
 		public Prestamo getPrestamo() {

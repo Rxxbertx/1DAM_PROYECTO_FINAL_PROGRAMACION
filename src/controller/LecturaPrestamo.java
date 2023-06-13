@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 import model.ModeloPrestamo;
 import model.Prestamo;
@@ -16,6 +17,8 @@ public class LecturaPrestamo {
 	public LecturaPrestamo() {
 
 		modeloPrestamo = new ModeloPrestamo();
+
+		modeloPrestamo.setPrestamos(new ArrayList<>());
 
 		File ficheroDatos = new File("data/prestamos.dat");
 

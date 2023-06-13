@@ -1,5 +1,6 @@
 package objetosModificados;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 
@@ -27,6 +28,8 @@ public class renderizadoDeCeldaJList extends JLabel implements ListCellRenderer<
 		setVerticalAlignment(CENTER);
 		setHorizontalTextPosition(SwingConstants.RIGHT);
 		setVerticalTextPosition(SwingConstants.CENTER);
+		setOpaque(true);
+		setBorder(new EmptyBorder(5, 10, 5, 10));
 
 	}
 
@@ -35,6 +38,10 @@ public class renderizadoDeCeldaJList extends JLabel implements ListCellRenderer<
 			boolean cellHasFocus) {
 		// Get the selected index. (The index param isn't
 		// always valid, so just use the value.)
+
+		if (isSelected) {
+			setBackground(new Color(128, 0, 0));
+		}
 
 		Juego selectedIndex = (Juego) value;
 
@@ -46,11 +53,12 @@ public class renderizadoDeCeldaJList extends JLabel implements ListCellRenderer<
 							: "src/images/default.png");
 
 			String nombre = selectedIndex.getNombre();
-			String plataforma = ((Videojuego) (selectedIndex)).getImagen();
+			String plataforma = ((Videojuego) (selectedIndex)).getPlatSelecciona();
 
 			setIcon(utilidades.resizeIcon(icon, 100, 100));
-			setText(nombre + " Plataforma: " + plataforma + "UNIDADES UTILIZADAS: " + selectedIndex.getUdsUtilizadas());
-			setFont(new Font("Arial", Font.BOLD, 20));
+			setText(nombre + " [Plataforma: " + plataforma + "] UNIDADES UTILIZADAS: "
+					+ selectedIndex.getUdsUtilizadas());
+			setFont(new Font("Arial", Font.BOLD, 15));
 			setBorder(new EmptyBorder(0, 0, 0, 0));
 		} else {
 			setIcon(null);

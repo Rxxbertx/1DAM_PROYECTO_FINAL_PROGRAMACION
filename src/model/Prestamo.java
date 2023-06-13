@@ -1,8 +1,13 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Prestamo {
+public class Prestamo implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1166145454522290630L;
 	private LocalDateTime fechaInicio;
 	private LocalDateTime fechaFin;
 	private String usuario;
@@ -10,10 +15,13 @@ public class Prestamo {
 	private String idJuego;
 
 	public Prestamo(String idJuego, int unidad, String usuario, LocalDateTime fechaInicio, LocalDateTime fechaFin) {
+
+		this.idJuego = idJuego;
+		this.unidad = unidad;
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
 		this.usuario = usuario;
-		this.setUnidad(unidad);
+
 	}
 
 	public LocalDateTime getFechaInicio() {

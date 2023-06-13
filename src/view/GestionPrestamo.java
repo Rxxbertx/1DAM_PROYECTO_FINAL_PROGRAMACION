@@ -6,6 +6,8 @@ import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
 
+import model.Juego;
+
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -17,31 +19,25 @@ import javax.swing.SpringLayout;
 import javax.swing.WindowConstants;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
+import java.awt.Component;
+import javax.swing.BoxLayout;
+import javax.swing.Box;
+import javax.swing.SwingConstants;
+import javax.swing.JScrollPane;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.LineBorder;
 
 public class GestionPrestamo extends JFrame {
 
 	private JPanel contentPane;
 	private JButton btnHistorico;
 	private JButton btnSalir;
-	private JList listPrestamo;
+	private JList<Juego> listPrestamo;
 	private JButton btnVer;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				try {
-					GestionPrestamo frame = new GestionPrestamo();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private Component verticalGlue;
+	private Component verticalGlue_2;
+	private Component verticalGlue_1;
+	private JScrollPane scrollPane;
 
 	public JButton getBtnHistorico() {
 		return btnHistorico;
@@ -51,7 +47,7 @@ public class GestionPrestamo extends JFrame {
 		return btnSalir;
 	}
 
-	public JList getListPrestamo() {
+	public JList<Juego> getListPrestamo() {
 		return listPrestamo;
 	}
 
@@ -79,24 +75,38 @@ public class GestionPrestamo extends JFrame {
 
 		JPanel panelSeleccion = new JPanel();
 		panelSeleccion.setBorder(compoundBorder1);
-
-		panelSeleccion.setPreferredSize(new Dimension(180, 10));
 		contentPane.add(panelSeleccion, BorderLayout.WEST);
+		panelSeleccion.setLayout(new BoxLayout(panelSeleccion, BoxLayout.Y_AXIS));
+
+		verticalGlue = Box.createVerticalGlue();
+		panelSeleccion.add(verticalGlue);
 
 		btnHistorico = new JButton("Histórico");
+		btnHistorico.setVerticalTextPosition(SwingConstants.BOTTOM);
+		btnHistorico.setHorizontalTextPosition(SwingConstants.CENTER);
+		btnHistorico.setAlignmentX(Component.CENTER_ALIGNMENT);
 		btnHistorico.setBorderPainted(false);
 		btnHistorico.setBorder(null);
 		btnHistorico.setContentAreaFilled(false);
-		btnHistorico.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnHistorico.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnHistorico.setIcon(new ImageIcon(GestionPrestamo.class.getResource("/images/Reloj arena80.png")));
 		panelSeleccion.add(btnHistorico);
 
+		verticalGlue_1 = Box.createVerticalGlue();
+		panelSeleccion.add(verticalGlue_1);
+
 		btnSalir = new JButton("Salir");
+		btnSalir.setVerticalTextPosition(SwingConstants.BOTTOM);
+		btnSalir.setAlignmentX(Component.CENTER_ALIGNMENT);
+		btnSalir.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnSalir.setContentAreaFilled(false);
 		btnSalir.setBorderPainted(false);
 		btnSalir.setIcon(new ImageIcon(GestionPrestamo.class.getResource("/images/icons8-exit-96(1).png")));
-		btnSalir.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnSalir.setFont(new Font("Tahoma", Font.BOLD, 20));
 		panelSeleccion.add(btnSalir);
+
+		verticalGlue_2 = Box.createVerticalGlue();
+		panelSeleccion.add(verticalGlue_2);
 
 		JPanel panelGestionPrestamo = new JPanel();
 		contentPane.add(panelGestionPrestamo, BorderLayout.CENTER);
@@ -105,13 +115,13 @@ public class GestionPrestamo extends JFrame {
 
 		listPrestamo = new JList();
 		listPrestamo.setPreferredSize(new Dimension(100, 100));
-		panelGestionPrestamo.add(listPrestamo, BorderLayout.CENTER);
+
 		Border innerBorder3 = BorderFactory.createLineBorder(Color.WHITE, 1);
 
 		Border outerBorder3 = BorderFactory.createLineBorder(new Color(128, 0, 0), 1);
 		Border compoundBorder3 = BorderFactory.createCompoundBorder(innerBorder3, outerBorder3);
 
-		listPrestamo.setBorder(compoundBorder3);
+		listPrestamo.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		JPanel panel = new JPanel();
 		panel.setPreferredSize(new Dimension(10, 75));
@@ -133,8 +143,7 @@ public class GestionPrestamo extends JFrame {
 		btnVer.setBackground(new Color(128, 0, 0));
 		panel.add(btnVer);
 
-		JScrollBar scrollBar = new JScrollBar();
-		scrollBar.setPreferredSize(new Dimension(20, 48));
-		panelGestionPrestamo.add(scrollBar, BorderLayout.EAST);
+		scrollPane = new JScrollPane(listPrestamo);
+		panelGestionPrestamo.add(scrollPane, BorderLayout.CENTER);
 	}
 }

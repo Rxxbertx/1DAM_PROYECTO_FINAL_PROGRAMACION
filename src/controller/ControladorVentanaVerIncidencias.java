@@ -46,6 +46,8 @@ public class ControladorVentanaVerIncidencias {
 			String[] datosCelda = { String.valueOf(unidad.getId()), descPrestamo, descIncidencias };
 
 			ventana.getDatos().addRow(datosCelda);
+		
+			
 
 		}
 	}
