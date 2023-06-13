@@ -23,7 +23,7 @@ import model.Usuario;
 import model.Videojuego;
 import objetosModificados.renderizadoDeCeldaJListUnidadCentrado;
 import utilidades.utilidades;
-import view.VentanaGestionPrestamo;
+import view.GestionPrestamo;
 import view.VentanaInfoPrestamos;
 import view.VentanaPrinicipalSocio;
 
@@ -34,7 +34,7 @@ public class ControladorVentanaInfoJuegoEmpleado implements ActionListener, List
 	private Videojuego videojuego;
 	private ModeloPrestamo prestamos;
 
-	public ControladorVentanaInfoJuegoEmpleado(Juego temp, ModeloGenerico<Juego> juegos, VentanaGestionPrestamo root) {
+	public ControladorVentanaInfoJuegoEmpleado(Juego temp, ModeloGenerico<Juego> juegos, GestionPrestamo root) {
 
 		this.juegos = juegos;
 

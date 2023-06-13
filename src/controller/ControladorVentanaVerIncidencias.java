@@ -3,14 +3,14 @@ package controller;
 import model.Juego;
 import model.Juego.Incidencia;
 import model.Prestamo;
-import view.VentanaGestionJuegos;
+import view.GestionJuegos;
 import view.VentanaVerIncidencias;
 
 public class ControladorVentanaVerIncidencias {
 
 	private VentanaVerIncidencias ventana;
 
-	public ControladorVentanaVerIncidencias(Juego juego, VentanaGestionJuegos ventanaGestionJuegos) {
+	public ControladorVentanaVerIncidencias(Juego juego, GestionJuegos ventanaGestionJuegos) {
 
 		ventana = new VentanaVerIncidencias();
 

@@ -19,7 +19,7 @@ import model.Videojuego;
 import objetosModificados.renderizadoDeCeldaJList;
 import utilidades.utilidades;
 import view.VentanaGestionIncidencias;
-import view.VentanaGestionPrestamo;
+import view.GestionPrestamo;
 import view.VentanaPrincipalEmpleado;
 
 public class ControladorVentanaGestionIncidencias implements ActionListener {

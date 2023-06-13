@@ -16,7 +16,7 @@ import model.Prestamo;
 import model.Videojuego;
 import objetosModificados.renderizaDeImagenTabla;
 import utilidades.utilidades;
-import view.VentanaGestionPrestamo;
+import view.GestionPrestamo;
 import view.VentanaHistorialPrestamos;
 
 public class ControladorVerHistorialPrestamos {
@@ -25,7 +25,7 @@ public class ControladorVerHistorialPrestamos {
 	private ModeloPrestamo prestamos;
 	private ModeloGenerico<Juego> juegos;
 
-	public ControladorVerHistorialPrestamos(VentanaGestionPrestamo root) {
+	public ControladorVerHistorialPrestamos(GestionPrestamo root) {
 
 		// Definir los nombres de las columnas
 

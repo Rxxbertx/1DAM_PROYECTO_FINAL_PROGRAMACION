@@ -28,7 +28,7 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.ListSelectionModel;
 
-public class VentanaGestionPrestamo extends JFrame {
+public class GestionPrestamo extends JFrame {
 
 	/**
 	 * 
@@ -63,7 +63,7 @@ public class VentanaGestionPrestamo extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VentanaGestionPrestamo() {
+	public GestionPrestamo() {
 		Border innerBorder1 = BorderFactory.createLineBorder(Color.WHITE, 2);
 		Border outerBorder2 = BorderFactory.createLineBorder(new Color(128, 0, 0), 8);
 
@@ -94,7 +94,7 @@ public class VentanaGestionPrestamo extends JFrame {
 		btnHistorico.setBorder(null);
 		btnHistorico.setContentAreaFilled(false);
 		btnHistorico.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnHistorico.setIcon(new ImageIcon(VentanaGestionPrestamo.class.getResource("/images/Reloj arena80.png")));
+		btnHistorico.setIcon(new ImageIcon(GestionPrestamo.class.getResource("/images/Reloj arena80.png")));
 		panelSeleccion.add(btnHistorico);
 
 		verticalGlue_1 = Box.createVerticalGlue();
@@ -106,7 +106,7 @@ public class VentanaGestionPrestamo extends JFrame {
 		btnSalir.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnSalir.setContentAreaFilled(false);
 		btnSalir.setBorderPainted(false);
-		btnSalir.setIcon(new ImageIcon(VentanaGestionPrestamo.class.getResource("/images/icons8-exit-96(1).png")));
+		btnSalir.setIcon(new ImageIcon(GestionPrestamo.class.getResource("/images/icons8-exit-96(1).png")));
 		btnSalir.setFont(new Font("Tahoma", Font.BOLD, 20));
 		panelSeleccion.add(btnSalir);
 
