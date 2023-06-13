@@ -2,6 +2,7 @@ package objetosModificados;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.ImageIcon;
@@ -15,41 +16,40 @@ import model.Juego;
 import model.Videojuego;
 import utilidades.utilidades;
 
-public class renderizadoDeCeldaJList extends JLabel implements ListCellRenderer<Object> {
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JScrollPane;
+import javax.swing.SwingConstants;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
 
-	/**
-	 * 
-	 */
+public class renderizadoDeCeldaJList extends DefaultListCellRenderer {
+
 	private static final long serialVersionUID = -6328457360576448181L;
 
-	public renderizadoDeCeldaJList() {
-
-		setHorizontalAlignment(CENTER);
-		setVerticalAlignment(CENTER);
-		setHorizontalTextPosition(SwingConstants.RIGHT);
-		setVerticalTextPosition(SwingConstants.CENTER);
-		setOpaque(true);
-		setBorder(new EmptyBorder(5, 10, 5, 10));
-
-	}
-
 	@Override
-	public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
+	public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected,
 			boolean cellHasFocus) {
-		// Get the selected index. (The index param isn't
-		// always valid, so just use the value.)
+		JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		label.setVerticalAlignment(SwingConstants.CENTER);
+		label.setHorizontalTextPosition(SwingConstants.RIGHT);
+		label.setVerticalTextPosition(SwingConstants.CENTER);
+		label.setOpaque(true);
+		label.setBorder(new EmptyBorder(5, 10, 5, 10));
 
 		if (isSelected) {
-			setBackground(new Color(128, 0, 0));
-			setForeground(Color.white);
+			label.setBackground(new Color(128, 0, 0));
+			label.setForeground(Color.white);
 		} else {
-			setBackground(list.getBackground());
-			setForeground(Color.black);
+			label.setBackground(list.getBackground());
+			label.setForeground(Color.black);
 		}
 
 		Juego selectedIndex = (Juego) value;
-
-		// Set the icon and text. If icon was null, say so.
 
 		if (selectedIndex != null) {
 			ImageIcon icon = new ImageIcon(
@@ -59,17 +59,25 @@ public class renderizadoDeCeldaJList extends JLabel implements ListCellRenderer<
 			String nombre = selectedIndex.getNombre();
 			String plataforma = ((Videojuego) (selectedIndex)).getPlatSelecciona();
 
-			setIcon(utilidades.resizeIcon(icon, 100, 100));
-			setText(nombre + " [Plataforma: " + plataforma + "] UNIDADES UTILIZADAS: "
+			label.setIcon(utilidades.resizeIcon(icon, 100, 100));
+			label.setText(nombre + " [Plataforma: " + plataforma + "] UNIDADES UTILIZADAS: "
 					+ selectedIndex.getUdsUtilizadas());
-			setFont(new Font("Arial", Font.BOLD, 15));
-			setBorder(new EmptyBorder(0, 0, 0, 0));
+			label.setFont(new Font("Arial", Font.BOLD, 15));
+			label.setBorder(new EmptyBorder(0, 0, 0, 0));
+
+			label.setMaximumSize(new Dimension(100, 100));
+
 		} else {
-			setIcon(null);
-			setText(null);
+			label.setIcon(null);
+			label.setText(null);
 		}
 
-		return this;
-	}
+		if (list instanceof JList<?> && list.getParent() instanceof JScrollPane) {
+			JScrollPane scrollPane = (JScrollPane) list.getParent().getParent();
+			scrollPane.revalidate();
+			scrollPane.repaint();
+		}
 
+		return label;
+	}
 }
