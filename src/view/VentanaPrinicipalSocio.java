@@ -7,7 +7,8 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
-import utilidades.utilidades;
+import java.awt.Toolkit;
+
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -26,7 +27,7 @@ import javax.swing.border.MatteBorder;
 public class VentanaPrinicipalSocio extends JFrame {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = -7103505920094447842L;
 	private JPanel contentPane;
@@ -51,6 +52,7 @@ public class VentanaPrinicipalSocio extends JFrame {
 	private JButton btnDevolver;
 
 	public VentanaPrinicipalSocio() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaPrinicipalSocio.class.getResource("/images/icons8-play-games-96.png")));
 
 		Border innerBorder1 = BorderFactory.createLineBorder(Color.WHITE, 0);
 		Border outerBorder1 = BorderFactory.createLineBorder(new Color(128, 0, 0), 8);
@@ -145,20 +147,20 @@ public class VentanaPrinicipalSocio extends JFrame {
 		panelCard.add(panelAjustesCuenta, "ajustes");
 		panelAjustesCuenta.setLayout(null);
 
-		JLabel lblNewLabel_1_1 = new JLabel("Apellidos");
-		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		lblNewLabel_1_1.setBounds(133, 198, 120, 37);
-		panelAjustesCuenta.add(lblNewLabel_1_1);
+		JLabel lblApellidos = new JLabel("Apellidos");
+		lblApellidos.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lblApellidos.setBounds(133, 198, 120, 37);
+		panelAjustesCuenta.add(lblApellidos);
 
-		JLabel lblNewLabel_1_2 = new JLabel("Usuario");
-		lblNewLabel_1_2.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		lblNewLabel_1_2.setBounds(133, 314, 120, 37);
-		panelAjustesCuenta.add(lblNewLabel_1_2);
+		JLabel lblUsuario = new JLabel("Usuario");
+		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lblUsuario.setBounds(133, 314, 120, 37);
+		panelAjustesCuenta.add(lblUsuario);
 
-		JLabel lblNewLabel_1_1_1 = new JLabel("Nombre");
-		lblNewLabel_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		lblNewLabel_1_1_1.setBounds(133, 82, 120, 37);
-		panelAjustesCuenta.add(lblNewLabel_1_1_1);
+		JLabel lblNombre = new JLabel("Nombre");
+		lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lblNombre.setBounds(133, 82, 120, 37);
+		panelAjustesCuenta.add(lblNombre);
 
 		lblNombreRellenar = new JLabel("");
 		lblNombreRellenar.setFont(new Font("Tahoma", Font.PLAIN, 25));
@@ -186,13 +188,13 @@ public class VentanaPrinicipalSocio extends JFrame {
 		panelCard.add(panelSalir, "salir");
 		panelSalir.setLayout(null);
 
-		JLabel lblNewLabel_1 = new JLabel("Seguro que deseas salir?");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 25));
-		lblNewLabel_1.setAlignmentX(Component.CENTER_ALIGNMENT);
-		lblNewLabel_1.setAlignmentY(Component.CENTER_ALIGNMENT);
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(165, 128, 339, 51);
-		panelSalir.add(lblNewLabel_1);
+		JLabel lblPreguntaSalir = new JLabel("Seguro que deseas salir?");
+		lblPreguntaSalir.setFont(new Font("Tahoma", Font.BOLD, 25));
+		lblPreguntaSalir.setAlignmentX(Component.CENTER_ALIGNMENT);
+		lblPreguntaSalir.setAlignmentY(Component.CENTER_ALIGNMENT);
+		lblPreguntaSalir.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPreguntaSalir.setBounds(165, 128, 339, 51);
+		panelSalir.add(lblPreguntaSalir);
 
 		btnSalirSi = new JButton("Si");
 		btnSalirSi.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -214,13 +216,13 @@ public class VentanaPrinicipalSocio extends JFrame {
 		panelCard.add(panelConJuego, "juego");
 		panelConJuego.setLayout(new BoxLayout(panelConJuego, BoxLayout.Y_AXIS));
 
-		JLabel lblNewLabel_2 = new JLabel("Prestamos En Curso");
-		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2.setMaximumSize(new Dimension(260, 20));
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
-		lblNewLabel_2.setBorder(new EmptyBorder(10, 0, 0, 0));
-		lblNewLabel_2.setAlignmentX(Component.CENTER_ALIGNMENT);
-		panelConJuego.add(lblNewLabel_2);
+		JLabel lblPrestamosEnCurso = new JLabel("Prestamos En Curso");
+		lblPrestamosEnCurso.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPrestamosEnCurso.setMaximumSize(new Dimension(260, 20));
+		lblPrestamosEnCurso.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
+		lblPrestamosEnCurso.setBorder(new EmptyBorder(10, 0, 0, 0));
+		lblPrestamosEnCurso.setAlignmentX(Component.CENTER_ALIGNMENT);
+		panelConJuego.add(lblPrestamosEnCurso);
 
 		Component verticalGlue = Box.createVerticalGlue();
 		panelConJuego.add(verticalGlue);

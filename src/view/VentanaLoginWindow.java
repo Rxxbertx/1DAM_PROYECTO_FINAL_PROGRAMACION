@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Toolkit;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -22,7 +23,7 @@ import javax.swing.border.MatteBorder;
 public class VentanaLoginWindow extends JFrame {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 3238110608786952114L;
 	private JPanel contentPane;
@@ -45,6 +46,7 @@ public class VentanaLoginWindow extends JFrame {
 	 * Create the frame.
 	 */
 	public VentanaLoginWindow() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaLoginWindow.class.getResource("/images/icons8-play-games-96.png")));
 		setTitle("App");
 		setBackground(new Color(128, 0, 0));
 		setFont(new Font("Arial", Font.PLAIN, 15));
@@ -63,22 +65,22 @@ public class VentanaLoginWindow extends JFrame {
 		panelLogin.setLayout(null);
 		panelCard.add(panelLogin, "panelLogin");
 
-		JLabel lblNewLabel_1 = new JLabel("Iniciar Sesion");
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 40));
-		lblNewLabel_1.setBorder(new MatteBorder(0, 0, 10, 0, new Color(128, 0, 0)));
-		lblNewLabel_1.setBounds(123, 38, 330, 59);
-		panelLogin.add(lblNewLabel_1);
+		JLabel lblIniciarSesion = new JLabel("Iniciar Sesion");
+		lblIniciarSesion.setHorizontalAlignment(SwingConstants.CENTER);
+		lblIniciarSesion.setFont(new Font("Tahoma", Font.BOLD, 40));
+		lblIniciarSesion.setBorder(new MatteBorder(0, 0, 10, 0, new Color(128, 0, 0)));
+		lblIniciarSesion.setBounds(123, 38, 330, 59);
+		panelLogin.add(lblIniciarSesion);
 
-		JLabel lblNewLabel_2 = new JLabel("Usuario");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
-		lblNewLabel_2.setBounds(81, 161, 146, 31);
-		panelLogin.add(lblNewLabel_2);
+		JLabel lblUsuario = new JLabel("Usuario");
+		lblUsuario.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
+		lblUsuario.setBounds(81, 161, 146, 31);
+		panelLogin.add(lblUsuario);
 
-		JLabel lblNewLabel_3 = new JLabel("Contraseña");
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
-		lblNewLabel_3.setBounds(81, 271, 146, 37);
-		panelLogin.add(lblNewLabel_3);
+		JLabel lblContraseña = new JLabel("Contraseña");
+		lblContraseña.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
+		lblContraseña.setBounds(81, 271, 146, 37);
+		panelLogin.add(lblContraseña);
 
 		textFieldUsuarioLogin = new JTextField();
 		textFieldUsuarioLogin.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
@@ -102,10 +104,10 @@ public class VentanaLoginWindow extends JFrame {
 		btnEntrar.setBounds(152, 353, 271, 77);
 		panelLogin.add(btnEntrar);
 
-		JLabel lblNewLabel_4 = new JLabel("No tienes cuenta? Date de ");
-		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
-		lblNewLabel_4.setBounds(81, 470, 279, 31);
-		panelLogin.add(lblNewLabel_4);
+		JLabel lblInfo = new JLabel("No tienes cuenta? Date de ");
+		lblInfo.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
+		lblInfo.setBounds(81, 470, 279, 31);
+		panelLogin.add(lblInfo);
 
 		btnAltaLogin = new JButton("ALTA");
 		btnAltaLogin.setContentAreaFilled(false);
@@ -126,22 +128,22 @@ public class VentanaLoginWindow extends JFrame {
 		panelCard.add(panelRegistrar, "panelRegistrar");
 		panelRegistrar.setLayout(null);
 
-		JLabel lblNewLabel_1_1 = new JLabel("Registrarse");
-		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.BOLD, 40));
-		lblNewLabel_1_1.setBorder(new MatteBorder(0, 0, 10, 0, new Color(128, 0, 0)));
-		lblNewLabel_1_1.setBounds(196, 27, 306, 98);
-		panelRegistrar.add(lblNewLabel_1_1);
+		JLabel lblRegistrarse = new JLabel("Registrarse");
+		lblRegistrarse.setHorizontalAlignment(SwingConstants.CENTER);
+		lblRegistrarse.setFont(new Font("Tahoma", Font.BOLD, 40));
+		lblRegistrarse.setBorder(new MatteBorder(0, 0, 10, 0, new Color(128, 0, 0)));
+		lblRegistrarse.setBounds(196, 27, 306, 98);
+		panelRegistrar.add(lblRegistrarse);
 
-		JLabel lblNewLabel_2_1 = new JLabel("Nombre");
-		lblNewLabel_2_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
-		lblNewLabel_2_1.setBounds(91, 167, 146, 31);
-		panelRegistrar.add(lblNewLabel_2_1);
+		JLabel lblNombre = new JLabel("Nombre");
+		lblNombre.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
+		lblNombre.setBounds(91, 167, 146, 31);
+		panelRegistrar.add(lblNombre);
 
-		JLabel lblNewLabel_3_1 = new JLabel("Apellidos");
-		lblNewLabel_3_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
-		lblNewLabel_3_1.setBounds(91, 242, 146, 37);
-		panelRegistrar.add(lblNewLabel_3_1);
+		JLabel lblApellidos = new JLabel("Apellidos");
+		lblApellidos.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
+		lblApellidos.setBounds(91, 242, 146, 37);
+		panelRegistrar.add(lblApellidos);
 
 		textFieldNombreRegistro = new JTextField();
 		textFieldNombreRegistro.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
@@ -163,10 +165,10 @@ public class VentanaLoginWindow extends JFrame {
 		btnAlta.setBounds(152, 444, 271, 77);
 		panelRegistrar.add(btnAlta);
 
-		JLabel lblNewLabel_2_1_1 = new JLabel("Usuario");
-		lblNewLabel_2_1_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
-		lblNewLabel_2_1_1.setBounds(91, 314, 146, 31);
-		panelRegistrar.add(lblNewLabel_2_1_1);
+		JLabel lblUsuarioTit = new JLabel("Usuario");
+		lblUsuarioTit.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
+		lblUsuarioTit.setBounds(91, 314, 146, 31);
+		panelRegistrar.add(lblUsuarioTit);
 
 		textFieldUsuarioRegistro = new JTextField();
 		textFieldUsuarioRegistro.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
@@ -174,10 +176,10 @@ public class VentanaLoginWindow extends JFrame {
 		textFieldUsuarioRegistro.setBounds(286, 308, 216, 43);
 		panelRegistrar.add(textFieldUsuarioRegistro);
 
-		JLabel lblNewLabel_2_1_2 = new JLabel("Contraseña");
-		lblNewLabel_2_1_2.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
-		lblNewLabel_2_1_2.setBounds(91, 385, 146, 31);
-		panelRegistrar.add(lblNewLabel_2_1_2);
+		JLabel lblContraseñaTit = new JLabel("Contraseña");
+		lblContraseñaTit.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
+		lblContraseñaTit.setBounds(91, 385, 146, 31);
+		panelRegistrar.add(lblContraseñaTit);
 
 		textFieldContraseñaRegistro = new JPasswordField();
 		textFieldContraseñaRegistro.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
@@ -198,12 +200,12 @@ public class VentanaLoginWindow extends JFrame {
 		contentPane.add(panel, BorderLayout.WEST);
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
-		JLabel lblNewLabel = new JLabel(new ImageIcon(VentanaLoginWindow.class.getResource("/images/lateral.png")));
-		panel.add(lblNewLabel);
+		JLabel lblImagen = new JLabel(new ImageIcon(VentanaLoginWindow.class.getResource("/images/lateral.png")));
+		panel.add(lblImagen);
 
 		// Agregar "pegamento" horizontal para rellenar el espacio sobrante
 		panel.add(Box.createVerticalGlue());
-		panel.add(lblNewLabel);
+		panel.add(lblImagen);
 		setVisible(true);
 		setLocationRelativeTo(null);
 

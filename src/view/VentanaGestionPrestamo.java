@@ -2,40 +2,36 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.Font;
 
 import model.Juego;
 import objetosModificados.renderizadoDeCeldaJList;
 
+
 import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.SpringLayout;
+import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
-import java.awt.Component;
-import javax.swing.BoxLayout;
-import javax.swing.Box;
-import javax.swing.SwingConstants;
-import javax.swing.JScrollPane;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.LineBorder;
-
-import javax.swing.ListSelectionModel;
-import java.awt.Toolkit;
-import javax.swing.JLabel;
 
 public class VentanaGestionPrestamo extends JFrame {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = -224628722347809600L;
 	private JPanel contentPane;
@@ -49,27 +45,13 @@ public class VentanaGestionPrestamo extends JFrame {
 	private JScrollPane scrollPane;
 	private JLabel lblTituloPrestamo;
 
-	public JButton getBtnHistorico() {
-		return btnHistorico;
-	}
-
-	public JButton getBtnSalir() {
-		return btnSalir;
-	}
-
-	public JList<Juego> getListPrestamo() {
-		return listPrestamo;
-	}
-
-	public JButton getBtnVer() {
-		return btnVer;
-	}
-
 	/**
 	 * Create the frame.
 	 */
 
 	public VentanaGestionPrestamo() {
+		setIconImage(Toolkit.getDefaultToolkit()
+				.getImage(VentanaGestionPrestamo.class.getResource("/images/icons8-play-games-96.png")));
 		Border innerBorder1 = BorderFactory.createLineBorder(Color.WHITE, 2);
 		Border outerBorder2 = BorderFactory.createLineBorder(new Color(128, 0, 0), 8);
 
@@ -158,6 +140,7 @@ public class VentanaGestionPrestamo extends JFrame {
 		scrollPane = new JScrollPane(listPrestamo);
 		panelGestionPrestamo.add(scrollPane, BorderLayout.CENTER);
 
+
 		lblTituloPrestamo = new JLabel("PRESTAMOS");
 		lblTituloPrestamo.setOpaque(true);
 		lblTituloPrestamo.setBackground(new Color(128, 0, 0));
@@ -166,5 +149,21 @@ public class VentanaGestionPrestamo extends JFrame {
 		lblTituloPrestamo.setHorizontalAlignment(SwingConstants.CENTER);
 		contentPane.add(lblTituloPrestamo, BorderLayout.NORTH);
 
+	}
+
+	public JButton getBtnHistorico() {
+		return btnHistorico;
+	}
+
+	public JButton getBtnSalir() {
+		return btnSalir;
+	}
+
+	public JList<Juego> getListPrestamo() {
+		return listPrestamo;
+	}
+
+	public JButton getBtnVer() {
+		return btnVer;
 	}
 }

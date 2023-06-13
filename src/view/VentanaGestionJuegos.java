@@ -8,6 +8,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Rectangle;
+import java.awt.Toolkit;
 
 import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
@@ -29,12 +30,11 @@ import javax.swing.border.MatteBorder;
 import javax.swing.border.TitledBorder;
 
 import model.Juego;
-import java.awt.Toolkit;
 
 public class VentanaGestionJuegos extends JFrame {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = -5535435754318042085L;
 	/**
@@ -92,6 +92,7 @@ public class VentanaGestionJuegos extends JFrame {
 
 
 	public VentanaGestionJuegos() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaGestionJuegos.class.getResource("/images/icons8-play-games-96.png")));
 
 
 		Border innerBorder1 = BorderFactory.createLineBorder(Color.WHITE, 3);
