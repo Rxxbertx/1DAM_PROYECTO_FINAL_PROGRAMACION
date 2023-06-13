@@ -67,58 +67,6 @@ public class ControladorVerHistorialPrestamos {
 							prestamo.getUsuario(), utilidades.obtenerFecha(prestamo.getFechaInicio()),
 							utilidades.obtenerFecha(prestamo.getFechaFin()), });
 
-			ventana.getDatos()
-			.addRow(new String[] { temp.getNombre(), temp.getId(), String.valueOf(prestamo.getUnidad()),
-					prestamo.getUsuario(), utilidades.obtenerFecha(prestamo.getFechaInicio()),
-					utilidades.obtenerFecha(prestamo.getFechaFin()), });
-			ventana.getDatos()
-			.addRow(new String[] { temp.getNombre(), temp.getId(), String.valueOf(prestamo.getUnidad()),
-					prestamo.getUsuario(), utilidades.obtenerFecha(prestamo.getFechaInicio()),
-					utilidades.obtenerFecha(prestamo.getFechaFin()), });
-			ventana.getDatos()
-			.addRow(new String[] { temp.getNombre(), temp.getId(), String.valueOf(prestamo.getUnidad()),
-					prestamo.getUsuario(), utilidades.obtenerFecha(prestamo.getFechaInicio()),
-					utilidades.obtenerFecha(prestamo.getFechaFin()), });
-			ventana.getDatos()
-			.addRow(new String[] { temp.getNombre(), temp.getId(), String.valueOf(prestamo.getUnidad()),
-					prestamo.getUsuario(), utilidades.obtenerFecha(prestamo.getFechaInicio()),
-					utilidades.obtenerFecha(prestamo.getFechaFin()), });
-			ventana.getDatos()
-			.addRow(new String[] { temp.getNombre(), temp.getId(), String.valueOf(prestamo.getUnidad()),
-					prestamo.getUsuario(), utilidades.obtenerFecha(prestamo.getFechaInicio()),
-					utilidades.obtenerFecha(prestamo.getFechaFin()), });
-			ventana.getDatos()
-			.addRow(new String[] { temp.getNombre(), temp.getId(), String.valueOf(prestamo.getUnidad()),
-					prestamo.getUsuario(), utilidades.obtenerFecha(prestamo.getFechaInicio()),
-					utilidades.obtenerFecha(prestamo.getFechaFin()), });
-			ventana.getDatos()
-			.addRow(new String[] { temp.getNombre(), temp.getId(), String.valueOf(prestamo.getUnidad()),
-					prestamo.getUsuario(), utilidades.obtenerFecha(prestamo.getFechaInicio()),
-					utilidades.obtenerFecha(prestamo.getFechaFin()), });
-			ventana.getDatos()
-			.addRow(new String[] { temp.getNombre(), temp.getId(), String.valueOf(prestamo.getUnidad()),
-					prestamo.getUsuario(), utilidades.obtenerFecha(prestamo.getFechaInicio()),
-					utilidades.obtenerFecha(prestamo.getFechaFin()), });
-			ventana.getDatos()
-			.addRow(new String[] { temp.getNombre(), temp.getId(), String.valueOf(prestamo.getUnidad()),
-					prestamo.getUsuario(), utilidades.obtenerFecha(prestamo.getFechaInicio()),
-					utilidades.obtenerFecha(prestamo.getFechaFin()), });
-			ventana.getDatos()
-			.addRow(new String[] { temp.getNombre(), temp.getId(), String.valueOf(prestamo.getUnidad()),
-					prestamo.getUsuario(), utilidades.obtenerFecha(prestamo.getFechaInicio()),
-					utilidades.obtenerFecha(prestamo.getFechaFin()), });ventana.getDatos()
-					.addRow(new String[] { temp.getNombre(), temp.getId(), String.valueOf(prestamo.getUnidad()),
-							prestamo.getUsuario(), utilidades.obtenerFecha(prestamo.getFechaInicio()),
-							utilidades.obtenerFecha(prestamo.getFechaFin()), });
-					ventana.getDatos()
-					.addRow(new String[] { temp.getNombre(), temp.getId(), String.valueOf(prestamo.getUnidad()),
-							prestamo.getUsuario(), utilidades.obtenerFecha(prestamo.getFechaInicio()),
-							utilidades.obtenerFecha(prestamo.getFechaFin()), });
-					ventana.getDatos()
-					.addRow(new String[] { temp.getNombre(), temp.getId(), String.valueOf(prestamo.getUnidad()),
-							prestamo.getUsuario(), utilidades.obtenerFecha(prestamo.getFechaInicio()),
-							utilidades.obtenerFecha(prestamo.getFechaFin()), });
-			
 		}
 
 	}
