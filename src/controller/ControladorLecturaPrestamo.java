@@ -10,11 +10,11 @@ import java.util.ArrayList;
 import model.ModeloPrestamo;
 import model.Prestamo;
 
-public class LecturaPrestamo {
+public class ControladorLecturaPrestamo {
 
 	private ModeloPrestamo modeloPrestamo;
 
-	public LecturaPrestamo() {
+	public ControladorLecturaPrestamo() {
 
 		modeloPrestamo = new ModeloPrestamo();
 

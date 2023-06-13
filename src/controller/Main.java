@@ -13,8 +13,8 @@ public class Main {
 			UIManager.setLookAndFeel(new NimbusLookAndFeel());
 
 			new SplashScreen().showSplash();
-			new LecturaDatosUsuario();
-			new LoginWindow();
+			new ControladorLecturaDatosUsuario();
+			new ControladorLoginWindow();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

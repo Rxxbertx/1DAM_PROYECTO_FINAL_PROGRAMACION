@@ -53,7 +53,7 @@ public class ControladorVentanaInfoJuegoEmpleado implements ActionListener, List
 
 	private void configuracionGeneral() {
 
-		new LecturaPrestamo();
+		new ControladorLecturaPrestamo();
 
 		ventana.getLbImagenJuego().setIcon(utilidades.resizeIcon(new ImageIcon(videojuego.getImagen()), 150, 150));
 		ventana.getLblCompañiaRellenar().setText(videojuego.getCompañia());
@@ -87,8 +87,8 @@ public class ControladorVentanaInfoJuegoEmpleado implements ActionListener, List
 
 			prestamo.setFechaFin(LocalDateTime.now());
 
-			EscrituraPrestamo.ModificacionArchivo(prestamos);
-			EscrituraElementos.ModificacionArchivo(juegos);
+			ControladorEscrituraPrestamo.ModificacionArchivo(prestamos);
+			ControladorEscrituraElementos.ModificacionArchivo(juegos);
 
 			ventana.getListJuegos().clearSelection();
 

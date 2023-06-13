@@ -9,12 +9,12 @@ import model.Juego;
 import model.ModeloGenerico;
 import objetosModificados.ObjectOutputStreamNoHead;
 
-public class EscrituraElementos {
+public class ControladorEscrituraElementos {
 
 	private FileOutputStream acceso;
 	private ObjectOutputStream escritura;
 
-	public EscrituraElementos(Juego juego) throws IOException {
+	public ControladorEscrituraElementos(Juego juego) throws IOException {
 
 		File fichero = new File("data/elementos.dat");
 

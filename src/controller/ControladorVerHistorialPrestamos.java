@@ -32,10 +32,10 @@ public class ControladorVerHistorialPrestamos {
 		ventana = new VentanaHistorialPrestamos();
 
 		prestamos = new ModeloPrestamo();
-		new LecturaPrestamo();
+		new ControladorLecturaPrestamo();
 		juegos = new ModeloGenerico<Juego>();
 		try {
-			juegos.setElementos(new LecturaElementos().devolverElementos());
+			juegos.setElementos(new ControladorLecturaElementos().devolverElementos());
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

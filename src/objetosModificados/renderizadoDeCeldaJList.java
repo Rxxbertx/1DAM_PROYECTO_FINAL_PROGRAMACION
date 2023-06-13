@@ -41,6 +41,10 @@ public class renderizadoDeCeldaJList extends JLabel implements ListCellRenderer<
 
 		if (isSelected) {
 			setBackground(new Color(128, 0, 0));
+			setForeground(Color.white);
+		} else {
+			setBackground(list.getBackground());
+			setForeground(Color.black);
 		}
 
 		Juego selectedIndex = (Juego) value;

@@ -98,9 +98,9 @@ public class ControladorVentanaInfoJuegoSocio implements ActionListener, ListSel
 
 			juegos.añadir(videojuego.getId(), videojuego);
 
-			EscrituraElementos.ModificacionArchivo(juegos);
+			ControladorEscrituraElementos.ModificacionArchivo(juegos);
 
-			new EscrituraPrestamo(prestamo);
+			new ControladorEscrituraPrestamo(prestamo);
 
 			ventana.getBtnPrestar().setVisible(false);
 

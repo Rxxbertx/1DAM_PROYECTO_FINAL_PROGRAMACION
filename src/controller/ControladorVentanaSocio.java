@@ -21,7 +21,7 @@ import model.Prestamo;
 import model.Usuario;
 import model.Videojuego;
 import utilidades.utilidades;
-import view.LoginWindow;
+import view.VentanaLoginWindow;
 import view.VentanaPrinicipalSocio;
 
 public class ControladorVentanaSocio implements ActionListener {
@@ -31,7 +31,7 @@ public class ControladorVentanaSocio implements ActionListener {
 	private ModeloPrestamo prestamos;
 	private Usuario usuario;
 
-	public ControladorVentanaSocio(LoginWindow login, Usuario usuario) {
+	public ControladorVentanaSocio(VentanaLoginWindow login, Usuario usuario) {
 
 		ventana = new VentanaPrinicipalSocio();
 
@@ -57,7 +57,7 @@ public class ControladorVentanaSocio implements ActionListener {
 
 	private void comprobarPrestamos() {
 
-		new LecturaPrestamo();
+		new ControladorLecturaPrestamo();
 
 		Prestamo prestamo = prestamos.obtenerPrestamoActivoUsuario(usuario);
 
@@ -84,8 +84,8 @@ public class ControladorVentanaSocio implements ActionListener {
 		prestamos = new ModeloPrestamo();
 
 		try {
-			juegos.setElementos(new LecturaElementos().devolverElementos());
-			new LecturaPrestamo();
+			juegos.setElementos(new ControladorLecturaElementos().devolverElementos());
+			new ControladorLecturaPrestamo();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -142,8 +142,8 @@ public class ControladorVentanaSocio implements ActionListener {
 
 				prestamo.setFechaFin(LocalDateTime.now());
 
-				EscrituraPrestamo.ModificacionArchivo(prestamos);
-				EscrituraElementos.ModificacionArchivo(juegos);
+				ControladorEscrituraPrestamo.ModificacionArchivo(prestamos);
+				ControladorEscrituraElementos.ModificacionArchivo(juegos);
 				comprobarPrestamos();
 
 			} else {
@@ -221,7 +221,7 @@ public class ControladorVentanaSocio implements ActionListener {
 
 			ventana.getPanelJuegos().removeAll();
 
-			juegos.setElementos(new LecturaElementos().devolverElementos());
+			juegos.setElementos(new ControladorLecturaElementos().devolverElementos());
 
 			for (Object juego : juegos.getElementos().values()) {
 

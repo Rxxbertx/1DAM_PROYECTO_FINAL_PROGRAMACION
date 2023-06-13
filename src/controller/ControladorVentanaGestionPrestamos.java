@@ -17,12 +17,12 @@ import view.GestionJuegos;
 import view.GestionPrestamo;
 import view.VentanaPrincipalEmpleado;
 
-public class ControladorGestionPrestamos implements ActionListener {
+public class ControladorVentanaGestionPrestamos implements ActionListener {
 
 	private GestionPrestamo ventana;
 	private ModeloGenerico<Juego> juegos;
 
-	public ControladorGestionPrestamos(VentanaPrincipalEmpleado ventanaEmpleado) {
+	public ControladorVentanaGestionPrestamos(VentanaPrincipalEmpleado ventanaEmpleado) {
 
 		configuracionInicial(ventanaEmpleado);
 
@@ -37,7 +37,7 @@ public class ControladorGestionPrestamos implements ActionListener {
 
 		juegos = new ModeloGenerico<>();
 		try {
-			juegos.setElementos(new LecturaElementos().devolverElementos());
+			juegos.setElementos(new ControladorLecturaElementos().devolverElementos());
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
