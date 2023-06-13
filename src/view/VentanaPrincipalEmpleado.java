@@ -145,10 +145,10 @@ public class VentanaPrincipalEmpleado extends JFrame {
 		lblRellenarUsuario.setBounds(336, 49, 340, 87);
 		panelBienvenida.add(lblRellenarUsuario);
 
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(utilidades.resizeIcon(new ImageIcon("src/images/ventanaPrincipalLogo.png"), 2000, 500));
-		lblNewLabel.setBounds(-54, 138, 1057, 619);
-		panelBienvenida.add(lblNewLabel);
+		JLabel lblImagen = new JLabel("");
+		lblImagen.setIcon(utilidades.resizeIcon(new ImageIcon("src/images/ventanaPrincipalLogo.png"), 2000, 500));
+		lblImagen.setBounds(-54, 138, 1057, 619);
+		panelBienvenida.add(lblImagen);
 
 	}
 

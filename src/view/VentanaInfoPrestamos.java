@@ -3,8 +3,8 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,23 +14,19 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JScrollBar;
-import javax.swing.JTextField;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.ListSelectionModel;
 import javax.swing.SpringLayout;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 
 import model.Juego;
 import model.Juego.Unidad;
-import javax.swing.JScrollPane;
-import javax.swing.UIManager;
-import javax.swing.border.LineBorder;
-import javax.swing.JTextArea;
-import javax.swing.border.CompoundBorder;
-import javax.swing.ListSelectionModel;
 
 public class VentanaInfoPrestamos extends JFrame {
 
@@ -45,6 +41,7 @@ public class VentanaInfoPrestamos extends JFrame {
 	private JButton btnPrestar;
 
 	public VentanaInfoPrestamos() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaInfoPrestamos.class.getResource("/images/icons8-play-games-96.png")));
 
 		Border innerBorder1 = BorderFactory.createLineBorder(Color.WHITE, 2);
 
@@ -79,51 +76,51 @@ public class VentanaInfoPrestamos extends JFrame {
 		contentPane.add(panelInfoGeneral, BorderLayout.CENTER);
 		panelInfoGeneral.setLayout(new BorderLayout(0, 0));
 
-		JPanel panel_2 = new JPanel();
-		panel_2.setOpaque(false);
-		panel_2.setBorder(null);
-		panel_2.setPreferredSize(new Dimension(10, 340));
-		panelInfoGeneral.add(panel_2, BorderLayout.NORTH);
-		panel_2.setLayout(null);
+		JPanel panelInformacion = new JPanel();
+		panelInformacion.setOpaque(false);
+		panelInformacion.setBorder(null);
+		panelInformacion.setPreferredSize(new Dimension(10, 340));
+		panelInfoGeneral.add(panelInformacion, BorderLayout.NORTH);
+		panelInformacion.setLayout(null);
 
 		lbImagenJuego = new JLabel("");
 		lbImagenJuego.setHorizontalAlignment(SwingConstants.CENTER);
 		lbImagenJuego.setBorder(new LineBorder(new Color(128, 0, 0), 3, true));
 		lbImagenJuego.setBounds(28, 24, 218, 195);
-		panel_2.add(lbImagenJuego);
+		panelInformacion.add(lbImagenJuego);
 
 		JLabel lblNombre = new JLabel("Nombre: ");
 		lblNombre.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblNombre.setBounds(256, 36, 175, 27);
-		panel_2.add(lblNombre);
+		panelInformacion.add(lblNombre);
 
 		JLabel lblPlataforma = new JLabel("Plataforma: ");
 		lblPlataforma.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblPlataforma.setBounds(256, 83, 175, 27);
-		panel_2.add(lblPlataforma);
+		panelInformacion.add(lblPlataforma);
 
 		JLabel lblCompañia = new JLabel("Compañía: ");
 		lblCompañia.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblCompañia.setBounds(256, 127, 175, 27);
-		panel_2.add(lblCompañia);
+		panelInformacion.add(lblCompañia);
 
 		lblNombreRellenar = new JLabel("");
 		lblNombreRellenar.setBorder(new MatteBorder(0, 0, 2, 0, new Color(0, 0, 0)));
 		lblNombreRellenar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblNombreRellenar.setBounds(397, 36, 293, 27);
-		panel_2.add(lblNombreRellenar);
+		panelInformacion.add(lblNombreRellenar);
 
 		lblPlataformaRellenar = new JLabel("");
 		lblPlataformaRellenar.setBorder(new MatteBorder(0, 0, 2, 0, new Color(0, 0, 0)));
 		lblPlataformaRellenar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblPlataformaRellenar.setBounds(397, 83, 293, 27);
-		panel_2.add(lblPlataformaRellenar);
+		panelInformacion.add(lblPlataformaRellenar);
 
 		lblCompañiaRellenar = new JLabel("");
 		lblCompañiaRellenar.setBorder(new MatteBorder(0, 0, 2, 0, new Color(0, 0, 0)));
 		lblCompañiaRellenar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblCompañiaRellenar.setBounds(397, 127, 293, 27);
-		panel_2.add(lblCompañiaRellenar);
+		panelInformacion.add(lblCompañiaRellenar);
 
 		JPanel panelInfoPrestamo = new JPanel();
 		panelInfoPrestamo.setBorder(new MatteBorder(0, 2, 0, 0, new Color(128, 0, 0)));
@@ -149,7 +146,7 @@ public class VentanaInfoPrestamos extends JFrame {
 		panelInfoPrestamo.add(lblInformacion, BorderLayout.NORTH);
 
 		JPanel panelBotones = new JPanel();
-		
+
 		panelBotones.setOpaque(false);
 		panelBotones.setBorder(null);
 		panelBotones.setPreferredSize(new Dimension(10, 60));

@@ -28,6 +28,7 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.LineBorder;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
+import java.awt.Toolkit;
 
 public class VentanaGestionIncidencias extends JFrame {
 
@@ -44,20 +45,15 @@ public class VentanaGestionIncidencias extends JFrame {
 	private Component verticalGlue_1;
 	private JScrollPane scrollPane;
 	private JPanel panelJuegos;
-	private JLabel lblNewLabel;
+	private JLabel lblIncidencias;
 
-	public JButton getBtnHistorico() {
-		return btnHistorico;
-	}
 
-	public JButton getBtnSalir() {
-		return btnSalir;
-	}
 
 	/**
 	 * Create the frame.
 	 */
 	public VentanaGestionIncidencias() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaGestionIncidencias.class.getResource("/images/icons8-play-games-96.png")));
 		Border innerBorder1 = BorderFactory.createLineBorder(Color.WHITE, 2);
 		Border outerBorder2 = BorderFactory.createLineBorder(new Color(128, 0, 0), 8);
 
@@ -125,18 +121,25 @@ public class VentanaGestionIncidencias extends JFrame {
 		scrollPane.setViewportView(panelJuegos);
 		panelJuegos.setLayout(new GridLayout(0, 3, 5, 5));
 
-		lblNewLabel = new JLabel("INCIDENCIAS");
-		lblNewLabel.setOpaque(true);
-		lblNewLabel.setBackground(new Color(128, 0, 0));
-		lblNewLabel.setHorizontalTextPosition(SwingConstants.CENTER);
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setForeground(new Color(255, 255, 255));
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblNewLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-		contentPane.add(lblNewLabel, BorderLayout.NORTH);
+		lblIncidencias = new JLabel("INCIDENCIAS");
+		lblIncidencias.setOpaque(true);
+		lblIncidencias.setBackground(new Color(128, 0, 0));
+		lblIncidencias.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblIncidencias.setHorizontalAlignment(SwingConstants.CENTER);
+		lblIncidencias.setForeground(new Color(255, 255, 255));
+		lblIncidencias.setFont(new Font("Tahoma", Font.BOLD, 24));
+		lblIncidencias.setAlignmentX(Component.CENTER_ALIGNMENT);
+		contentPane.add(lblIncidencias, BorderLayout.NORTH);
 	}
 
 	public JPanel getPanelJuegos() {
 		return panelJuegos;
+	}
+	public JButton getBtnHistorico() {
+		return btnHistorico;
+	}
+
+	public JButton getBtnSalir() {
+		return btnSalir;
 	}
 }

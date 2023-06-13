@@ -1,24 +1,24 @@
 package view;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.table.DefaultTableModel;
-
 import java.awt.BorderLayout;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import java.awt.Font;
 import java.awt.Color;
-import javax.swing.BoxLayout;
 import java.awt.Component;
+import java.awt.Font;
+import java.awt.Toolkit;
+
 import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.border.LineBorder;
+import javax.swing.SwingConstants;
+import javax.swing.WindowConstants;
 import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
 
 public class VentanaVerHistorialIncidencias extends JFrame {
 
@@ -29,12 +29,13 @@ public class VentanaVerHistorialIncidencias extends JFrame {
 	private DefaultTableModel modeloNoResuelto = new DefaultTableModel();
 
 	public VentanaVerHistorialIncidencias() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaVerHistorialIncidencias.class.getResource("/images/icons8-play-games-96.png")));
 
 		String cabecera[] = { "Nombre Juego", "Id Juego", "Num Unidad", "Incidencia", "Estado" };
 		modeloNoResuelto.setColumnIdentifiers(cabecera);
 		modeloResuelto.setColumnIdentifiers(cabecera);
 
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 945, 609);
 		contentPane = new JPanel();
 		contentPane.setFont(new Font("Tahoma", Font.BOLD, 15));
@@ -43,14 +44,14 @@ public class VentanaVerHistorialIncidencias extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 
-		JLabel lblNewLabel = new JLabel("HISTORIAL INCIDENCIAS");
-		lblNewLabel.setBorder(null);
-		lblNewLabel.setOpaque(true);
-		lblNewLabel.setBackground(new Color(128, 0, 0));
-		lblNewLabel.setForeground(new Color(255, 255, 255));
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		contentPane.add(lblNewLabel, BorderLayout.NORTH);
+		JLabel lblHistorialIncidencias = new JLabel("HISTORIAL INCIDENCIAS");
+		lblHistorialIncidencias.setBorder(null);
+		lblHistorialIncidencias.setOpaque(true);
+		lblHistorialIncidencias.setBackground(new Color(128, 0, 0));
+		lblHistorialIncidencias.setForeground(new Color(255, 255, 255));
+		lblHistorialIncidencias.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblHistorialIncidencias.setHorizontalAlignment(SwingConstants.CENTER);
+		contentPane.add(lblHistorialIncidencias, BorderLayout.NORTH);
 
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.CENTER);
@@ -59,13 +60,13 @@ public class VentanaVerHistorialIncidencias extends JFrame {
 		Component verticalGlue = Box.createVerticalGlue();
 		panel.add(verticalGlue);
 
-		JLabel lblNewLabel_1 = new JLabel("Incidencias Resueltas");
-		lblNewLabel_1.setBorder(new EmptyBorder(5, 0, 5, 0));
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
-		lblNewLabel_1.setHorizontalTextPosition(SwingConstants.CENTER);
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setAlignmentX(Component.CENTER_ALIGNMENT);
-		panel.add(lblNewLabel_1);
+		JLabel lblIncidenciasResueltas = new JLabel("Incidencias Resueltas");
+		lblIncidenciasResueltas.setBorder(new EmptyBorder(5, 0, 5, 0));
+		lblIncidenciasResueltas.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
+		lblIncidenciasResueltas.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblIncidenciasResueltas.setHorizontalAlignment(SwingConstants.CENTER);
+		lblIncidenciasResueltas.setAlignmentX(Component.CENTER_ALIGNMENT);
+		panel.add(lblIncidenciasResueltas);
 
 		Component verticalGlue_2 = Box.createVerticalGlue();
 		panel.add(verticalGlue_2);
@@ -80,12 +81,12 @@ public class VentanaVerHistorialIncidencias extends JFrame {
 		Component verticalGlue_1 = Box.createVerticalGlue();
 		panel.add(verticalGlue_1);
 
-		JLabel lblNewLabel_2 = new JLabel("Incidencias Sin Resolver");
-		lblNewLabel_2.setBorder(new EmptyBorder(5, 0, 5, 0));
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
-		lblNewLabel_2.setAlignmentX(Component.CENTER_ALIGNMENT);
-		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		panel.add(lblNewLabel_2);
+		JLabel lblIncidenciasSinResolver = new JLabel("Incidencias Sin Resolver");
+		lblIncidenciasSinResolver.setBorder(new EmptyBorder(5, 0, 5, 0));
+		lblIncidenciasSinResolver.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
+		lblIncidenciasSinResolver.setAlignmentX(Component.CENTER_ALIGNMENT);
+		lblIncidenciasSinResolver.setHorizontalAlignment(SwingConstants.CENTER);
+		panel.add(lblIncidenciasSinResolver);
 
 		Component verticalGlue_3 = Box.createVerticalGlue();
 		panel.add(verticalGlue_3);
