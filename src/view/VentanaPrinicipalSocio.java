@@ -7,7 +7,7 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
-
+import utilidades.utilidades;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -125,10 +125,13 @@ public class VentanaPrinicipalSocio extends JFrame {
 
 		lblNewLabel = new JLabel(
 				"<html><center><font color='black'><u><b> No tiene ningún juego en préstamo</b></u></font><br><br>Para ver los juegos disponibles pulse el botón de la  <font color='black'><b>lupa</b></font><br>Para cambiar sus datos de usuario pulse en   <font color='black'><b>configuración</b></font><br>Para salir de esta pantalla pulse el botón de  <font color='black'><b>salir</b></font><br></center></html>");
+		lblNewLabel.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblNewLabel.setVerticalTextPosition(SwingConstants.BOTTOM);
+		lblNewLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		lblNewLabel.setIcon(new ImageIcon(VentanaPrinicipalSocio.class.getResource("/images/7VE.gif")));
 		lblNewLabel.setForeground(new Color(128, 0, 0));
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setHorizontalTextPosition(SwingConstants.CENTER);
 		panel.add(lblNewLabel, BorderLayout.CENTER);
 
 		panelJuegos = new JPanel();

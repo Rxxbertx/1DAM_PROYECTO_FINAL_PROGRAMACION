@@ -57,6 +57,8 @@ public class ControladorVentanaSocio implements ActionListener {
 
 	private void comprobarPrestamos() {
 
+		new LecturaPrestamo();
+
 		Prestamo prestamo = prestamos.obtenerPrestamoActivoUsuario(usuario);
 
 		if (prestamo != null) {
@@ -67,7 +69,7 @@ public class ControladorVentanaSocio implements ActionListener {
 
 			ventana.getBtnJuegoPrestado()
 					.setIcon(utilidades.resizeIcon(new ImageIcon(videojuego.getImagen()), 200, 200));
-			ventana.getBtnJuegoPrestado().setText(videojuego.getNombre() + "Unidad: (" + prestamo.getUnidad() + ")");
+			ventana.getBtnJuegoPrestado().setText(videojuego.getNombre() + "  Unidad: (" + prestamo.getUnidad() + ")");
 
 		} else {
 			cambioPanel(ventana.getPanelCard(), "inicio");
@@ -151,7 +153,7 @@ public class ControladorVentanaSocio implements ActionListener {
 		}
 
 		if (e.getSource().equals(ventana.getBtnJuegoPrestado())) {
-			new AnimacionShake(ventana.getBtnJuegoPrestado(), 10, 100, 30);
+			new AnimacionShake(ventana.getBtnJuegoPrestado(), 3, 10, 30);
 		}
 
 	}
@@ -218,7 +220,10 @@ public class ControladorVentanaSocio implements ActionListener {
 		try {
 
 			ventana.getPanelJuegos().removeAll();
-			for (Object juego : new LecturaElementos().devolverElementos().values()) {
+
+			juegos.setElementos(new LecturaElementos().devolverElementos());
+
+			for (Object juego : juegos.getElementos().values()) {
 
 				Videojuego temp = (Videojuego) juego;
 
@@ -241,7 +246,7 @@ public class ControladorVentanaSocio implements ActionListener {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						// Código a ejecutar cuando se hace clic en el botón
-						new ControladorVentanaInfoJuego(usuario, temp, ventana, juegos);
+						new ControladorVentanaInfoJuegoSocio(usuario, temp, ventana, juegos, prestamos);
 
 					}
 				});

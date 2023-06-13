@@ -45,10 +45,10 @@ public class ModeloPrestamo {
 
 			if (prestamo.getUsuario().equals(usuario.getNomUsuario())) {
 
-				if (prestamo.getFechaFin() != null) {
+				if (prestamo.getFechaFin() == null) {
 
-				} else {
 					return prestamo;
+
 				}
 			}
 

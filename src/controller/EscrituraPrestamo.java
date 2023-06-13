@@ -23,6 +23,7 @@ public class EscrituraPrestamo {
 				escritura = new BufferedWriter(new FileWriter(ficheroDatos, true));
 
 				escribirPrestamo(prestamo, escritura);
+				escritura.close();
 
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -36,6 +37,7 @@ public class EscrituraPrestamo {
 				escritura = new BufferedWriter(new FileWriter(ficheroDatos));
 
 				escribirPrestamo(prestamo, escritura);
+				escritura.close();
 
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -61,7 +63,6 @@ public class EscrituraPrestamo {
 
 		escritura.write(temp);
 		escritura.newLine();
-		escritura.close();
 
 	}
 

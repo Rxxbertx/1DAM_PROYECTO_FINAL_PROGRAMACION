@@ -1,6 +1,8 @@
 package utilidades;
 
 import java.awt.Image;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +20,17 @@ public class utilidades {
 		Image image = icon.getImage();
 		Image resizedImage = image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
 		return new ImageIcon(resizedImage);
+	}
+
+	public static String obtenerFecha(LocalDateTime localDateTime) {
+
+		if (localDateTime != null) {
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yy HH:mm:ss");
+			return new String(localDateTime.format(formatter));
+		} else {
+			return "";
+		}
+
 	}
 
 	public static String generarIdJuego(String nombre, String plataforma, int jugadores) {
@@ -95,6 +108,21 @@ public class utilidades {
 		}
 		return j;
 
+	}
+
+	public static Prestamo
+
+			buscarPrestamo(ArrayList<Prestamo> listaPrestamos, Prestamo prestamoBuscado) {
+		for (Prestamo prestamo : listaPrestamos) {
+			if (prestamo.getUsuario().equals(prestamoBuscado.getUsuario())
+					&& prestamo.getIdJuego().equals(prestamoBuscado.getIdJuego())
+					&& prestamo.getUnidad() == prestamoBuscado.getUnidad()
+					&& prestamo.getFechaInicio().equals(prestamoBuscado.getFechaInicio())
+					&& prestamo.getFechaFin() == null && prestamoBuscado.getFechaFin() == null) {
+				return prestamo;
+			}
+		}
+		return null; // Si no se encuentra el préstamo, se devuelve null
 	}
 
 }

@@ -40,8 +40,9 @@ public class renderizadoDeCeldaJListUnidadCentrado extends JLabel implements Lis
 	@Override
 	public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected,
 			boolean cellHasFocus) {
-		Unidad unidad = (Juego.Unidad) value;
-		Prestamo prestamo = unidad.getPrestamo();
+		
+		Juego.Unidad unidad = (Juego.Unidad) value;
+	
 
 		if (isSelected) {
 			setBackground(new Color(128, 0, 0)); // Color de fondo para celda seleccionada
@@ -49,7 +50,7 @@ public class renderizadoDeCeldaJListUnidadCentrado extends JLabel implements Lis
 			setBackground(null);
 		}
 
-		if (prestamo != null) {
+		if (unidad.getPrestamo() != null) {
 			setForeground(list.getForeground()); // Restablecer el color de primer plano predeterminado para celdas con
 													// prestamo
 		} else {
