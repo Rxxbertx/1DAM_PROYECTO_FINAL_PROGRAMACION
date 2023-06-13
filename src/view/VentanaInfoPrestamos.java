@@ -23,11 +23,20 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.MatteBorder;
 
-public class Prestamo extends JFrame {
+import model.Juego;
+import model.Juego.Unidad;
+import javax.swing.JScrollPane;
+import javax.swing.UIManager;
+import javax.swing.border.LineBorder;
+import javax.swing.JTextArea;
+import javax.swing.border.CompoundBorder;
+import javax.swing.ListSelectionModel;
+
+public class VentanaInfoPrestamos extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField tInformacion;
-	private JList listJuegos;
+	private JTextArea tInformacion;
+	private JList<Juego.Unidad> listUnidades;
 	private JLabel lbImagenJuego;
 	private JLabel lblNombreRellenar;
 	private JLabel lblPlataformaRellenar;
@@ -35,27 +44,7 @@ public class Prestamo extends JFrame {
 	private JButton btnDevolver;
 	private JButton btnPrestar;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				try {
-					Prestamo frame = new Prestamo();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public Prestamo() {
+	public VentanaInfoPrestamos() {
 
 		Border innerBorder1 = BorderFactory.createLineBorder(Color.WHITE, 2);
 
@@ -76,24 +65,30 @@ public class Prestamo extends JFrame {
 		contentPane.add(panelList, BorderLayout.WEST);
 		panelList.setLayout(new BorderLayout(0, 0));
 
-		listJuegos = new JList();
-		panelList.add(listJuegos, BorderLayout.CENTER);
+		listUnidades = new JList();
+		listUnidades.setSelectionBackground(new Color(128, 0, 0));
+		listUnidades.setSelectionForeground(Color.BLACK);
+		listUnidades.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		listUnidades.setBorder(new LineBorder(new Color(128, 0, 0), 4, true));
+		listUnidades.setBackground(new Color(192, 192, 192));
 
-		JScrollBar scrollBar = new JScrollBar();
-		panelList.add(scrollBar, BorderLayout.EAST);
+		JScrollPane scrollPane = new JScrollPane(listUnidades);
+		panelList.add(scrollPane, BorderLayout.CENTER);
 
 		JPanel panelInfoGeneral = new JPanel();
 		contentPane.add(panelInfoGeneral, BorderLayout.CENTER);
 		panelInfoGeneral.setLayout(new BorderLayout(0, 0));
 
 		JPanel panel_2 = new JPanel();
-		panel_2.setBorder(new MatteBorder(0, 2, 2, 0, new Color(128, 0, 0)));
+		panel_2.setOpaque(false);
+		panel_2.setBorder(null);
 		panel_2.setPreferredSize(new Dimension(10, 340));
 		panelInfoGeneral.add(panel_2, BorderLayout.NORTH);
 		panel_2.setLayout(null);
 
 		lbImagenJuego = new JLabel("");
-		lbImagenJuego.setBorder(new MatteBorder(1, 1, 1, 1, new Color(128, 0, 0)));
+		lbImagenJuego.setHorizontalAlignment(SwingConstants.CENTER);
+		lbImagenJuego.setBorder(new LineBorder(new Color(128, 0, 0), 3, true));
 		lbImagenJuego.setBounds(28, 24, 218, 195);
 		panel_2.add(lbImagenJuego);
 
@@ -135,18 +130,28 @@ public class Prestamo extends JFrame {
 		panelInfoGeneral.add(panelInfoPrestamo, BorderLayout.CENTER);
 		panelInfoPrestamo.setLayout(new BorderLayout(0, 0));
 
-		tInformacion = new JTextField();
-		tInformacion.setMaximumSize(new Dimension(200, 200));
+		tInformacion = new JTextArea();
+		tInformacion.setBackground(Color.WHITE);
+		tInformacion.setFont(new Font("Monospaced", Font.BOLD, 20));
+		tInformacion.setLineWrap(true);
+		tInformacion.setWrapStyleWord(true);
 		tInformacion.setColumns(10);
-		tInformacion.setBorder(new MatteBorder(3, 3, 3, 3, new Color(128, 0, 0)));
-		panelInfoPrestamo.add(tInformacion, BorderLayout.CENTER);
+		tInformacion.setBorder(new EmptyBorder(10, 10, 10, 10));
+
+		JScrollPane scrollPane_1 = new JScrollPane(tInformacion);
+		scrollPane_1.setBorder(new EmptyBorder(5, 11, 5, 11));
+		panelInfoPrestamo.add(scrollPane_1, BorderLayout.CENTER);
 
 		JLabel lblInformacion = new JLabel("<html><u>Información</u></html>");
+		lblInformacion.setBorder(null);
 		lblInformacion.setHorizontalAlignment(SwingConstants.CENTER);
 		lblInformacion.setFont(new Font("Tahoma", Font.BOLD, 24));
 		panelInfoPrestamo.add(lblInformacion, BorderLayout.NORTH);
 
 		JPanel panelBotones = new JPanel();
+		
+		panelBotones.setOpaque(false);
+		panelBotones.setBorder(null);
 		panelBotones.setPreferredSize(new Dimension(10, 60));
 		panelInfoPrestamo.add(panelBotones, BorderLayout.SOUTH);
 		SpringLayout sl_panelBotones = new SpringLayout();
@@ -182,14 +187,15 @@ public class Prestamo extends JFrame {
 		btnPrestar.setBorder(new EmptyBorder(0, 10, 0, 10));
 		btnPrestar.setBackground(new Color(128, 0, 0));
 		panelBotones.add(btnPrestar);
+
 	}
 
-	public JTextField gettInformacion() {
+	public JTextArea gettInformacion() {
 		return tInformacion;
 	}
 
-	public JList getListJuegos() {
-		return listJuegos;
+	public JList<Unidad> getListJuegos() {
+		return listUnidades;
 	}
 
 	public JLabel getLbImagenJuego() {

@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import animaciones.AnimacionShake;
 import animaciones.ZoomAnimation;
 import model.Juego;
 import model.ModeloGenerico;
@@ -149,6 +150,10 @@ public class ControladorVentanaSocio implements ActionListener {
 
 		}
 
+		if (e.getSource().equals(ventana.getBtnJuegoPrestado())) {
+			new AnimacionShake(ventana.getBtnJuegoPrestado(), 10, 100, 30);
+		}
+
 	}
 
 	private void accionesPanelSalir(ActionEvent e) {
@@ -236,7 +241,7 @@ public class ControladorVentanaSocio implements ActionListener {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						// Código a ejecutar cuando se hace clic en el botón
-						new ControladorVentanaInfoJuego(usuario, temp, ventana);
+						new ControladorVentanaInfoJuego(usuario, temp, ventana, juegos);
 
 					}
 				});
