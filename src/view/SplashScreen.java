@@ -2,9 +2,6 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 import java.awt.Shape;
 import java.awt.Toolkit;
 import java.awt.geom.RoundRectangle2D;
@@ -15,11 +12,17 @@ import javax.swing.JLabel;
 import javax.swing.JWindow;
 
 public class SplashScreen extends JWindow {
-    
-    public SplashScreen( ) {
-    	
+
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 989959604529095220L;
+
+
+	public SplashScreen( ) {
+
     	Icon gif = new ImageIcon("src/images/logo.gif");
-    	
+
         JLabel label = new JLabel(gif);
         getContentPane().add(label, BorderLayout.CENTER);
         pack();
@@ -30,8 +33,8 @@ public class SplashScreen extends JWindow {
         Shape shape = new RoundRectangle2D.Double(0, 0, width, height, 20, 20);
         setShape(shape);
     }
-    
-    
+
+
     public void showSplash() {
         setVisible(true);
         try {

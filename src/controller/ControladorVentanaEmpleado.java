@@ -2,12 +2,8 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
-import animaciones.AnimacionShake;
 import animaciones.ZoomAnimation;
-import model.Juego;
-import model.ModeloGenerico;
 import model.Usuario;
 import view.VentanaPrincipalEmpleado;
 

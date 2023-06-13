@@ -1,41 +1,58 @@
 package model;
 
-import model.Juego.Unidad;
+import java.time.LocalDateTime;
 
 public class Prestamo {
-	private String fechaInicio;
-	private String fechaFin;
-	private Usuario usuario;
-	private Unidad unidad;
+	private LocalDateTime fechaInicio;
+	private LocalDateTime fechaFin;
+	private String usuario;
+	private int unidad;
+	private String idJuego;
 
-	public Prestamo(String fechaInicio, String fechaFin, Usuario usuario,Unidad unidad) {
+	public Prestamo(String idJuego, int unidad, String usuario, LocalDateTime fechaInicio, LocalDateTime fechaFin) {
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
 		this.usuario = usuario;
-		this.unidad=unidad;
+		this.setUnidad(unidad);
 	}
 
-	public String getFechaInicio() {
+	public LocalDateTime getFechaInicio() {
 		return fechaInicio;
 	}
 
-	public void setFechaInicio(String fechaInicio) {
+	public void setFechaInicio(LocalDateTime fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}
 
-	public String getFechaFin() {
+	public LocalDateTime getFechaFin() {
 		return fechaFin;
 	}
 
-	public void setFechaFin(String fechaFin) {
+	public void setFechaFin(LocalDateTime fechaFin) {
 		this.fechaFin = fechaFin;
 	}
 
-	public Usuario getUsuario() {
+	public String getUsuario() {
 		return usuario;
 	}
 
-	public void setUsuario(Usuario usuario) {
+	public void setUsuario(String usuario) {
 		this.usuario = usuario;
+	}
+
+	public int getUnidad() {
+		return unidad;
+	}
+
+	public void setUnidad(int unidad2) {
+		this.unidad = unidad2;
+	}
+
+	public String getIdJuego() {
+		return idJuego;
+	}
+
+	public void setIdJuego(String idJuego) {
+		this.idJuego = idJuego;
 	}
 }

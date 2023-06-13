@@ -14,19 +14,19 @@ import model.Juego;
 import model.Videojuego;
 import utilidades.utilidades;
 
-public class renderizadoDeCeldaComboBox extends JLabel implements ListCellRenderer<Object> {
+public class renderizadoDeCeldaJList extends JLabel implements ListCellRenderer<Object> {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 2712515309007098711L;
+	private static final long serialVersionUID = -6328457360576448181L;
 
-	public renderizadoDeCeldaComboBox() {
+	public renderizadoDeCeldaJList() {
 
 		setHorizontalAlignment(CENTER);
 		setVerticalAlignment(CENTER);
-		setHorizontalTextPosition(SwingConstants.CENTER);
-		setVerticalTextPosition(SwingConstants.BOTTOM);
+		setHorizontalTextPosition(SwingConstants.RIGHT);
+		setVerticalTextPosition(SwingConstants.CENTER);
 
 	}
 
@@ -44,10 +44,12 @@ public class renderizadoDeCeldaComboBox extends JLabel implements ListCellRender
 			ImageIcon icon = new ImageIcon(
 					selectedIndex instanceof Videojuego ? ((Videojuego) (selectedIndex)).getImagen()
 							: "src/images/default.png");
+
 			String nombre = selectedIndex.getNombre();
+			String plataforma = ((Videojuego) (selectedIndex)).getImagen();
 
 			setIcon(utilidades.resizeIcon(icon, 100, 100));
-			setText(nombre);
+			setText(nombre + " Plataforma: " + plataforma + "UNIDADES UTILIZADAS: " + selectedIndex.getUdsUtilizadas());
 			setFont(new Font("Arial", Font.BOLD, 20));
 			setBorder(new EmptyBorder(0, 0, 0, 0));
 		} else {

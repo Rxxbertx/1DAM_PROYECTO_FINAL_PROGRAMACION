@@ -4,12 +4,16 @@ import java.io.Serializable;
 
 public class Videojuego extends Juego implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1630599723949522104L;
 	private String compañia;
 	private String platSelecciona;
 	private String imagen;
 
-	/** 
-	 * 
+	/**
+	 *
 	 */
 	public Videojuego() {
 		super();

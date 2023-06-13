@@ -12,6 +12,7 @@ public class ObjectOutputStreamNoHead extends ObjectOutputStream {
 
 	}
 
+	@Override
 	public void writeStreamHeader() {
 
 	}

@@ -33,10 +33,36 @@ public class ModeloPrestamo {
 
 	}
 
-	public  Prestamo obtenerPrestamoUnidad(Juego temp, int selectedIndex) {
+	public Prestamo obtenerPrestamoUnidad(Juego temp, int selectedIndex) {
 
 		return temp.obtenerUnidad(selectedIndex).getPrestamo();
 
+	}
+
+	public Prestamo obtenerPrestamoActivoUsuario(Usuario usuario) {
+
+		for (Prestamo prestamo : getPrestamos()) {
+
+			if (prestamo.getUsuario().equals(usuario.getNomUsuario())) {
+
+				if (prestamo.getFechaFin() != null) {
+
+				} else {
+					return prestamo;
+				}
+			}
+
+		}
+		return null;
+
+	}
+
+	public ArrayList<Prestamo> getPrestamos() {
+		return prestamos;
+	}
+
+	public void setPrestamos(ArrayList<Prestamo> prestamos) {
+		ModeloPrestamo.prestamos = prestamos;
 	}
 
 }

@@ -1,35 +1,30 @@
 package view;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
-import javax.swing.JToolBar;
-import javax.swing.SwingConstants;
-import javax.swing.border.MatteBorder;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Rectangle;
-import javax.swing.BoxLayout;
+import java.awt.Font;
+
 import javax.swing.Box;
-import javax.swing.border.LineBorder;
-import javax.swing.JTextField;
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import java.awt.Insets;
-import java.awt.GridLayout;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.WindowConstants;
+import javax.swing.border.LineBorder;
+import javax.swing.border.MatteBorder;
 
 public class LoginWindow extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3238110608786952114L;
 	private JPanel contentPane;
 	private JTextField textFieldUsuarioLogin;
 	private JPasswordField textFieldContraseñaLogin;
@@ -53,7 +48,7 @@ public class LoginWindow extends JFrame {
 		setTitle("App");
 		setBackground(new Color(128, 0, 0));
 		setFont(new Font("Arial", Font.PLAIN, 15));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setBounds(100, 100, 945, 609);
 		contentPane = new JPanel();
 		contentPane.setBorder(new LineBorder(new Color(128, 0, 0), 12, true));
@@ -71,7 +66,7 @@ public class LoginWindow extends JFrame {
 		JLabel lblNewLabel_1 = new JLabel("Iniciar Sesion");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 40));
-		lblNewLabel_1.setBorder(new MatteBorder(0, 0, 10, 0, (Color) new Color(128, 0, 0)));
+		lblNewLabel_1.setBorder(new MatteBorder(0, 0, 10, 0, new Color(128, 0, 0)));
 		lblNewLabel_1.setBounds(123, 38, 330, 59);
 		panelLogin.add(lblNewLabel_1);
 
@@ -96,8 +91,8 @@ public class LoginWindow extends JFrame {
 		textFieldContraseñaLogin.setColumns(10);
 		textFieldContraseñaLogin.setBounds(303, 268, 216, 43);
 		panelLogin.add(textFieldContraseñaLogin);
-		
-		
+
+
 
 		btnEntrar = new JButton("ENTRAR");
 		btnEntrar.setForeground(Color.WHITE);
@@ -116,7 +111,7 @@ public class LoginWindow extends JFrame {
 		btnAltaLogin.setContentAreaFilled(false);
 		btnAltaLogin.setForeground(new Color(128, 0, 0));
 		btnAltaLogin.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
-		btnAltaLogin.setBorder(new MatteBorder(0, 0, 3, 0, (Color) new Color(0, 0, 0)));
+		btnAltaLogin.setBorder(new MatteBorder(0, 0, 3, 0, new Color(0, 0, 0)));
 		btnAltaLogin.setBounds(356, 463, 89, 43);
 		panelLogin.add(btnAltaLogin);
 
@@ -134,7 +129,7 @@ public class LoginWindow extends JFrame {
 		JLabel lblNewLabel_1_1 = new JLabel("Registrarse");
 		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.BOLD, 40));
-		lblNewLabel_1_1.setBorder(new MatteBorder(0, 0, 10, 0, (Color) new Color(128, 0, 0)));
+		lblNewLabel_1_1.setBorder(new MatteBorder(0, 0, 10, 0, new Color(128, 0, 0)));
 		lblNewLabel_1_1.setBounds(196, 27, 306, 98);
 		panelRegistrar.add(lblNewLabel_1_1);
 
@@ -217,6 +212,7 @@ public class LoginWindow extends JFrame {
 	/**
 	 * @return the contentPane
 	 */
+	@Override
 	public JPanel getContentPane() {
 		return contentPane;
 	}

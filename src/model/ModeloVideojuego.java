@@ -4,20 +4,20 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 
 public class ModeloVideojuego {
-	
-	private static HashMap<String, Videojuego> videojuegos = new HashMap<String, Videojuego>();
+
+	private static HashMap<String, Videojuego> videojuegos = new HashMap<>();
 
 	/**
 	 * @param videojuegos
 	 */
 	public ModeloVideojuego(HashMap<Integer, Videojuego> videojuegos) {
-		videojuegos = new HashMap<Integer, Videojuego>();
+		videojuegos = new HashMap<>();
 	}
 
 	public HashMap<String, Videojuego> getVideojuegos() {
 		return videojuegos;
 	}
-	
+
 	public static void altaJuego(Videojuego videojuego) {
 
 		videojuegos.put(videojuego.getId(), videojuego);
@@ -27,7 +27,7 @@ public class ModeloVideojuego {
 	public static void bajaJuego(Videojuego videojuego) {
 		videojuegos.remove(videojuego.getId(), videojuego);
 	}
-	
+
 
 	public static Videojuego consultarJuegos(Videojuego videojuego, String nombre) {
 
@@ -42,5 +42,5 @@ public class ModeloVideojuego {
 		return null;
 
 	}
-	
+
 }
