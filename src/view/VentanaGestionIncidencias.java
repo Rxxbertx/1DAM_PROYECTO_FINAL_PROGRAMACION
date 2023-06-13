@@ -26,21 +26,25 @@ import javax.swing.SwingConstants;
 import javax.swing.JScrollPane;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.LineBorder;
-import java.awt.Toolkit;
+import java.awt.GridLayout;
 import javax.swing.JLabel;
 
-public class GestionPrestamo extends JFrame {
+public class VentanaGestionIncidencias extends JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4644087587937505449L;
 
 	private JPanel contentPane;
 	private JButton btnHistorico;
 	private JButton btnSalir;
-	private JList<Juego> listPrestamo;
-	private JButton btnVer;
 	private Component verticalGlue;
 	private Component verticalGlue_2;
 	private Component verticalGlue_1;
 	private JScrollPane scrollPane;
-	private JLabel lblTituloPrestamo;
+	private JPanel panelJuegos;
+	private JLabel lblNewLabel;
 
 	public JButton getBtnHistorico() {
 		return btnHistorico;
@@ -50,19 +54,10 @@ public class GestionPrestamo extends JFrame {
 		return btnSalir;
 	}
 
-	public JList<Juego> getListPrestamo() {
-		return listPrestamo;
-	}
-
-	public JButton getBtnVer() {
-		return btnVer;
-	}
-
 	/**
 	 * Create the frame.
 	 */
-	public GestionPrestamo() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(GestionPrestamo.class.getResource("/images/icons8-play-games-96.png")));
+	public VentanaGestionIncidencias() {
 		Border innerBorder1 = BorderFactory.createLineBorder(Color.WHITE, 2);
 		Border outerBorder2 = BorderFactory.createLineBorder(new Color(128, 0, 0), 8);
 
@@ -93,7 +88,7 @@ public class GestionPrestamo extends JFrame {
 		btnHistorico.setBorder(null);
 		btnHistorico.setContentAreaFilled(false);
 		btnHistorico.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnHistorico.setIcon(new ImageIcon(GestionPrestamo.class.getResource("/images/Reloj arena80.png")));
+		btnHistorico.setIcon(new ImageIcon(VentanaGestionIncidencias.class.getResource("/images/Reloj arena80.png")));
 		panelSeleccion.add(btnHistorico);
 
 		verticalGlue_1 = Box.createVerticalGlue();
@@ -105,59 +100,43 @@ public class GestionPrestamo extends JFrame {
 		btnSalir.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnSalir.setContentAreaFilled(false);
 		btnSalir.setBorderPainted(false);
-		btnSalir.setIcon(new ImageIcon(GestionPrestamo.class.getResource("/images/icons8-exit-96(1).png")));
+		btnSalir.setIcon(new ImageIcon(VentanaGestionIncidencias.class.getResource("/images/icons8-exit-96(1).png")));
 		btnSalir.setFont(new Font("Tahoma", Font.BOLD, 20));
 		panelSeleccion.add(btnSalir);
 
 		verticalGlue_2 = Box.createVerticalGlue();
 		panelSeleccion.add(verticalGlue_2);
 
-		JPanel panelGestionPrestamo = new JPanel();
-		contentPane.add(panelGestionPrestamo, BorderLayout.CENTER);
-		panelGestionPrestamo.setBorder(compoundBorder1);
-		panelGestionPrestamo.setLayout(new BorderLayout(0, 0));
-
-		listPrestamo = new JList();
-		listPrestamo.setPreferredSize(new Dimension(100, 100));
+		JPanel panelGestionIncidencias = new JPanel();
+		contentPane.add(panelGestionIncidencias, BorderLayout.CENTER);
+		panelGestionIncidencias.setBorder(compoundBorder1);
+		panelGestionIncidencias.setLayout(new BorderLayout(0, 0));
 
 		Border innerBorder3 = BorderFactory.createLineBorder(Color.WHITE, 1);
 
 		Border outerBorder3 = BorderFactory.createLineBorder(new Color(128, 0, 0), 1);
 		Border compoundBorder3 = BorderFactory.createCompoundBorder(innerBorder3, outerBorder3);
 
-		listPrestamo.setBorder(new EmptyBorder(5, 5, 5, 5));
+		scrollPane = new JScrollPane();
+		panelGestionIncidencias.add(scrollPane, BorderLayout.CENTER);
 
-		JPanel panel = new JPanel();
-		panel.setPreferredSize(new Dimension(10, 75));
-		panel.setMinimumSize(new Dimension(10, 40));
-		panelGestionPrestamo.add(panel, BorderLayout.SOUTH);
-		SpringLayout sl_panel = new SpringLayout();
-		panel.setLayout(sl_panel);
+		panelJuegos = new JPanel();
+		panelJuegos.setBorder(new EmptyBorder(5, 5, 5, 5));
+		scrollPane.setViewportView(panelJuegos);
+		panelJuegos.setLayout(new GridLayout(0, 3, 5, 5));
 
-		btnVer = new JButton("VER");
-		sl_panel.putConstraint(SpringLayout.WEST, btnVer, -126, SpringLayout.EAST, panel);
-		btnVer.setPreferredSize(new Dimension(81, 21));
-		sl_panel.putConstraint(SpringLayout.NORTH, btnVer, 10, SpringLayout.NORTH, panel);
-		sl_panel.putConstraint(SpringLayout.SOUTH, btnVer, -10, SpringLayout.SOUTH, panel);
-		sl_panel.putConstraint(SpringLayout.EAST, btnVer, -22, SpringLayout.EAST, panel);
-		btnVer.setForeground(Color.WHITE);
-		btnVer.setFont(new Font("Tahoma", Font.BOLD, 30));
-		btnVer.setBorderPainted(false);
-		btnVer.setBorder(new EmptyBorder(0, 10, 0, 10));
-		btnVer.setBackground(new Color(128, 0, 0));
-		panel.add(btnVer);
+		lblNewLabel = new JLabel("INCIDENCIAS");
+		lblNewLabel.setOpaque(true);
+		lblNewLabel.setBackground(new Color(128, 0, 0));
+		lblNewLabel.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setForeground(new Color(255, 255, 255));
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblNewLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		contentPane.add(lblNewLabel, BorderLayout.NORTH);
+	}
 
-		scrollPane = new JScrollPane(listPrestamo);
-		panelGestionPrestamo.add(scrollPane, BorderLayout.CENTER);
-		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		
-		lblTituloPrestamo = new JLabel("PRESTAMOS");
-		lblTituloPrestamo.setOpaque(true);
-		lblTituloPrestamo.setBackground(new Color(128, 0, 0));
-		lblTituloPrestamo.setForeground(new Color(255, 255, 255));
-		lblTituloPrestamo.setFont(new Font("Tahoma", Font.BOLD, 24));
-		lblTituloPrestamo.setHorizontalAlignment(SwingConstants.CENTER);
-		contentPane.add(lblTituloPrestamo, BorderLayout.NORTH);
-
+	public JPanel getPanelJuegos() {
+		return panelJuegos;
 	}
 }

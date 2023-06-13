@@ -10,11 +10,11 @@ import java.util.HashMap;
 import model.Juego;
 import model.ModeloGenerico;
 
-public class LecturaElementos {
+public class ControladorLecturaElementos {
 
 	private ModeloGenerico<Juego> modeloDatos;
 
-	public LecturaElementos() throws IOException, ClassNotFoundException {
+	public ControladorLecturaElementos() throws IOException, ClassNotFoundException {
 
 		modeloDatos = new ModeloGenerico<>();
 

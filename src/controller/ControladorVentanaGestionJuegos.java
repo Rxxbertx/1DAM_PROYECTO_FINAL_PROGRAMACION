@@ -26,26 +26,26 @@ import model.Prestamo;
 import model.Videojuego;
 import objetosModificados.renderizadoDeCeldaComboBox;
 import utilidades.utilidades;
-import view.GestionJuegos;
+import view.VentanaGestionJuegos;
 import view.VentanaPrincipalEmpleado;
 
-public class ControladorGestionJuegos implements ActionListener, ItemListener {
+public class ControladorVentanaGestionJuegos implements ActionListener, ItemListener {
 
 	private ModeloGenerico<Juego> juegos;
 
-	private GestionJuegos ventanaGestionJuegos;
+	private VentanaGestionJuegos ventanaGestionJuegos;
 
 	private ModeloPrestamo prestamos;
 
 	private ModeloIncidencias incidencias;
 
-	public ControladorGestionJuegos(VentanaPrincipalEmpleado ventanaEmpleado) {
+	public ControladorVentanaGestionJuegos(VentanaPrincipalEmpleado ventanaEmpleado) {
 
 		juegos = new ModeloGenerico<>();
 		prestamos = new ModeloPrestamo();
 		incidencias = new ModeloIncidencias();
 
-		ventanaGestionJuegos = new GestionJuegos();
+		ventanaGestionJuegos = new VentanaGestionJuegos();
 		ventanaGestionJuegos.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		ventanaGestionJuegos.setLocationRelativeTo(ventanaEmpleado);
 
@@ -189,7 +189,7 @@ public class ControladorGestionJuegos implements ActionListener, ItemListener {
 
 				ventanaGestionJuegos.getComboBoxUnidades().removeItemAt(i);
 
-				EscrituraElementos.ModificacionArchivo(juegos);
+				ControladorEscrituraElementos.ModificacionArchivo(juegos);
 
 			}
 
@@ -209,7 +209,7 @@ public class ControladorGestionJuegos implements ActionListener, ItemListener {
 					ventanaGestionJuegos.getModeloComboJuegos()
 							.removeElementAt(ventanaGestionJuegos.getComboJuegos_1().getSelectedIndex());
 
-					EscrituraElementos.ModificacionArchivo(juegos);
+					ControladorEscrituraElementos.ModificacionArchivo(juegos);
 				}
 
 			}
@@ -324,7 +324,7 @@ public class ControladorGestionJuegos implements ActionListener, ItemListener {
 			ventanaGestionJuegos.getModeloComboJuegos().setSelectedItem(juego);
 
 			try {
-				new EscrituraElementos(juego);
+				new ControladorEscrituraElementos(juego);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -348,7 +348,7 @@ public class ControladorGestionJuegos implements ActionListener, ItemListener {
 	private Collection<? extends Juego> añadirJuegos() {
 
 		try {
-			juegos.setElementos(new LecturaElementos().devolverElementos());
+			juegos.setElementos(new ControladorLecturaElementos().devolverElementos());
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

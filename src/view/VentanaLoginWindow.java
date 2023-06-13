@@ -19,7 +19,7 @@ import javax.swing.WindowConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 
-public class LoginWindow extends JFrame {
+public class VentanaLoginWindow extends JFrame {
 
 	/**
 	 * 
@@ -44,7 +44,7 @@ public class LoginWindow extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public LoginWindow() {
+	public VentanaLoginWindow() {
 		setTitle("App");
 		setBackground(new Color(128, 0, 0));
 		setFont(new Font("Arial", Font.PLAIN, 15));
@@ -188,7 +188,7 @@ public class LoginWindow extends JFrame {
 		btnVolver = new JButton("");
 		btnVolver.setBorder(null);
 		btnVolver.setContentAreaFilled(false);
-		btnVolver.setIcon(new ImageIcon(LoginWindow.class.getResource("/images/volver.png")));
+		btnVolver.setIcon(new ImageIcon(VentanaLoginWindow.class.getResource("/images/volver.png")));
 		btnVolver.setBounds(76, 60, 72, 51);
 		panelRegistrar.add(btnVolver);
 
@@ -198,7 +198,7 @@ public class LoginWindow extends JFrame {
 		contentPane.add(panel, BorderLayout.WEST);
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
-		JLabel lblNewLabel = new JLabel(new ImageIcon(LoginWindow.class.getResource("/images/lateral.png")));
+		JLabel lblNewLabel = new JLabel(new ImageIcon(VentanaLoginWindow.class.getResource("/images/lateral.png")));
 		panel.add(lblNewLabel);
 
 		// Agregar "pegamento" horizontal para rellenar el espacio sobrante

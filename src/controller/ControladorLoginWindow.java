@@ -12,14 +12,14 @@ import model.ModeloUsuario;
 import model.Socio;
 import model.Usuario;
 
-public class LoginWindow implements ActionListener {
+public class ControladorLoginWindow implements ActionListener {
 
-	private view.LoginWindow loginWindow;
+	private view.VentanaLoginWindow loginWindow;
 	private ModeloUsuario modeloUsuario;
 
-	public LoginWindow() {
+	public ControladorLoginWindow() {
 
-		loginWindow = new view.LoginWindow();
+		loginWindow = new view.VentanaLoginWindow();
 		modeloUsuario = new ModeloUsuario();
 		loginWindow.getBtnEntrar().addActionListener(this);
 		loginWindow.getBtnAltaLogin().addActionListener(this);
