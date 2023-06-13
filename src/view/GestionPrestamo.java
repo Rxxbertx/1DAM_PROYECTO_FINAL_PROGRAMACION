@@ -26,6 +26,8 @@ import javax.swing.SwingConstants;
 import javax.swing.JScrollPane;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.LineBorder;
+import java.awt.Toolkit;
+import javax.swing.JLabel;
 
 public class GestionPrestamo extends JFrame {
 
@@ -38,6 +40,7 @@ public class GestionPrestamo extends JFrame {
 	private Component verticalGlue_2;
 	private Component verticalGlue_1;
 	private JScrollPane scrollPane;
+	private JLabel lblTituloPrestamo;
 
 	public JButton getBtnHistorico() {
 		return btnHistorico;
@@ -59,6 +62,7 @@ public class GestionPrestamo extends JFrame {
 	 * Create the frame.
 	 */
 	public GestionPrestamo() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(GestionPrestamo.class.getResource("/images/icons8-play-games-96.png")));
 		Border innerBorder1 = BorderFactory.createLineBorder(Color.WHITE, 2);
 		Border outerBorder2 = BorderFactory.createLineBorder(new Color(128, 0, 0), 8);
 
@@ -145,5 +149,15 @@ public class GestionPrestamo extends JFrame {
 
 		scrollPane = new JScrollPane(listPrestamo);
 		panelGestionPrestamo.add(scrollPane, BorderLayout.CENTER);
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		
+		lblTituloPrestamo = new JLabel("PRESTAMOS");
+		lblTituloPrestamo.setOpaque(true);
+		lblTituloPrestamo.setBackground(new Color(128, 0, 0));
+		lblTituloPrestamo.setForeground(new Color(255, 255, 255));
+		lblTituloPrestamo.setFont(new Font("Tahoma", Font.BOLD, 24));
+		lblTituloPrestamo.setHorizontalAlignment(SwingConstants.CENTER);
+		contentPane.add(lblTituloPrestamo, BorderLayout.NORTH);
+
 	}
 }
