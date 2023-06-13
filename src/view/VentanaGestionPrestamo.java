@@ -7,6 +7,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 
 import model.Juego;
+import objetosModificados.renderizadoDeCeldaJList;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -30,7 +31,6 @@ import javax.swing.border.LineBorder;
 import javax.swing.ListSelectionModel;
 import java.awt.Toolkit;
 import javax.swing.JLabel;
-
 
 public class VentanaGestionPrestamo extends JFrame {
 
@@ -134,7 +134,9 @@ public class VentanaGestionPrestamo extends JFrame {
 		Border outerBorder3 = BorderFactory.createLineBorder(new Color(128, 0, 0), 1);
 		Border compoundBorder3 = BorderFactory.createCompoundBorder(innerBorder3, outerBorder3);
 
-		listPrestamo.setBorder(new EmptyBorder(5, 5, 5, 5));
+		listPrestamo.setBorder(null);
+		listPrestamo.setCellRenderer(new renderizadoDeCeldaJList()); // Establecer el
+		// renderizador personalizado en el
 
 		JPanel panel = new JPanel();
 		panel.setPreferredSize(new Dimension(10, 75));
@@ -158,8 +160,7 @@ public class VentanaGestionPrestamo extends JFrame {
 
 		scrollPane = new JScrollPane(listPrestamo);
 		panelGestionPrestamo.add(scrollPane, BorderLayout.CENTER);
-		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		
+
 		lblTituloPrestamo = new JLabel("PRESTAMOS");
 		lblTituloPrestamo.setOpaque(true);
 		lblTituloPrestamo.setBackground(new Color(128, 0, 0));

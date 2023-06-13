@@ -17,10 +17,13 @@ public class ControladorVentanaEmpleado implements ActionListener {
 		ventanaEmpleado = new VentanaPrincipalEmpleado();
 		ventanaEmpleado.setLocationRelativeTo(loginWindow);
 		loginWindow.dispose();
+		
 		ventanaEmpleado.getBtnGestionJuegos().addActionListener(this);
 		ventanaEmpleado.getBtnGestionUsuarios().addActionListener(this);
 		ventanaEmpleado.getBtnGestionPrestamos().addActionListener(this);
 		ventanaEmpleado.getBtnGestionIncidencias().addActionListener(this);
+		ventanaEmpleado.getBtnGestionSalir().addActionListener(this);
+		
 		ventanaEmpleado.getLblRellenarUsuario().setText(usuario.getNombre());
 		new ZoomAnimation(ventanaEmpleado.getLblRellenarUsuario());
 		ventanaEmpleado.setVisible(true);

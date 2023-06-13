@@ -21,10 +21,14 @@ public class ControladorVerHistorialIncidencias {
 	public ControladorVerHistorialIncidencias(VentanaGestionIncidencias root, ModeloIncidencias incidencias) {
 
 		this.incidencias = incidencias;
+		this.juegos = new ModeloGenerico<>();
 
 		ventana = new VentanaVerHistorialIncidencias();
+		ventana.setLocationRelativeTo(root);
 
 		configuracionGeneral();
+
+		ventana.setVisible(true);
 
 	}
 
@@ -45,14 +49,26 @@ public class ControladorVerHistorialIncidencias {
 
 				Integer unidad = entry.getKey();
 				List<Incidencia> val = entry.getValue();
-				
+
+				int j = 1;
 				for (Incidencia incidencia : val) {
-					
-					
-					
-					
+
+					if (incidencia.isResuelta()) {
+
+						String[] datos = { juego.getNombre(), juego.getId(), String.valueOf(unidad),
+								j + "- " + incidencia.getDescripcion(), "RESUELTA" };
+
+						ventana.getModeloResuelto().addRow(datos);
+
+					} else {
+						String[] datos = { juego.getNombre(), juego.getId(), String.valueOf(unidad),
+								j + "- " + incidencia.getDescripcion(), "Sin Resolver" };
+
+						ventana.getModeloNoResuelto().addRow(datos);
+
+					}
+
 				}
-				
 
 			}
 
