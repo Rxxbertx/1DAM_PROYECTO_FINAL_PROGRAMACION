@@ -69,7 +69,7 @@ public class ControladorVentanaGestionIncidencias implements ActionListener {
 
 					"<html> <center>" + temp.getNombre() + "<br>" + "(" + temp.getPlatSelecciona() + ")" + "<br>"
 							+ "Num Jugadores: " + temp.getNumJugadores() + " </center></html>");
-			boton.setIcon(utilidades.resizeIcon(new ImageIcon(temp.getImagen()), 200, 200));
+			boton.setIcon(utilidades.resizeIcon(temp.getImagen(), 200, 200));
 
 			boton.setHorizontalAlignment(SwingConstants.CENTER);
 			boton.setVerticalAlignment(SwingConstants.CENTER);

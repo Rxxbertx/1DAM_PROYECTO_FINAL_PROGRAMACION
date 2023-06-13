@@ -10,11 +10,11 @@ import model.Juego.Incidencia;
 import model.ModeloGenerico;
 import model.ModeloIncidencias;
 import view.VentanaGestionIncidencias;
-import view.VentanaVerHistorialIncidencias;
+import view.VentanaHistorialIncidencias;
 
 public class ControladorVerHistorialIncidencias {
 
-	private VentanaVerHistorialIncidencias ventana;
+	private VentanaHistorialIncidencias ventana;
 	private ModeloIncidencias incidencias;
 	private ModeloGenerico<Juego> juegos;
 
@@ -23,7 +23,7 @@ public class ControladorVerHistorialIncidencias {
 		this.incidencias = incidencias;
 		this.juegos = new ModeloGenerico<>();
 
-		ventana = new VentanaVerHistorialIncidencias();
+		ventana = new VentanaHistorialIncidencias();
 		ventana.setLocationRelativeTo(root);
 
 		configuracionGeneral();

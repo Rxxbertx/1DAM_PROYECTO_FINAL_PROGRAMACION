@@ -55,7 +55,7 @@ public class ControladorVentanaInfoJuegoEmpleado implements ActionListener, List
 
 		new ControladorLecturaPrestamo();
 
-		ventana.getLbImagenJuego().setIcon(utilidades.resizeIcon(new ImageIcon(videojuego.getImagen()), 150, 150));
+		ventana.getLbImagenJuego().setIcon(utilidades.resizeIcon(videojuego.getImagen(), 150, 150));
 		ventana.getLblCompañiaRellenar().setText(videojuego.getCompañia());
 		ventana.getLblNombreRellenar().setText(videojuego.getNombre());
 		ventana.getLblPlataformaRellenar().setText(videojuego.getPlatSelecciona());

@@ -39,7 +39,6 @@ public class renderizadoDeCeldaJList extends DefaultListCellRenderer {
 		label.setHorizontalTextPosition(SwingConstants.RIGHT);
 		label.setVerticalTextPosition(SwingConstants.CENTER);
 		label.setOpaque(true);
-		label.setBorder(new EmptyBorder(5, 10, 5, 10));
 
 		if (isSelected) {
 			label.setBackground(new Color(128, 0, 0));
@@ -52,9 +51,7 @@ public class renderizadoDeCeldaJList extends DefaultListCellRenderer {
 		Juego selectedIndex = (Juego) value;
 
 		if (selectedIndex != null) {
-			ImageIcon icon = new ImageIcon(
-					selectedIndex instanceof Videojuego ? ((Videojuego) (selectedIndex)).getImagen()
-							: "src/images/default.png");
+			ImageIcon icon = ((Videojuego) (selectedIndex)).getImagen();
 
 			String nombre = selectedIndex.getNombre();
 			String plataforma = ((Videojuego) (selectedIndex)).getPlatSelecciona();
@@ -63,9 +60,6 @@ public class renderizadoDeCeldaJList extends DefaultListCellRenderer {
 			label.setText(nombre + " [Plataforma: " + plataforma + "] UNIDADES UTILIZADAS: "
 					+ selectedIndex.getUdsUtilizadas());
 			label.setFont(new Font("Arial", Font.BOLD, 15));
-			label.setBorder(new EmptyBorder(0, 0, 0, 0));
-
-			label.setMaximumSize(new Dimension(100, 100));
 
 		} else {
 			label.setIcon(null);

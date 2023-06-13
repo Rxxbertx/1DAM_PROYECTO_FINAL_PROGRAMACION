@@ -245,7 +245,7 @@ public class ControladorVentanaGestionJuegos implements ActionListener, ItemList
 
 				String id = utilidades.generarIdJuego(nombre, plataforma, jugadores);
 
-				añadirJuego(id, nombre, jugadores, unidades, compañia, plataforma, imagen);
+				añadirJuego(id, nombre, jugadores, unidades, compañia, plataforma, new ImageIcon(imagen));
 
 			}
 
@@ -311,7 +311,7 @@ public class ControladorVentanaGestionJuegos implements ActionListener, ItemList
 	}
 
 	private void añadirJuego(String id, String nombre, int jugadores, int unidades, String compañia, String plataforma,
-			String imagen) {
+			ImageIcon imagen) {
 
 		Juego juego = new Videojuego(nombre, jugadores, unidades, 0, compañia, plataforma, id, imagen);
 

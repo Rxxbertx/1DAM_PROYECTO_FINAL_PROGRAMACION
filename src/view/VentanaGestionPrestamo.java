@@ -125,18 +125,15 @@ public class VentanaGestionPrestamo extends JFrame {
 		panelGestionPrestamo.setLayout(new BorderLayout(0, 0));
 
 		listPrestamo = new JList();
+		listPrestamo.setFixedCellHeight(150);
 		listPrestamo.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		listPrestamo.setVisibleRowCount(3);
-		listPrestamo.setPreferredSize(new Dimension(100, 100));
-
+		listPrestamo.setVisibleRowCount(2);
+	
 		Border innerBorder3 = BorderFactory.createLineBorder(Color.WHITE, 1);
 
 		Border outerBorder3 = BorderFactory.createLineBorder(new Color(128, 0, 0), 1);
 		Border compoundBorder3 = BorderFactory.createCompoundBorder(innerBorder3, outerBorder3);
 
-		listPrestamo.setBorder(null);
-		listPrestamo.setCellRenderer(new renderizadoDeCeldaJList()); // Establecer el
-		// renderizador personalizado en el
 
 		JPanel panel = new JPanel();
 		panel.setPreferredSize(new Dimension(10, 75));

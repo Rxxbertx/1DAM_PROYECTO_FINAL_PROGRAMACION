@@ -20,7 +20,7 @@ import javax.swing.JTable;
 import javax.swing.border.LineBorder;
 import javax.swing.border.CompoundBorder;
 
-public class VentanaVerHistorialIncidencias extends JFrame {
+public class VentanaHistorialIncidencias extends JFrame {
 
 	private JPanel contentPane;
 	private JTable tablaResuelta;
@@ -28,7 +28,7 @@ public class VentanaVerHistorialIncidencias extends JFrame {
 	private DefaultTableModel modeloResuelto = new DefaultTableModel();
 	private DefaultTableModel modeloNoResuelto = new DefaultTableModel();
 
-	public VentanaVerHistorialIncidencias() {
+	public VentanaHistorialIncidencias() {
 
 		String cabecera[] = { "Nombre Juego", "Id Juego", "Num Unidad", "Incidencia", "Estado" };
 		modeloNoResuelto.setColumnIdentifiers(cabecera);

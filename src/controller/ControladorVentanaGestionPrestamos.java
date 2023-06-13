@@ -51,7 +51,7 @@ public class ControladorVentanaGestionPrestamos implements ActionListener {
 		ventana.getBtnVer().addActionListener(this);
 		ventana.getBtnSalir().addActionListener(this);
 		DefaultListModel<Juego> datos = new DefaultListModel<>();
-		//ventana.getListPrestamo().setCellRenderer(new renderizadoDeCeldaJList());
+		ventana.getListPrestamo().setCellRenderer(new renderizadoDeCeldaJList());
 
 		datos.addAll(juegos.getElementos().values());
 		ventana.getListPrestamo().setModel(datos);

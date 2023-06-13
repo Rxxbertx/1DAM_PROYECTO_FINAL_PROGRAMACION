@@ -33,25 +33,7 @@ public class VentanaInfoIncidencias extends JFrame {
 
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaInfoIncidencias frame = new VentanaInfoIncidencias();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the frame.
-	 */
 	public VentanaInfoIncidencias() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaInfoIncidencias.class.getResource("/images/icons8-play-games-96.png")));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

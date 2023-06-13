@@ -41,9 +41,8 @@ public class renderizadoDeCeldaComboBox extends JLabel implements ListCellRender
 		// Set the icon and text. If icon was null, say so.
 
 		if (selectedIndex != null) {
-			ImageIcon icon = new ImageIcon(
-					selectedIndex instanceof Videojuego ? ((Videojuego) (selectedIndex)).getImagen()
-							: "src/images/default.png");
+			
+			ImageIcon icon = ((Videojuego) (selectedIndex)).getImagen();
 			String nombre = selectedIndex.getNombre();
 
 			setIcon(utilidades.resizeIcon(icon, 100, 100));
