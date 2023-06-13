@@ -29,6 +29,7 @@ import javax.swing.border.MatteBorder;
 import javax.swing.border.TitledBorder;
 
 import model.Juego;
+import java.awt.Toolkit;
 
 public class GestionJuegos extends JFrame {
 
@@ -90,6 +91,7 @@ public class GestionJuegos extends JFrame {
 	private JPanel panelInformacion;
 
 	public GestionJuegos() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(GestionJuegos.class.getResource("/images/icons8-play-games-96.png")));
 
 		Border innerBorder1 = BorderFactory.createLineBorder(Color.WHITE, 3);
 		Border outerBorder1 = BorderFactory.createLineBorder(new Color(128, 0, 0), 10);
