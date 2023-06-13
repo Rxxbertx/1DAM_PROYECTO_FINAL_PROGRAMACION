@@ -32,6 +32,14 @@ import model.Juego;
 
 public class GestionJuegos extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5535435754318042085L;
+	/**
+	 *
+	 */
+
 	private JPanel contentPane;
 	private JTextField tNombreAñadir;
 	private JTextField tNombreEliminar;

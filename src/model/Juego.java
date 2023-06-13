@@ -6,6 +6,14 @@ import java.util.List;
 
 public abstract class Juego implements Serializable {
 
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = -6025569216836396211L;
+	/**
+	 *
+	 */
+
 	private String nombre;
 	private int numJugadores;
 	private int udsUtilizadas;
@@ -62,7 +70,7 @@ public abstract class Juego implements Serializable {
 	}
 
 	public void setUdsUtilizadas(int udsUtilizadas) {
-		this.udsUtilizadas = udsUtilizadas;
+		this.udsUtilizadas += udsUtilizadas;
 	}
 
 	/**
@@ -82,15 +90,22 @@ public abstract class Juego implements Serializable {
 	// unidades
 
 	public static class Unidad implements Serializable {
+		/**
+		 *
+		 */
+		private static final long serialVersionUID = -3519533619257921015L;
 		private String nombre;
 		private int id;
+		private String idJuego;
 		private List<Incidencia> incidencias;
 		private Prestamo prestamo;
 
-		public Unidad(String nombre, int numero) {
-			this.nombre = nombre;
+		public Unidad(String nombre, int numero, String idJuego) {
+			this.setNombreUnidad(nombre);
 			this.id = numero;
 			this.incidencias = new ArrayList<>();
+			this.setIdJuego(idJuego);
+			this.prestamo = getPrestamo();
 		}
 
 		public Prestamo getPrestamo() {
@@ -138,12 +153,32 @@ public abstract class Juego implements Serializable {
 			}
 
 		}
+
+		public String getIdJuego() {
+			return idJuego;
+		}
+
+		public void setIdJuego(String idJuego) {
+			this.idJuego = idJuego;
+		}
+
+		public String getNombreUnidad() {
+			return nombre;
+		}
+
+		public void setNombreUnidad(String nombre) {
+			this.nombre = nombre;
+		}
 	}
 
 	// incidencias
 
 	// Clase para representar las incidencias de una unidad
 	public static class Incidencia implements Serializable {
+		/**
+		 *
+		 */
+		private static final long serialVersionUID = 4603311692135041971L;
 		private String descripcion;
 		private boolean resuelta;
 

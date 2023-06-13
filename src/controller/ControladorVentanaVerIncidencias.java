@@ -1,7 +1,5 @@
 package controller;
 
-import java.util.List;
-
 import model.Juego;
 import model.Juego.Incidencia;
 import model.Prestamo;
@@ -48,6 +46,8 @@ public class ControladorVentanaVerIncidencias {
 			String[] datosCelda = { String.valueOf(unidad.getId()), descPrestamo, descIncidencias };
 
 			ventana.getDatos().addRow(datosCelda);
+		
+			
 
 		}
 	}
