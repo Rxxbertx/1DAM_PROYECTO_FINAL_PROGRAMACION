@@ -32,7 +32,6 @@ public class ModeloVideojuego {
 	public static Videojuego consultarJuegos(Videojuego videojuego, String nombre) {
 
 		for (Entry<String, Videojuego> entry : videojuegos.entrySet()) {
-			String key = entry.getKey();
 			Videojuego val = entry.getValue();
 			if (val.getNombre().equals(nombre)) {
 				return val;

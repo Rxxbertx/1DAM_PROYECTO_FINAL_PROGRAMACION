@@ -9,6 +9,7 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
@@ -53,7 +54,9 @@ public class VentanaVerIncidencias extends JDialog {
 				new CompoundBorder(new EmptyBorder(5, 5, 5, 5), new MatteBorder(4, 4, 4, 3, new Color(128, 0, 0))));
 		getContentPane().add(scrollPane, BorderLayout.CENTER);
 
-		table = new JTable();
+		table = new JTable(datos);
+		table.setRowHeight(30);
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		table.setSelectionBackground(new Color(128, 0, 0));
 		scrollPane.setViewportView(table);

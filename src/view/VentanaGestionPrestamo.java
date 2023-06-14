@@ -5,10 +5,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
-
-import model.Juego;
-import objetosModificados.renderizadoDeCeldaJList;
-
+import java.awt.Toolkit;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -21,12 +18,13 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
-import javax.swing.ScrollPaneConstants;
 import javax.swing.SpringLayout;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
+
+import model.Juego;
 
 public class VentanaGestionPrestamo extends JFrame {
 
@@ -106,19 +104,10 @@ public class VentanaGestionPrestamo extends JFrame {
 		panelGestionPrestamo.setBorder(compoundBorder1);
 		panelGestionPrestamo.setLayout(new BorderLayout(0, 0));
 
-		listPrestamo = new JList();
+		listPrestamo = new JList<Juego>();
+		listPrestamo.setFixedCellHeight(150);
 		listPrestamo.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		listPrestamo.setVisibleRowCount(3);
-		listPrestamo.setPreferredSize(new Dimension(100, 100));
-
-		Border innerBorder3 = BorderFactory.createLineBorder(Color.WHITE, 1);
-
-		Border outerBorder3 = BorderFactory.createLineBorder(new Color(128, 0, 0), 1);
-		Border compoundBorder3 = BorderFactory.createCompoundBorder(innerBorder3, outerBorder3);
-
-		listPrestamo.setBorder(null);
-		listPrestamo.setCellRenderer(new renderizadoDeCeldaJList()); // Establecer el
-		// renderizador personalizado en el
+		listPrestamo.setVisibleRowCount(2);
 
 		JPanel panel = new JPanel();
 		panel.setPreferredSize(new Dimension(10, 75));

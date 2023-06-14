@@ -8,6 +8,15 @@ public abstract class Usuario {
 	private String contraseña;
 	private String nomUsuario;
 
+	/**
+	 * Crea un objeto Usuario con la información del usuario.
+	 * 
+	 * @param nombre       el nombre del usuario
+	 * @param apellidos    los apellidos del usuario
+	 * @param esEmpleado   indica si el usuario es un empleado
+	 * @param contraseña   la contraseña del usuario
+	 * @param nomUsuario   el nombre de usuario del usuario
+	 */
 	public Usuario(String nombre, String apellidos, Boolean esEmpleado, String contraseña, String nomUsuario) {
 		super();
 		this.nombre = nombre;
@@ -15,7 +24,6 @@ public abstract class Usuario {
 		this.esEmpleado = esEmpleado;
 		this.contraseña = contraseña;
 		this.nomUsuario = nomUsuario;
-
 	}
 
 	// Constructor por defecto
@@ -23,60 +31,95 @@ public abstract class Usuario {
 		super();
 	}
 
-	// Getters y setters
+	/**
+	 * Devuelve el nombre del usuario.
+	 * 
+	 * @return el nombre del usuario
+	 */
 	public String getNombre() {
 		return nombre;
 	}
 
+	/**
+	 * Establece el nombre del usuario.
+	 * 
+	 * @param nombre el nombre del usuario
+	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
+	/**
+	 * Devuelve los apellidos del usuario.
+	 * 
+	 * @return los apellidos del usuario
+	 */
 	public String getApellidos() {
 		return apellidos;
 	}
 
+	/**
+	 * Establece los apellidos del usuario.
+	 * 
+	 * @param apellidos los apellidos del usuario
+	 */
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
 
+	/**
+	 * Indica si el usuario es un empleado.
+	 * 
+	 * @return true si el usuario es un empleado, false si no lo es
+	 */
 	public Boolean getEsEmpleado() {
 		return esEmpleado;
 	}
 
 	/**
-	 * @return the contraseña
+	 * Establece si el usuario es un empleado.
+	 * 
+	 * @param esEmpleado true si el usuario es un empleado, false si no lo es
+	 */
+	public void setEsEmpleado(Boolean esEmpleado) {
+		this.esEmpleado = esEmpleado;
+	}
+
+	/**
+	 * Devuelve la contraseña del usuario.
+	 * 
+	 * @return la contraseña del usuario
 	 */
 	public String getContraseña() {
 		return contraseña;
 	}
 
 	/**
-	 * @param contraseña the contraseña to set
+	 * Establece la contraseña del usuario.
+	 * 
+	 * @param contraseña la contraseña del usuario
 	 */
 	public void setContraseña(String contraseña) {
 		this.contraseña = contraseña;
 	}
 
 	/**
-	 * @return the nomUsuario
+	 * Devuelve el nombre de usuario del usuario.
+	 * 
+	 * @return el nombre de usuario del usuario
 	 */
 	public String getNomUsuario() {
 		return nomUsuario;
 	}
 
 	/**
-	 * @param nomUsuario the nomUsuario to set
+	 * Establece el nombre de usuario del usuario.
+	 * 
+	 * @param nomUsuario el nombre de usuario del usuario
 	 */
 	public void setNomUsuario(String nomUsuario) {
 		this.nomUsuario = nomUsuario;
 	}
 
-	/**
-	 * @param esEmpleado the esEmpleado to set
-	 */
-	public void setEsEmpleado(Boolean esEmpleado) {
-		this.esEmpleado = esEmpleado;
-	}
-
 }
+

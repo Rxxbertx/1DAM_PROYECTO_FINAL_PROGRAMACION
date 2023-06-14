@@ -40,7 +40,7 @@ public class ControladorLecturaElementos {
 				}
 			} catch (EOFException eof) {
 
-				System.out.println("Fin de fichero");
+
 
 			}
 

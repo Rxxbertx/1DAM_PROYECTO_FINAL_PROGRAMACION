@@ -3,12 +3,14 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Toolkit;
 
 import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -22,48 +24,48 @@ import javax.swing.SpringLayout;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
+
+import model.Juego.Unidad;
 
 public class VentanaInfoIncidencias extends JFrame {
 
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 398709682491876209L;
 	private JPanel contentPane;
-	private JList list;
+	private JList<Unidad> list;
 	private JPanel panelCard;
 	private JPanel panelSinIncidencias;
-	private JButton btnEliminarSinInc;
 	private JTextArea textArea;
 	private JPanel panelConIncidencias;
-	private JComboBox comboJuego;
+	private JComboBox<Integer> comboJuego;
 	private JButton btnModificar;
 	private JButton btnEliminar;
 	private JLabel lblImagenRellenar;
-	private JLabel lblNombreJuegoRellenar;
+	private JLabel lblPlataformaRelleno;
 	private JTextArea tIncidencia;
 	private JScrollPane scrollPaneCrearIncidencia;
+	private JButton btnAbrir;
+	private JButton btnAñadir;
+	private JLabel lblCrearIncidencia;
+	private Component verticalGlue;
+	private Component verticalGlue_1;
+	private JPanel panel_1;
+	private JLabel lblNumJugaRelleno;
+	private JLabel lbNombreRelleno;
+	private JLabel lblImagenRellenar2;
+	private JLabel lblNumJugaRelleno2;
+	private JLabel lblPlataformaRelleno2;
+	private JLabel lbNombreRelleno2;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				try {
-					VentanaInfoIncidencias frame = new VentanaInfoIncidencias();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public VentanaInfoIncidencias() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaInfoIncidencias.class.getResource("/images/icons8-play-games-96.png")));
+		setIconImage(Toolkit.getDefaultToolkit()
+				.getImage(VentanaInfoIncidencias.class.getResource("/images/icons8-play-games-96.png")));
 		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 945, 609);
 		contentPane = new JPanel();
@@ -77,9 +79,14 @@ public class VentanaInfoIncidencias extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setPreferredSize(new Dimension(100, 2));
+		scrollPane.setBorder(null);
 		contentPane.add(scrollPane, BorderLayout.WEST);
 
-		list = new JList();
+		list = new JList<Unidad>();
+		list.setBackground(new Color(192, 192, 192));
+		list.setMaximumSize(new Dimension(300000, 3000000));
+		list.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		list.setBorder(new MatteBorder(0, 0, 0, 4, new Color(128, 0, 0)));
 		scrollPane.setViewportView(list);
 
@@ -88,44 +95,74 @@ public class VentanaInfoIncidencias extends JFrame {
 		panelCard.setLayout(new CardLayout(0, 0));
 
 		panelSinIncidencias = new JPanel();
-		panelCard.add(panelSinIncidencias, "name_243871446300900");
-		panelSinIncidencias.setLayout(new BorderLayout(0, 0));
+		panelCard.add(panelSinIncidencias, "sinIncidencias");
+		panelSinIncidencias.setLayout(new BoxLayout(panelSinIncidencias, BoxLayout.Y_AXIS));
 
-		JPanel panelConBoton = new JPanel();
-		panelConBoton.setPreferredSize(new Dimension(10, 200));
-		panelSinIncidencias.add(panelConBoton, BorderLayout.SOUTH);
-		SpringLayout sl_panelConBoton = new SpringLayout();
-		panelConBoton.setLayout(sl_panelConBoton);
+		verticalGlue = Box.createVerticalGlue();
+		panelSinIncidencias.add(verticalGlue);
 
-		btnEliminarSinInc = new JButton("ELIMINAR");
-		sl_panelConBoton.putConstraint(SpringLayout.NORTH, btnEliminarSinInc, 77, SpringLayout.NORTH, panelConBoton);
-		sl_panelConBoton.putConstraint(SpringLayout.WEST, btnEliminarSinInc, 232, SpringLayout.WEST, panelConBoton);
-		btnEliminarSinInc.setHorizontalTextPosition(SwingConstants.CENTER);
-		btnEliminarSinInc.setForeground(Color.WHITE);
-		btnEliminarSinInc.setFont(new Font("Tahoma", Font.BOLD, 30));
-		btnEliminarSinInc.setBorderPainted(false);
-		btnEliminarSinInc.setBackground(new Color(128, 0, 0));
-		panelConBoton.add(btnEliminarSinInc);
-
-		JPanel panelConTitulo = new JPanel();
-		panelConTitulo.setPreferredSize(new Dimension(10, 200));
-		panelSinIncidencias.add(panelConTitulo, BorderLayout.NORTH);
-		panelConTitulo.setLayout(new BorderLayout(0, 0));
-
-		JLabel lblCrearIncidencia = new JLabel("CREAR NUEVA INCIDENCIA");
-		lblCrearIncidencia.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 24));
-		lblCrearIncidencia.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCrearIncidencia = new JLabel("CREAR NUEVA INCIDENCIA");
+		lblCrearIncidencia.setAlignmentX(Component.CENTER_ALIGNMENT);
+		lblCrearIncidencia.setMaximumSize(new Dimension(444, 20));
 		lblCrearIncidencia.setHorizontalTextPosition(SwingConstants.CENTER);
-		panelConTitulo.add(lblCrearIncidencia, BorderLayout.CENTER);
+		lblCrearIncidencia.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCrearIncidencia.setFont(new Font("Tahoma", Font.BOLD, 24));
+		panelSinIncidencias.add(lblCrearIncidencia);
+
+		verticalGlue_1 = Box.createVerticalGlue();
+		panelSinIncidencias.add(verticalGlue_1);
+
+		panel_1 = new JPanel();
+		panel_1.setPreferredSize(new Dimension(10, 100));
+		panelSinIncidencias.add(panel_1);
+		panel_1.setLayout(null);
+
+		lbNombreRelleno2 = new JLabel("");
+		lbNombreRelleno2.setFont(new Font("Dialog", Font.BOLD, 15));
+		lbNombreRelleno2.setBounds(381, 16, 250, 26);
+		panel_1.add(lbNombreRelleno2);
+
+		lblPlataformaRelleno2 = new JLabel("");
+		lblPlataformaRelleno2.setFont(new Font("Dialog", Font.BOLD, 15));
+		lblPlataformaRelleno2.setBounds(381, 58, 250, 26);
+		panel_1.add(lblPlataformaRelleno2);
+
+		lblNumJugaRelleno2 = new JLabel("");
+		lblNumJugaRelleno2.setFont(new Font("Dialog", Font.BOLD, 15));
+		lblNumJugaRelleno2.setBounds(381, 100, 250, 26);
+		panel_1.add(lblNumJugaRelleno2);
+
+		lblImagenRellenar2 = new JLabel("");
+		lblImagenRellenar2.setBounds(188, 10, 166, 125);
+		panel_1.add(lblImagenRellenar2);
 
 		JScrollPane scrollPaneIncidencia = new JScrollPane();
-		panelSinIncidencias.add(scrollPaneIncidencia, BorderLayout.CENTER);
+		scrollPaneIncidencia.setPreferredSize(new Dimension(2, 150));
+		scrollPaneIncidencia.setBorder(
+				new CompoundBorder(new EmptyBorder(22, 22, 0, 22), new LineBorder(new Color(128, 0, 0), 4, true)));
+		panelSinIncidencias.add(scrollPaneIncidencia);
 
 		textArea = new JTextArea();
+		textArea.setFont(new Font("Tahoma", Font.BOLD, 20));
+		textArea.setWrapStyleWord(true);
+		textArea.setLineWrap(true);
+		textArea.setBorder(new EmptyBorder(22, 22, 22, 22));
 		scrollPaneIncidencia.setViewportView(textArea);
 
+		Component verticalGlue_3 = Box.createVerticalGlue();
+		panelSinIncidencias.add(verticalGlue_3);
+
+		btnAñadir = new JButton("AÑADIR");
+		btnAñadir.setHorizontalTextPosition(SwingConstants.CENTER);
+		btnAñadir.setForeground(Color.WHITE);
+		btnAñadir.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnAñadir.setBorderPainted(false);
+		btnAñadir.setBackground(new Color(128, 0, 0));
+		btnAñadir.setAlignmentX(0.5f);
+		panelSinIncidencias.add(btnAñadir);
+
 		panelConIncidencias = new JPanel();
-		panelCard.add(panelConIncidencias, "name_243871457462200");
+		panelCard.add(panelConIncidencias, "conIncidencias");
 		panelConIncidencias.setLayout(new BorderLayout(0, 0));
 
 		JPanel panel = new JPanel();
@@ -134,7 +171,8 @@ public class VentanaInfoIncidencias extends JFrame {
 		SpringLayout sl_panel = new SpringLayout();
 		panel.setLayout(sl_panel);
 
-		comboJuego = new JComboBox();
+		comboJuego = new JComboBox<Integer>();
+		comboJuego.setFont(new Font("Tahoma", Font.BOLD, 20));
 		sl_panel.putConstraint(SpringLayout.NORTH, comboJuego, 17, SpringLayout.NORTH, panel);
 		sl_panel.putConstraint(SpringLayout.WEST, comboJuego, 169, SpringLayout.WEST, panel);
 		sl_panel.putConstraint(SpringLayout.SOUTH, comboJuego, 72, SpringLayout.NORTH, panel);
@@ -179,7 +217,8 @@ public class VentanaInfoIncidencias extends JFrame {
 		btnModificar.setBackground(new Color(128, 0, 0));
 		panelBotones.add(btnModificar);
 
-		btnEliminar = new JButton("ELIMINAR");
+		btnEliminar = new JButton("RESOLVER");
+		btnEliminar.setActionCommand("RESOLVER");
 		sl_panelBotones.putConstraint(SpringLayout.WEST, btnEliminar, 450, SpringLayout.WEST, panelBotones);
 		sl_panelBotones.putConstraint(SpringLayout.EAST, btnModificar, -17, SpringLayout.WEST, btnEliminar);
 		sl_panelBotones.putConstraint(SpringLayout.NORTH, btnEliminar, 14, SpringLayout.NORTH, panelBotones);
@@ -190,16 +229,19 @@ public class VentanaInfoIncidencias extends JFrame {
 		btnEliminar.setFont(new Font("Tahoma", Font.BOLD, 30));
 		btnEliminar.setBorderPainted(false);
 		btnEliminar.setBorder(new EmptyBorder(0, 10, 0, 10));
-		btnEliminar.setBackground(new Color(128, 0, 0));
+		btnEliminar.setBackground(new Color(255, 215, 0));
 		panelBotones.add(btnEliminar);
 
-		JLabel lblAñadir = new JLabel("");
-		sl_panelBotones.putConstraint(SpringLayout.NORTH, lblAñadir, 10, SpringLayout.NORTH, panelBotones);
-		sl_panelBotones.putConstraint(SpringLayout.WEST, lblAñadir, 112, SpringLayout.WEST, panelBotones);
-		sl_panelBotones.putConstraint(SpringLayout.SOUTH, lblAñadir, -10, SpringLayout.SOUTH, panelBotones);
-		sl_panelBotones.putConstraint(SpringLayout.EAST, lblAñadir, -21, SpringLayout.WEST, btnModificar);
-		lblAñadir.setIcon(new ImageIcon(VentanaInfoIncidencias.class.getResource("/images/icons8-más-64.png")));
-		panelBotones.add(lblAñadir);
+		btnAbrir = new JButton("");
+		btnAbrir.setBorder(null);
+		btnAbrir.setBorderPainted(false);
+		btnAbrir.setContentAreaFilled(false);
+		sl_panelBotones.putConstraint(SpringLayout.NORTH, btnAbrir, 10, SpringLayout.NORTH, panelBotones);
+		sl_panelBotones.putConstraint(SpringLayout.WEST, btnAbrir, 10, SpringLayout.WEST, panelBotones);
+		sl_panelBotones.putConstraint(SpringLayout.SOUTH, btnAbrir, -10, SpringLayout.SOUTH, panelBotones);
+		sl_panelBotones.putConstraint(SpringLayout.EAST, btnAbrir, -123, SpringLayout.WEST, btnModificar);
+		btnAbrir.setIcon(new ImageIcon(VentanaInfoIncidencias.class.getResource("/images/icons8-más-64.png")));
+		panelBotones.add(btnAbrir);
 
 		JPanel panelEspacio = new JPanel();
 		panelEspacio.setPreferredSize(new Dimension(10, 150));
@@ -207,24 +249,40 @@ public class VentanaInfoIncidencias extends JFrame {
 		panelEspacio.setLayout(null);
 
 		lblImagenRellenar = new JLabel("");
-		lblImagenRellenar.setBounds(29, 25, 166, 104);
+		lblImagenRellenar.setBounds(174, 14, 166, 122);
 		panelEspacio.add(lblImagenRellenar);
 
-		lblNombreJuegoRellenar = new JLabel("");
-		lblNombreJuegoRellenar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 24));
-		lblNombreJuegoRellenar.setBounds(248, 58, 158, 34);
-		panelEspacio.add(lblNombreJuegoRellenar);
+		lblPlataformaRelleno = new JLabel("");
+		lblPlataformaRelleno.setFont(new Font("Dialog", Font.BOLD, 15));
+		lblPlataformaRelleno.setBounds(379, 62, 250, 26);
+		panelEspacio.add(lblPlataformaRelleno);
+
+		lbNombreRelleno = new JLabel("");
+		lbNombreRelleno.setFont(new Font("Dialog", Font.BOLD, 15));
+		lbNombreRelleno.setBounds(379, 18, 250, 26);
+		panelEspacio.add(lbNombreRelleno);
+
+		lblNumJugaRelleno = new JLabel("");
+		lblNumJugaRelleno.setFont(new Font("Dialog", Font.BOLD, 15));
+		lblNumJugaRelleno.setBounds(379, 106, 250, 26);
+		panelEspacio.add(lblNumJugaRelleno);
 
 		scrollPaneCrearIncidencia = new JScrollPane();
+		scrollPaneCrearIncidencia.setBorder(
+				new CompoundBorder(new EmptyBorder(22, 22, 22, 22), new LineBorder(new Color(128, 0, 0), 4, true)));
 		panelGeneral.add(scrollPaneCrearIncidencia, BorderLayout.CENTER);
 
 		tIncidencia = new JTextArea();
+		tIncidencia.setLineWrap(true);
+		tIncidencia.setWrapStyleWord(true);
+		tIncidencia.setFont(new Font("Tahoma", Font.BOLD, 20));
+		tIncidencia.setCaretColor(new Color(128, 0, 0));
+		tIncidencia.setBorder(new EmptyBorder(11, 11, 11, 11));
 		scrollPaneCrearIncidencia.setViewportView(tIncidencia);
-
 
 	}
 
-	public JList getList() {
+	public JList<Unidad> getList() {
 		return list;
 	}
 
@@ -236,8 +294,8 @@ public class VentanaInfoIncidencias extends JFrame {
 		return panelSinIncidencias;
 	}
 
-	public JButton getBtnEliminarSinInc() {
-		return btnEliminarSinInc;
+	public JButton getBtnAñadir() {
+		return btnAñadir;
 	}
 
 	public JTextArea getTextArea() {
@@ -248,7 +306,7 @@ public class VentanaInfoIncidencias extends JFrame {
 		return panelConIncidencias;
 	}
 
-	public JComboBox getComboJuego() {
+	public JComboBox<Integer> getComboJuego() {
 		return comboJuego;
 	}
 
@@ -265,7 +323,7 @@ public class VentanaInfoIncidencias extends JFrame {
 	}
 
 	public JLabel getLblNombreJuegoRellenar() {
-		return lblNombreJuegoRellenar;
+		return lblPlataformaRelleno;
 	}
 
 	public JTextArea gettIncidencia() {
@@ -274,5 +332,61 @@ public class VentanaInfoIncidencias extends JFrame {
 
 	public JScrollPane getScrollPaneCrearIncidencia() {
 		return scrollPaneCrearIncidencia;
+	}
+
+	/**
+	 * @return the btnAbrir
+	 */
+	public JButton getBtnAbrir() {
+		return btnAbrir;
+	}
+
+	/**
+	 * @return the lblPlataformaRelleno
+	 */
+	public JLabel getLblPlataformaRelleno() {
+		return lblPlataformaRelleno;
+	}
+
+	/**
+	 * @return the lblNumJugaRelleno
+	 */
+	public JLabel getLblNumJugaRelleno() {
+		return lblNumJugaRelleno;
+	}
+
+	/**
+	 * @return the lbNombreRelleno
+	 */
+	public JLabel getLbNombreRelleno() {
+		return lbNombreRelleno;
+	}
+
+	/**
+	 * @return the lblImagenRellenar2
+	 */
+	public JLabel getLblImagenRellenar2() {
+		return lblImagenRellenar2;
+	}
+
+	/**
+	 * @return the lblNumJugaRelleno2
+	 */
+	public JLabel getLblNumJugaRelleno2() {
+		return lblNumJugaRelleno2;
+	}
+
+	/**
+	 * @return the lblPlataformaRelleno2
+	 */
+	public JLabel getLblPlataformaRelleno2() {
+		return lblPlataformaRelleno2;
+	}
+
+	/**
+	 * @return the lbNombreRelleno2
+	 */
+	public JLabel getLbNombreRelleno2() {
+		return lbNombreRelleno2;
 	}
 }

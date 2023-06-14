@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 
 import javax.swing.DefaultListModel;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 import javax.swing.event.ListSelectionEvent;
@@ -15,7 +14,6 @@ import model.Juego;
 import model.Juego.Incidencia;
 import model.Juego.Unidad;
 import model.ModeloGenerico;
-import model.ModeloIncidencias;
 import model.ModeloPrestamo;
 import model.Prestamo;
 import model.Usuario;
@@ -36,7 +34,7 @@ public class ControladorVentanaInfoJuegoSocio implements ActionListener, ListSel
 	public ControladorVentanaInfoJuegoSocio(Usuario usuario, Videojuego temp, VentanaPrinicipalSocio root,
 			ModeloGenerico<Juego> juegosModel, ModeloPrestamo prestamos) {
 
-		System.out.println(temp.getId());
+		
 
 		juegos = juegosModel;
 
@@ -55,7 +53,7 @@ public class ControladorVentanaInfoJuegoSocio implements ActionListener, ListSel
 
 	private void configuracionGeneral() {
 
-		ventana.getLbImagenJuego().setIcon(utilidades.resizeIcon(new ImageIcon(videojuego.getImagen()), 150, 150));
+		ventana.getLbImagenJuego().setIcon(utilidades.resizeIcon(videojuego.getImagen(), 150, 150));
 		ventana.getLblCompañiaRellenar().setText(videojuego.getCompañia());
 		ventana.getLblNombreRellenar().setText(videojuego.getNombre());
 		ventana.getLblPlataformaRellenar().setText(videojuego.getPlatSelecciona());
@@ -126,12 +124,16 @@ public class ControladorVentanaInfoJuegoSocio implements ActionListener, ListSel
 				Unidad selectedValue = ventana.getListJuegos().getSelectedValue();
 
 				int j = 1;
-				String incidencias = "Ninguna";
+				
+String incidencias = "";
+				for (Incidencia incidencia : selectedValue.obtenerIncidencias()) {
 
-				for (Incidencia incidencia : selectedValue.obtenerIncidenciasSinResolver()) {
+					if (incidencia.isResuelta()) {
 
-					incidencias += j + "- " + incidencia.getDescripcion() + "\n";
-					j++;
+					} else {
+						incidencias += j + "- " + incidencia.getDescripcion() + "\n";
+						j++;
+					}
 				}
 
 				String estado = "";
