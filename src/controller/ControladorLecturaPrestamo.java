@@ -10,22 +10,24 @@ import java.util.ArrayList;
 import model.ModeloPrestamo;
 import model.Prestamo;
 
+/**
+ * Controlador para la lectura de datos de préstamos desde un archivo.
+ */
 public class ControladorLecturaPrestamo {
 
-	private ModeloPrestamo modeloPrestamo;
+	private ModeloPrestamo modeloPrestamo; // Modelo de préstamo
 
+	/**
+	 * Constructor de la clase.
+	 */
 	public ControladorLecturaPrestamo() {
-
 		modeloPrestamo = new ModeloPrestamo();
-
 		modeloPrestamo.setPrestamos(new ArrayList<>());
 
-		File ficheroDatos = new File("data/prestamos.dat");
+		File ficheroDatos = new File("data/prestamos.dat"); // Ruta del archivo de datos de préstamos
 
 		if (ficheroDatos.exists()) {
-
 			try {
-
 				BufferedReader lector = new BufferedReader(new FileReader(ficheroDatos));
 				String linea;
 				while ((linea = lector.readLine()) != null) {
@@ -39,19 +41,13 @@ public class ControladorLecturaPrestamo {
 							: LocalDateTime.parse(datosUsuario[4]);
 
 					modeloPrestamo.añadir(new Prestamo(idJuego, idUnidad, numUsuario, fechaInicio, fechaFin));
-
 				}
 				lector.close();
-
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
 		} else {
-
+			// Lógica en caso de que el archivo no exista
 		}
-
 	}
-
 }
