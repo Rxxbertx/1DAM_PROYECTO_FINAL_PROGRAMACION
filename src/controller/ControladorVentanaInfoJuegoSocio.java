@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 
 import javax.swing.DefaultListModel;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 import javax.swing.event.ListSelectionEvent;
@@ -15,7 +14,6 @@ import model.Juego;
 import model.Juego.Incidencia;
 import model.Juego.Unidad;
 import model.ModeloGenerico;
-import model.ModeloIncidencias;
 import model.ModeloPrestamo;
 import model.Prestamo;
 import model.Usuario;
@@ -128,10 +126,14 @@ public class ControladorVentanaInfoJuegoSocio implements ActionListener, ListSel
 				int j = 1;
 				String incidencias = "Ninguna";
 
-				for (Incidencia incidencia : selectedValue.obtenerIncidenciasSinResolver()) {
+				for (Incidencia incidencia : selectedValue.obtenerIncidencias()) {
 
-					incidencias += j + "- " + incidencia.getDescripcion() + "\n";
-					j++;
+					if (incidencia.isResuelta()) {
+
+					} else {
+						incidencias += j + "- " + incidencia.getDescripcion() + "\n";
+						j++;
+					}
 				}
 
 				String estado = "";

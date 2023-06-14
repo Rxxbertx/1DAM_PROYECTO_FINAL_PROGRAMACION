@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map.Entry;
 
 import model.Juego.Incidencia;
 import model.Juego.Unidad;
@@ -35,33 +36,22 @@ public class ModeloIncidencias {
 
 	}
 
-	public HashMap<Integer, List<Incidencia>> obtenerIncidenciasJuegoSinResolver(Juego juego) {
+	public int obtenerNumeroIncidenciasSinResolver(Juego juego) {
 
-		HashMap<Integer, List<Incidencia>> incidencias = new HashMap<>();
+		int i = 0;
 
-		for (Unidad u : juego.getUnidades()) {
+		for (Entry<Integer, List<Incidencia>> entry : obtenerIncidenciasJuego(juego).entrySet()) {
+			List<Incidencia> val = entry.getValue();
 
-			if (u.obtenerIncidenciasSinResolver().size() <= 0) {
+			for (Incidencia incidencia : val) {
+				if (incidencia.isResuelta()) {
 
-			} else {
-				incidencias.put(u.getId(), u.obtenerIncidenciasSinResolver());
+				} else {
+					i++;
+				}
 			}
 
 		}
-
-		return incidencias;
-
-	}
-
-	public int obtenerNumeroIncidenciasJuegoSinResolver(Juego juego) {
-
-		int i = 0;
-		for (List<Incidencia> incidencia : obtenerIncidenciasJuego(juego).values()) {
-
-			i += incidencia.size();
-
-		}
-
 		return i;
 
 	}

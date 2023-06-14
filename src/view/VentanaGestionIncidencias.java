@@ -2,38 +2,29 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.EventQueue;
+import java.awt.Component;
 import java.awt.Font;
-
-import model.Juego;
+import java.awt.GridLayout;
+import java.awt.Toolkit;
 
 import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JList;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollBar;
-import javax.swing.SpringLayout;
+import javax.swing.JScrollPane;
+import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
-import java.awt.Component;
-import javax.swing.BoxLayout;
-import javax.swing.Box;
-import javax.swing.SwingConstants;
-import javax.swing.JScrollPane;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.LineBorder;
-import java.awt.GridLayout;
-import javax.swing.JLabel;
-import java.awt.Toolkit;
 
 public class VentanaGestionIncidencias extends JFrame {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 4644087587937505449L;
 
@@ -107,11 +98,6 @@ public class VentanaGestionIncidencias extends JFrame {
 		contentPane.add(panelGestionIncidencias, BorderLayout.CENTER);
 		panelGestionIncidencias.setBorder(compoundBorder1);
 		panelGestionIncidencias.setLayout(new BorderLayout(0, 0));
-
-		Border innerBorder3 = BorderFactory.createLineBorder(Color.WHITE, 1);
-
-		Border outerBorder3 = BorderFactory.createLineBorder(new Color(128, 0, 0), 1);
-		Border compoundBorder3 = BorderFactory.createCompoundBorder(innerBorder3, outerBorder3);
 
 		scrollPane = new JScrollPane();
 		panelGestionIncidencias.add(scrollPane, BorderLayout.CENTER);

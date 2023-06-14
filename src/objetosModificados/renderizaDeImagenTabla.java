@@ -2,16 +2,14 @@ package objetosModificados;
 
 import java.awt.Component;
 
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
-
-import utilidades.utilidades;
 
 public class renderizaDeImagenTabla extends DefaultTableCellRenderer {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 8092159505535455867L;
 
@@ -20,8 +18,8 @@ public class renderizaDeImagenTabla extends DefaultTableCellRenderer {
 			int row, int column) {
 		JLabel label = new JLabel();
 
-		label.setHorizontalAlignment(JLabel.CENTER);
-		label.setVerticalAlignment(JLabel.CENTER);
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		label.setVerticalAlignment(SwingConstants.CENTER);
 
 		return label;
 	}

@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 
 public class Prestamo implements Serializable {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = -1166145454522290630L;
 	private LocalDateTime fechaInicio;

@@ -12,7 +12,7 @@ import javax.swing.border.EmptyBorder;
 
 import model.Juego;
 
-public class renderizadoDeCeldaJListUnidadCentrado extends JLabel implements ListCellRenderer<Object> {
+public class renderizadoDeJListCentradoIncidencia extends JLabel implements ListCellRenderer<Object> {
 
 
 	/**
@@ -20,7 +20,7 @@ public class renderizadoDeCeldaJListUnidadCentrado extends JLabel implements Lis
 	 */
 	private static final long serialVersionUID = -6328457360576448181L;
 
-	public renderizadoDeCeldaJListUnidadCentrado() {
+	public renderizadoDeJListCentradoIncidencia() {
 
 		setHorizontalAlignment(CENTER);
 		setVerticalAlignment(CENTER);
@@ -37,16 +37,15 @@ public class renderizadoDeCeldaJListUnidadCentrado extends JLabel implements Lis
 
 		Juego.Unidad unidad = (Juego.Unidad) value;
 
-
 		if (isSelected) {
 			setBackground(new Color(128, 0, 0)); // Color de fondo para celda seleccionada
 		} else {
 			setBackground(null);
 		}
 
-		if (unidad.getPrestamo() != null) {
-			setForeground(list.getForeground()); // Restablecer el color de primer plano predeterminado para celdas con
-													// prestamo
+		if (unidad.getIncidendiasNumeroSinResolver() > 0) {
+			setForeground(Color.YELLOW); // Restablecer el color de primer plano predeterminado para celdas con
+											// prestamo
 		} else {
 			setForeground(new Color(0, 128, 0));
 		}

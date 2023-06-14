@@ -7,9 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
 public class AnimacionShake implements ActionListener {
-	private int shakeDistance;
 	private int shakeCount;
-	private int shakeDelay;
 	private int originalX;
 	private int originalY;
 	private Component component;
@@ -22,9 +20,7 @@ public class AnimacionShake implements ActionListener {
 		this.component = component;
 		originalX = component.getX();
 		originalY = component.getY();
-		this.shakeDistance = shakeDistance;
 		this.shakeCount = shakeCount;
-		this.shakeDelay = shakeDelay;
 		count = 0;
 		dx = shakeDistance;
 		dy = shakeDistance;

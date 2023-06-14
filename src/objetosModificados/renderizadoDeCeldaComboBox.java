@@ -17,7 +17,7 @@ import utilidades.utilidades;
 public class renderizadoDeCeldaComboBox extends JLabel implements ListCellRenderer<Object> {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 2712515309007098711L;
 
@@ -31,7 +31,7 @@ public class renderizadoDeCeldaComboBox extends JLabel implements ListCellRender
 	}
 
 	@Override
-	public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
+	public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected,
 			boolean cellHasFocus) {
 		// Get the selected index. (The index param isn't
 		// always valid, so just use the value.)
@@ -41,7 +41,7 @@ public class renderizadoDeCeldaComboBox extends JLabel implements ListCellRender
 		// Set the icon and text. If icon was null, say so.
 
 		if (selectedIndex != null) {
-			
+
 			ImageIcon icon = ((Videojuego) (selectedIndex)).getImagen();
 			String nombre = selectedIndex.getNombre();
 

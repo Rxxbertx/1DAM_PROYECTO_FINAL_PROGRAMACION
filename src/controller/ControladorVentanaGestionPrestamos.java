@@ -1,6 +1,5 @@
 package controller;
 
-import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -13,7 +12,6 @@ import model.Juego;
 import model.ModeloGenerico;
 import objetosModificados.renderizadoDeCeldaJList;
 import utilidades.utilidades;
-import view.VentanaGestionJuegos;
 import view.VentanaGestionPrestamo;
 import view.VentanaPrincipalEmpleado;
 

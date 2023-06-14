@@ -18,6 +18,10 @@ import javax.swing.table.DefaultTableModel;
 
 public class VentanaHistorialPrestamos extends JDialog {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3037956809427151976L;
 	private DefaultTableModel datos = new DefaultTableModel();
 	private JTable table;
 

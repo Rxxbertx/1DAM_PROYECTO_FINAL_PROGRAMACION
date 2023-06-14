@@ -130,13 +130,13 @@ public class ControladorVentanaGestionJuegos implements ActionListener, ItemList
 				ventanaGestionJuegos.getLblNombreRellenar().setText(juego.getNombre());
 
 				ventanaGestionJuegos.getLblIncidenciasRellenar()
-						.setText(String.valueOf(incidencias.obtenerNumeroIncidenciasJuegoSinResolver(juego)));
+						.setText(String.valueOf(incidencias.obtenerNumeroIncidenciasSinResolver(juego)));
 				ventanaGestionJuegos.getLblNumJugadoresRellenar().setText(String.valueOf(juego.getNumJugadores()));
 
 				ventanaGestionJuegos.getLblUnidadesRellenar().setText(String.valueOf(juego.getUnidades().size()));
 				ventanaGestionJuegos.getLblUdsUtilizadasRellenar().setText(String.valueOf(juego.getUdsUtilizadas()));
 
-				if (incidencias.obtenerNumeroIncidenciasJuegoSinResolver(juego) <= 0) {
+				if (incidencias.obtenerNumeroIncidenciasSinResolver(juego) <= 0) {
 					ventanaGestionJuegos.getBtnVerIncidencias().setEnabled(false);
 				}
 

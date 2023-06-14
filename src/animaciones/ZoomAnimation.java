@@ -5,13 +5,11 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
 import javax.swing.Timer;
 
 public class ZoomAnimation implements ActionListener {
 	private Component component;
 	private Timer timer;
-	private JButton button;
 	private boolean zoomingIn;
 
 	public ZoomAnimation(Component component) {
@@ -26,8 +24,6 @@ public class ZoomAnimation implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		int zoomSteps = 10; // Número de pasos para hacer zoom
-
 		// Tamaño actual de la fuente
 		int currentFontSize = component.getFont().getSize();
 

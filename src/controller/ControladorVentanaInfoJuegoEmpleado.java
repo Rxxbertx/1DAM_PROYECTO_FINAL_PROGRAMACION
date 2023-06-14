@@ -6,8 +6,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import javax.swing.DefaultListModel;
-import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -16,16 +14,13 @@ import model.Juego;
 import model.Juego.Incidencia;
 import model.Juego.Unidad;
 import model.ModeloGenerico;
-import model.ModeloIncidencias;
 import model.ModeloPrestamo;
 import model.Prestamo;
-import model.Usuario;
 import model.Videojuego;
 import objetosModificados.renderizadoDeCeldaJListUnidadCentrado;
 import utilidades.utilidades;
 import view.VentanaGestionPrestamo;
 import view.VentanaInfoPrestamos;
-import view.VentanaPrinicipalSocio;
 
 public class ControladorVentanaInfoJuegoEmpleado implements ActionListener, ListSelectionListener {
 
@@ -113,10 +108,15 @@ public class ControladorVentanaInfoJuegoEmpleado implements ActionListener, List
 				int j = 1;
 				String incidencias = "Ninguna";
 
-				for (Incidencia incidencia : selectedValue.obtenerIncidenciasSinResolver()) {
+				for (Incidencia incidencia : selectedValue.obtenerIncidencias()) {
 
-					incidencias += j + "- " + incidencia.getDescripcion() + "\n";
-					j++;
+					if (incidencia.isResuelta()) {
+
+					} else {
+						incidencias += j + "- " + incidencia.getDescripcion() + "\n";
+						j++;
+					}
+
 				}
 
 				String estado = "";

@@ -5,10 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-import javax.swing.DefaultListModel;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
@@ -16,10 +13,8 @@ import model.Juego;
 import model.ModeloGenerico;
 import model.ModeloIncidencias;
 import model.Videojuego;
-import objetosModificados.renderizadoDeCeldaJList;
 import utilidades.utilidades;
 import view.VentanaGestionIncidencias;
-import view.VentanaGestionPrestamo;
 import view.VentanaPrincipalEmpleado;
 
 public class ControladorVentanaGestionIncidencias implements ActionListener {
@@ -84,6 +79,8 @@ public class ControladorVentanaGestionIncidencias implements ActionListener {
 				public void actionPerformed(ActionEvent e) {
 					// Código a ejecutar cuando se hace clic en el botón
 
+					new ControladorVentanaInfoIncidencias(ventana,juegos,temp,incidencias);
+
 				}
 			});
 
@@ -102,6 +99,9 @@ public class ControladorVentanaGestionIncidencias implements ActionListener {
 		if (e.getSource().equals(ventana.getBtnHistorico())) {
 			new ControladorVerHistorialIncidencias(ventana, incidencias);
 		}
+
+
+
 
 	}
 

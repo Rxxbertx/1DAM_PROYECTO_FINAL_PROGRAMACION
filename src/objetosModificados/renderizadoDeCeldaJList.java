@@ -2,28 +2,18 @@ package objetosModificados;
 
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.Font;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.ListCellRenderer;
-import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
-
-import model.Juego;
-import model.Videojuego;
-import utilidades.utilidades;
-
 import javax.swing.DefaultListCellRenderer;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Font;
+
+import model.Juego;
+import model.Videojuego;
+import utilidades.utilidades;
 
 public class renderizadoDeCeldaJList extends DefaultListCellRenderer {
 

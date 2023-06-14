@@ -22,18 +22,19 @@ import javax.swing.table.DefaultTableModel;
 
 public class VentanaHistorialIncidencias extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6709026290407416033L;
 	private JPanel contentPane;
 	private JTable tablaResuelta;
 	private JTable tablaSinResolver;
 	private DefaultTableModel modeloResuelto = new DefaultTableModel();
 	private DefaultTableModel modeloNoResuelto = new DefaultTableModel();
 
-<<<<<<< HEAD:src/view/VentanaHistorialIncidencias.java
 	public VentanaHistorialIncidencias() {
-=======
-	public VentanaVerHistorialIncidencias() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaVerHistorialIncidencias.class.getResource("/images/icons8-play-games-96.png")));
->>>>>>> roberto:src/view/VentanaVerHistorialIncidencias.java
+		setIconImage(Toolkit.getDefaultToolkit()
+				.getImage(VentanaHistorialIncidencias.class.getResource("/images/icons8-play-games-96.png")));
 
 		String cabecera[] = { "Nombre Juego", "Id Juego", "Num Unidad", "Incidencia", "Estado" };
 		modeloNoResuelto.setColumnIdentifiers(cabecera);
@@ -76,7 +77,8 @@ public class VentanaHistorialIncidencias extends JFrame {
 		panel.add(verticalGlue_2);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBorder(new CompoundBorder(new EmptyBorder(5, 5, 5, 5), new LineBorder(new Color(128, 0, 0), 5, true)));
+		scrollPane.setBorder(
+				new CompoundBorder(new EmptyBorder(5, 5, 5, 5), new LineBorder(new Color(128, 0, 0), 5, true)));
 		panel.add(scrollPane);
 
 		tablaResuelta = new JTable(modeloResuelto);
@@ -96,7 +98,8 @@ public class VentanaHistorialIncidencias extends JFrame {
 		panel.add(verticalGlue_3);
 
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBorder(new CompoundBorder(new EmptyBorder(5, 5, 5, 5), new LineBorder(new Color(128, 0, 0), 5, true)));
+		scrollPane_1.setBorder(
+				new CompoundBorder(new EmptyBorder(5, 5, 5, 5), new LineBorder(new Color(128, 0, 0), 5, true)));
 		panel.add(scrollPane_1);
 
 		tablaSinResolver = new JTable(modeloNoResuelto);

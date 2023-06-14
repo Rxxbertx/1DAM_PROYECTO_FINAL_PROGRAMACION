@@ -1,20 +1,13 @@
 package controller;
 
-import java.awt.Window;
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Vector;
 
 import javax.swing.WindowConstants;
-import javax.swing.table.DefaultTableModel;
 
 import model.Juego;
 import model.ModeloGenerico;
 import model.ModeloPrestamo;
 import model.Prestamo;
-import model.Videojuego;
-import objetosModificados.renderizaDeImagenTabla;
 import utilidades.utilidades;
 import view.VentanaGestionPrestamo;
 import view.VentanaHistorialPrestamos;
@@ -33,7 +26,7 @@ public class ControladorVerHistorialPrestamos {
 
 		prestamos = new ModeloPrestamo();
 		new ControladorLecturaPrestamo();
-		juegos = new ModeloGenerico<Juego>();
+		juegos = new ModeloGenerico<>();
 		try {
 			juegos.setElementos(new ControladorLecturaElementos().devolverElementos());
 		} catch (ClassNotFoundException e) {

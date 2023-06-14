@@ -30,6 +30,10 @@ import model.Juego.Unidad;
 
 public class VentanaInfoPrestamos extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5928728689562135070L;
 	private JPanel contentPane;
 	private JTextArea tInformacion;
 	private JList<Juego.Unidad> listUnidades;
@@ -62,7 +66,7 @@ public class VentanaInfoPrestamos extends JFrame {
 		contentPane.add(panelList, BorderLayout.WEST);
 		panelList.setLayout(new BorderLayout(0, 0));
 
-		listUnidades = new JList();
+		listUnidades = new JList<Unidad>();
 		listUnidades.setSelectionBackground(new Color(128, 0, 0));
 		listUnidades.setSelectionForeground(Color.BLACK);
 		listUnidades.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

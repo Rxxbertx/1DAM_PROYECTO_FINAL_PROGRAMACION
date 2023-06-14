@@ -31,7 +31,7 @@ public abstract class Juego implements Serializable {
 		super();
 		this.nombre = nombre;
 		this.numJugadores = numJugadores;
-		this.uds = uds;
+		this.setUds(uds);
 		this.udsUtilizadas = udsUtilizadas;
 		this.id = id;
 		this.unidades = new ArrayList<>();
@@ -87,6 +87,27 @@ public abstract class Juego implements Serializable {
 		this.id = id;
 	}
 
+	/**
+	 * @return the unidades
+	 */
+	public List<Unidad> getUnidades() {
+
+		if (unidades != null) {
+			return unidades;
+		} else {
+			return new ArrayList<>();
+		}
+
+	}
+
+	public int getUds() {
+		return uds;
+	}
+
+	public void setUds(int uds) {
+		this.uds = uds;
+	}
+
 	// unidades
 
 	public static class Unidad implements Serializable {
@@ -129,21 +150,6 @@ public abstract class Juego implements Serializable {
 			return incidencias;
 		}
 
-		public List<Incidencia> obtenerIncidenciasSinResolver() {
-
-			ArrayList<Incidencia> sinResolver = new ArrayList<>();
-
-			for (Incidencia incidencia : incidencias) {
-				if (!incidencia.isResuelta()) {
-
-					sinResolver.add(incidencia);
-
-				}
-			}
-			return sinResolver;
-
-		}
-
 		public Integer getIncidendiasNumero() {
 
 			if (obtenerIncidencias().isEmpty()) {
@@ -168,6 +174,38 @@ public abstract class Juego implements Serializable {
 
 		public void setNombreUnidad(String nombre) {
 			this.nombre = nombre;
+		}
+
+		public int getIncidendiasNumeroSinResolver() {
+
+			int i = 0;
+
+			for (Incidencia incidencia : incidencias) {
+				if (incidencia.isResuelta()) {
+
+				} else {
+					i++;
+				}
+			}
+
+			return i;
+		}
+
+		public List<Incidencia> obtenerIncidenciasNoResueltas() {
+
+			List<Incidencia> incidencia = new ArrayList<>();
+
+			for (Incidencia incidencia2 : incidencias) {
+
+				if (incidencia2.isResuelta()) {
+
+				} else {
+					incidencia.add(incidencia2);
+				}
+
+			}
+			return incidencia;
+
 		}
 	}
 
@@ -205,20 +243,12 @@ public abstract class Juego implements Serializable {
 			return resuelta;
 		}
 
-		// Resto de los métodos y atributos de la clase Incidencia...
-	}
+		public void setDescripcion(String descripcion) {
+			this.descripcion = descripcion;
 
-	/**
-	 * @return the unidades
-	 */
-	public List<Unidad> getUnidades() {
-
-		if (unidades != null) {
-			return unidades;
-		} else {
-			return new ArrayList<>();
 		}
 
+		// Resto de los métodos y atributos de la clase Incidencia...
 	}
 
 }
