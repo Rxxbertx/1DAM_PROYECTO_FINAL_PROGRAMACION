@@ -34,7 +34,7 @@ public class ControladorVentanaInfoJuegoSocio implements ActionListener, ListSel
 	public ControladorVentanaInfoJuegoSocio(Usuario usuario, Videojuego temp, VentanaPrinicipalSocio root,
 			ModeloGenerico<Juego> juegosModel, ModeloPrestamo prestamos) {
 
-		System.out.println(temp.getId());
+		
 
 		juegos = juegosModel;
 
@@ -124,8 +124,8 @@ public class ControladorVentanaInfoJuegoSocio implements ActionListener, ListSel
 				Unidad selectedValue = ventana.getListJuegos().getSelectedValue();
 
 				int j = 1;
-				String incidencias = "Ninguna";
-
+				
+String incidencias = "";
 				for (Incidencia incidencia : selectedValue.obtenerIncidencias()) {
 
 					if (incidencia.isResuelta()) {
