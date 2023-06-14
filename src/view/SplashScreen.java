@@ -14,7 +14,7 @@ import javax.swing.JWindow;
 public class SplashScreen extends JWindow {
 
     /**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 989959604529095220L;
 

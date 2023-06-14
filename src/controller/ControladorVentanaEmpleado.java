@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 
 import animaciones.ZoomAnimation;
 import model.Usuario;
-import view.VentanaLoginWindow;
 import view.VentanaPrincipalEmpleado;
 
 public class ControladorVentanaEmpleado implements ActionListener {
@@ -17,10 +16,13 @@ public class ControladorVentanaEmpleado implements ActionListener {
 		ventanaEmpleado = new VentanaPrincipalEmpleado();
 		ventanaEmpleado.setLocationRelativeTo(loginWindow);
 		loginWindow.dispose();
+
 		ventanaEmpleado.getBtnGestionJuegos().addActionListener(this);
 		ventanaEmpleado.getBtnGestionUsuarios().addActionListener(this);
 		ventanaEmpleado.getBtnGestionPrestamos().addActionListener(this);
 		ventanaEmpleado.getBtnGestionIncidencias().addActionListener(this);
+		ventanaEmpleado.getBtnGestionSalir().addActionListener(this);
+
 		ventanaEmpleado.getLblRellenarUsuario().setText(usuario.getNombre());
 		new ZoomAnimation(ventanaEmpleado.getLblRellenarUsuario());
 		ventanaEmpleado.setVisible(true);

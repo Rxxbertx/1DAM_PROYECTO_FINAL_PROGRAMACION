@@ -1,30 +1,32 @@
 package view;
 
-import java.awt.EventQueue;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
+import java.awt.Toolkit;
 
 import javax.swing.JDialog;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.JLabel;
-import java.awt.BorderLayout;
-import java.awt.Component;
-import javax.swing.SwingConstants;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.SwingConstants;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Dimension;
-import javax.swing.JPanel;
-import java.awt.GridLayout;
+import javax.swing.table.DefaultTableModel;
 
 public class VentanaHistorialPrestamos extends JDialog {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3037956809427151976L;
 	private DefaultTableModel datos = new DefaultTableModel();
 	private JTable table;
 
 	public VentanaHistorialPrestamos() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaHistorialPrestamos.class.getResource("/images/icons8-play-games-96.png")));
 
 		setBounds(100, 100, 900, 300);
 
@@ -33,12 +35,12 @@ public class VentanaHistorialPrestamos extends JDialog {
 
 		getContentPane().setLayout(new BorderLayout());
 
-		JLabel lblNewLabel = new JLabel("Historial Prestamos");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblNewLabel.setHorizontalTextPosition(SwingConstants.CENTER);
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-		getContentPane().add(lblNewLabel, BorderLayout.NORTH);
+		JLabel lblHistorialPrestamos = new JLabel("Historial Prestamos");
+		lblHistorialPrestamos.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblHistorialPrestamos.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblHistorialPrestamos.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHistorialPrestamos.setAlignmentX(Component.CENTER_ALIGNMENT);
+		getContentPane().add(lblHistorialPrestamos, BorderLayout.NORTH);
 
 		table = new JTable();
 
