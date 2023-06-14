@@ -18,6 +18,12 @@ public class ControladorVerHistorialIncidencias {
 	private ModeloIncidencias incidencias;
 	private ModeloGenerico<Juego> juegos;
 
+	/**
+	 * Constructor de la clase ControladorVerHistorialIncidencias.
+	 *
+	 * @param root        La ventana principal desde la cual se invoca el historial de incidencias.
+	 * @param incidencias El modelo de incidencias.
+	 */
 	public ControladorVerHistorialIncidencias(VentanaGestionIncidencias root, ModeloIncidencias incidencias) {
 
 		this.incidencias = incidencias;
@@ -29,20 +35,23 @@ public class ControladorVerHistorialIncidencias {
 		configuracionGeneral();
 
 		ventana.setVisible(true);
-
 	}
 
+	/**
+	 * Realiza la configuración general de la ventana y muestra los datos del historial de incidencias.
+	 */
 	private void configuracionGeneral() {
 
 		try {
+			// Obtener los juegos desde un archivo
 			juegos.setElementos(new ControladorLecturaElementos().devolverElementos());
 		} catch (ClassNotFoundException | IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 		for (Juego juego : juegos.getElementos().values()) {
 
+			// Obtener las incidencias del juego
 			HashMap<Integer, List<Incidencia>> obtencionIncidencias = incidencias.obtenerIncidenciasJuego(juego);
 
 			for (Entry<Integer, List<Incidencia>> entry : obtencionIncidencias.entrySet()) {
@@ -54,26 +63,32 @@ public class ControladorVerHistorialIncidencias {
 				for (Incidencia incidencia : val) {
 
 					if (incidencia.isResuelta()) {
-
-						String[] datos = { juego.getNombre(), juego.getId(), String.valueOf(unidad),
-								j + "- " + incidencia.getDescripcion(), "RESUELTA" };
+						// Incidencia resuelta
+						String[] datos = {
+								juego.getNombre(),
+								juego.getId(),
+								String.valueOf(unidad),
+								j + "- " + incidencia.getDescripcion(),
+								"RESUELTA"
+						};
 
 						ventana.getModeloResuelto().addRow(datos);
-
 					} else {
-						String[] datos = { juego.getNombre(), juego.getId(), String.valueOf(unidad),
-								j + "- " + incidencia.getDescripcion(), "Sin Resolver" };
+						// Incidencia sin resolver
+						String[] datos = {
+								juego.getNombre(),
+								juego.getId(),
+								String.valueOf(unidad),
+								j + "- " + incidencia.getDescripcion(),
+								"Sin Resolver"
+						};
 
 						ventana.getModeloNoResuelto().addRow(datos);
-
 					}
 
+					j++;
 				}
-
 			}
-
 		}
-
 	}
-
 }
