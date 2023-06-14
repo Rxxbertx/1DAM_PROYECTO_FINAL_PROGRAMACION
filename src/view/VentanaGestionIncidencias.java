@@ -38,13 +38,12 @@ public class VentanaGestionIncidencias extends JFrame {
 	private JPanel panelJuegos;
 	private JLabel lblIncidencias;
 
-
-
 	/**
 	 * Create the frame.
 	 */
 	public VentanaGestionIncidencias() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaGestionIncidencias.class.getResource("/images/icons8-play-games-96.png")));
+		setIconImage(Toolkit.getDefaultToolkit()
+				.getImage(VentanaGestionIncidencias.class.getResource("/images/icons8-play-games-96.png")));
 		Border innerBorder1 = BorderFactory.createLineBorder(Color.WHITE, 2);
 		Border outerBorder2 = BorderFactory.createLineBorder(new Color(128, 0, 0), 8);
 
@@ -100,6 +99,8 @@ public class VentanaGestionIncidencias extends JFrame {
 		panelGestionIncidencias.setLayout(new BorderLayout(0, 0));
 
 		scrollPane = new JScrollPane();
+		scrollPane.getVerticalScrollBar().setUnitIncrement(16); // Ajusta la velocidad de desplazamiento vertical
+		scrollPane.getHorizontalScrollBar().setUnitIncrement(16); // Ajusta la velocidad de desplazamiento horizontal
 		panelGestionIncidencias.add(scrollPane, BorderLayout.CENTER);
 
 		panelJuegos = new JPanel();
@@ -121,6 +122,7 @@ public class VentanaGestionIncidencias extends JFrame {
 	public JPanel getPanelJuegos() {
 		return panelJuegos;
 	}
+
 	public JButton getBtnHistorico() {
 		return btnHistorico;
 	}

@@ -100,7 +100,9 @@ public class ControladorVentanaInfoJuegoEmpleado implements ActionListener, List
 
 			unidad.setPrestamo(null);
 
-			prestamo.setFechaFin(LocalDateTime.now());
+			if (prestamo != null) {
+				prestamo.setFechaFin(LocalDateTime.now());
+			}
 
 			ControladorEscrituraPrestamo.ModificacionArchivo(prestamos);
 			ControladorEscrituraElementos.ModificacionArchivo(juegos);
