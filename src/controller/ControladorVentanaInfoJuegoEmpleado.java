@@ -3,7 +3,6 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 import javax.swing.DefaultListModel;
 import javax.swing.WindowConstants;
@@ -22,6 +21,12 @@ import utilidades.utilidades;
 import view.VentanaGestionPrestamo;
 import view.VentanaInfoPrestamos;
 
+/**
+ * La clase ControladorVentanaInfoJuegoEmpleado es un controlador que gestiona
+ * la ventana de información de un juego para los empleados. Implementa las
+ * interfaces ActionListener y ListSelectionListener para manejar eventos de
+ * acción y selección de listas.
+ */
 public class ControladorVentanaInfoJuegoEmpleado implements ActionListener, ListSelectionListener {
 
 	private VentanaInfoPrestamos ventana;
@@ -29,6 +34,13 @@ public class ControladorVentanaInfoJuegoEmpleado implements ActionListener, List
 	private Videojuego videojuego;
 	private ModeloPrestamo prestamos;
 
+	/**
+	 * Constructor de la clase ControladorVentanaInfoJuegoEmpleado.
+	 * 
+	 * @param temp   El juego seleccionado.
+	 * @param juegos El modelo de juegos.
+	 * @param root   La ventana principal de gestión de préstamos.
+	 */
 	public ControladorVentanaInfoJuegoEmpleado(Juego temp, ModeloGenerico<Juego> juegos, VentanaGestionPrestamo root) {
 
 		this.juegos = juegos;
@@ -46,6 +58,9 @@ public class ControladorVentanaInfoJuegoEmpleado implements ActionListener, List
 
 	}
 
+	/**
+	 * Realiza la configuración general de la ventana de información del juego.
+	 */
 	private void configuracionGeneral() {
 
 		new ControladorLecturaPrestamo();
@@ -67,6 +82,11 @@ public class ControladorVentanaInfoJuegoEmpleado implements ActionListener, List
 
 	}
 
+	/**
+	 * Manejador de eventos para los botones.
+	 * 
+	 * @param e Evento de acción.
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
@@ -91,6 +111,11 @@ public class ControladorVentanaInfoJuegoEmpleado implements ActionListener, List
 
 	}
 
+	/**
+	 * Manejador de eventos para la selección de elementos en la lista de juegos.
+	 * 
+	 * @param e Evento de selección.
+	 */
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
 
@@ -123,10 +148,10 @@ public class ControladorVentanaInfoJuegoEmpleado implements ActionListener, List
 
 				if (selectedValue.getPrestamo() != null) {
 					estado = " Prestado A: " + selectedValue.getPrestamo().getUsuario() + " Fecha: "
-							+ selectedValue.getPrestamo().getFechaInicio().format(DateTimeFormatter.ISO_LOCAL_DATE)
-							+ " Hora: "
-							+ selectedValue.getPrestamo().getFechaInicio().format(DateTimeFormatter.ISO_LOCAL_TIME);
+							+ utilidades.obtenerFecha(selectedValue.getPrestamo().getFechaInicio());
+
 					ventana.getBtnDevolver().setEnabled(true);
+
 				} else {
 					estado += " Sin Prestar";
 					ventana.getBtnDevolver().setEnabled(false);
