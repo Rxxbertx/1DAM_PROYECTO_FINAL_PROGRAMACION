@@ -5,12 +5,13 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.EventQueue;
+
 import java.awt.Font;
 import java.awt.Toolkit;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -24,44 +25,37 @@ import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.MatteBorder;
+import javax.swing.JPasswordField;
+import javax.swing.ListSelectionModel;
 
 public class VentanaGestionUsuario extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1445924458892071854L;
 	private JPanel contentPane;
-	private JButton btnEliminar;
+	private JButton btnEliminarPanel;
 	private JPanel panelCard;
 	private JPanel panelAñadir;
 	private JTextField tNombreRellenar;
 	private JTextField tApellidosRellenar;
 	private JTextField tNomUsuarioRellenar;
-	private JTextField tContraseñaRellenar;
+	private JPasswordField tContraseñaRellenar;
 	private JCheckBox chckbxSerEmpleado;
 	private JButton btnAñadir;
 	private JPanel panelEliminar;
-	private JList list;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				try {
-					VentanaGestionUsuario frame = new VentanaGestionUsuario();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private JList<String> list;
+	private JButton btnAñadirPanel;
+	private JButton btnEliminar;
+	private DefaultListModel<String> datos = new DefaultListModel<>();
 
 	/**
 	 * Create the frame.
 	 */
 	public VentanaGestionUsuario() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaGestionUsuario.class.getResource("/images/icons8-play-games-96.png")));
+		setIconImage(Toolkit.getDefaultToolkit()
+				.getImage(VentanaGestionUsuario.class.getResource("/images/icons8-play-games-96.png")));
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setBounds(100, 100, 945, 609);
 		contentPane = new JPanel();
@@ -79,30 +73,30 @@ public class VentanaGestionUsuario extends JFrame {
 		Component verticalGlue = Box.createVerticalGlue();
 		panelSeleccion.add(verticalGlue);
 
-		JButton btnAñadir = new JButton("Añadir");
-		btnAñadir.setVerticalTextPosition(SwingConstants.BOTTOM);
-		btnAñadir.setHorizontalTextPosition(SwingConstants.CENTER);
-		btnAñadir.setAlignmentX(Component.CENTER_ALIGNMENT);
-		btnAñadir.setBorderPainted(false);
-		btnAñadir.setBorder(null);
-		btnAñadir.setContentAreaFilled(false);
-		btnAñadir.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnAñadir.setIcon(new ImageIcon(VentanaGestionUsuario.class.getResource("/images/icons8-más-64.png")));
-		panelSeleccion.add(btnAñadir);
+		btnAñadirPanel = new JButton("Añadir");
+		btnAñadirPanel.setVerticalTextPosition(SwingConstants.BOTTOM);
+		btnAñadirPanel.setHorizontalTextPosition(SwingConstants.CENTER);
+		btnAñadirPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		btnAñadirPanel.setBorderPainted(false);
+		btnAñadirPanel.setBorder(null);
+		btnAñadirPanel.setContentAreaFilled(false);
+		btnAñadirPanel.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnAñadirPanel.setIcon(new ImageIcon(VentanaGestionUsuario.class.getResource("/images/icons8-más-64.png")));
+		panelSeleccion.add(btnAñadirPanel);
 
 		Component verticalGlue_1 = Box.createVerticalGlue();
 		panelSeleccion.add(verticalGlue_1);
 
-		btnEliminar = new JButton("Eliminar");
-		btnEliminar.setVerticalTextPosition(SwingConstants.BOTTOM);
-		btnEliminar.setHorizontalTextPosition(SwingConstants.CENTER);
-		btnEliminar.setAlignmentX(Component.CENTER_ALIGNMENT);
-		btnEliminar.setBorderPainted(false);
-		btnEliminar.setBorder(null);
-		btnEliminar.setContentAreaFilled(false);
-		btnEliminar.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnEliminar.setIcon(new ImageIcon(VentanaGestionUsuario.class.getResource("/images/icons8-menos-64.png")));
-		panelSeleccion.add(btnEliminar);
+		btnEliminarPanel = new JButton("Eliminar");
+		btnEliminarPanel.setVerticalTextPosition(SwingConstants.BOTTOM);
+		btnEliminarPanel.setHorizontalTextPosition(SwingConstants.CENTER);
+		btnEliminarPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		btnEliminarPanel.setBorderPainted(false);
+		btnEliminarPanel.setBorder(null);
+		btnEliminarPanel.setContentAreaFilled(false);
+		btnEliminarPanel.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnEliminarPanel.setIcon(new ImageIcon(VentanaGestionUsuario.class.getResource("/images/icons8-menos-64.png")));
+		panelSeleccion.add(btnEliminarPanel);
 
 		Component verticalGlue_2 = Box.createVerticalGlue();
 		panelSeleccion.add(verticalGlue_2);
@@ -163,7 +157,7 @@ public class VentanaGestionUsuario extends JFrame {
 		tNomUsuarioRellenar.setBounds(363, 269, 211, 25);
 		panelAñadir.add(tNomUsuarioRellenar);
 
-		tContraseñaRellenar = new JTextField("");
+		tContraseñaRellenar = new JPasswordField("");
 		tContraseñaRellenar.setAlignmentX(Component.RIGHT_ALIGNMENT);
 		tContraseñaRellenar.setBorder(new MatteBorder(0, 0, 2, 0, new Color(0, 0, 0)));
 		tContraseñaRellenar.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -215,20 +209,26 @@ public class VentanaGestionUsuario extends JFrame {
 		panelEliminar.add(panelBotonEliminar, BorderLayout.SOUTH);
 		panelBotonEliminar.setLayout(null);
 
-		JButton btnEliminarEliminacion = new JButton("ELIMINAR");
-		btnEliminarEliminacion.setPreferredSize(new Dimension(81, 21));
-		btnEliminarEliminacion.setForeground(Color.WHITE);
-		btnEliminarEliminacion.setFont(new Font("Tahoma", Font.BOLD, 30));
-		btnEliminarEliminacion.setBorderPainted(false);
-		btnEliminarEliminacion.setBorder(new EmptyBorder(0, 10, 0, 10));
-		btnEliminarEliminacion.setBackground(new Color(128, 0, 0));
-		btnEliminarEliminacion.setBounds(264, 22, 195, 55);
-		panelBotonEliminar.add(btnEliminarEliminacion);
+		btnEliminar = new JButton("ELIMINAR");
+		btnEliminar.setPreferredSize(new Dimension(81, 21));
+		btnEliminar.setForeground(Color.WHITE);
+		btnEliminar.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnEliminar.setBorderPainted(false);
+		btnEliminar.setBorder(new EmptyBorder(0, 10, 0, 10));
+		btnEliminar.setBackground(new Color(128, 0, 0));
+		btnEliminar.setBounds(264, 22, 195, 55);
+
+		panelBotonEliminar.add(btnEliminar);
 
 		JScrollPane scrollPane = new JScrollPane();
 		panelEliminar.add(scrollPane, BorderLayout.CENTER);
 
-		list = new JList();
+		list = new JList<String>(datos);
+		list.setVisibleRowCount(5);
+		list.setFixedCellHeight(30);
+		list.setSelectionBackground(new Color(128, 0, 0));
+		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		list.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		scrollPane.setViewportView(list);
 	}
 
@@ -256,7 +256,7 @@ public class VentanaGestionUsuario extends JFrame {
 		return tNomUsuarioRellenar;
 	}
 
-	public JTextField gettContraseñaRellenar() {
+	public JPasswordField gettContraseñaRellenar() {
 		return tContraseñaRellenar;
 	}
 
@@ -272,7 +272,28 @@ public class VentanaGestionUsuario extends JFrame {
 		return panelEliminar;
 	}
 
-	public JList getList() {
+	public JList<String> getList() {
 		return list;
+	}
+
+	/**
+	 * @return the btnAñadirPanel
+	 */
+	public JButton getBtnAñadirPanel() {
+		return btnAñadirPanel;
+	}
+
+	/**
+	 * @return the btnEliminarPanel
+	 */
+	public JButton getBtnEliminarPanel() {
+		return btnEliminarPanel;
+	}
+
+	/**
+	 * @return the datos
+	 */
+	public DefaultListModel<String> getDatos() {
+		return datos;
 	}
 }

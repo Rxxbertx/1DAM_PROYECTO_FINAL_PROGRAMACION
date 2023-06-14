@@ -13,6 +13,7 @@ import view.VentanaPrincipalEmpleado;
 public class ControladorVentanaEmpleado implements ActionListener {
 
 	private VentanaPrincipalEmpleado ventanaEmpleado; // Ventana principal del empleado
+	private Usuario usuario;
 
 	/**
 	 * Constructor de la clase.
@@ -24,6 +25,8 @@ public class ControladorVentanaEmpleado implements ActionListener {
 		ventanaEmpleado = new VentanaPrincipalEmpleado();
 		ventanaEmpleado.setLocationRelativeTo(loginWindow);
 		loginWindow.dispose();
+
+		this.usuario = usuario;
 
 		ventanaEmpleado.getBtnGestionJuegos().addActionListener(this);
 		ventanaEmpleado.getBtnGestionUsuarios().addActionListener(this);
@@ -47,7 +50,7 @@ public class ControladorVentanaEmpleado implements ActionListener {
 			new ControladorVentanaGestionJuegos(ventanaEmpleado);
 		}
 		if (e.getSource().equals(ventanaEmpleado.getBtnGestionUsuarios())) {
-			new ControladorVentanaGestionUsuarios(ventanaEmpleado);
+			new ControladorVentanaGestionUsuario(ventanaEmpleado, usuario);
 		}
 		if (e.getSource().equals(ventanaEmpleado.getBtnGestionPrestamos())) {
 			new ControladorVentanaGestionPrestamos(ventanaEmpleado);
