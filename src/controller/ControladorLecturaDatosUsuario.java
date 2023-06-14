@@ -10,20 +10,23 @@ import model.Empleado;
 import model.ModeloUsuario;
 import model.Socio;
 
+/**
+ * Controlador para la lectura de datos de usuario desde un archivo.
+ */
 public class ControladorLecturaDatosUsuario {
 
-	private ModeloUsuario modeloUsuario;
+	private ModeloUsuario modeloUsuario; // Modelo de usuario
 
+	/**
+	 * Constructor de la clase.
+	 */
 	public ControladorLecturaDatosUsuario() {
-
 		modeloUsuario = new ModeloUsuario();
 
-		File ficheroDatos = new File("data/datosUsuario.dat");
+		File ficheroDatos = new File("data/datosUsuario.dat"); // Ruta del archivo de datos de usuario
 
 		if (ficheroDatos.exists()) {
-
 			try {
-
 				BufferedReader lector = new BufferedReader(new FileReader(ficheroDatos));
 				String linea;
 				while ((linea = lector.readLine()) != null) {
@@ -41,21 +44,14 @@ public class ControladorLecturaDatosUsuario {
 					} else {
 						modeloUsuario.añadir(nomUsuario,
 								new Socio(nombre, apellido, esEmpleado, contraseña, nomUsuario));
-
 					}
-
 				}
 				lector.close();
-
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
 		} else {
-
+			// El archivo de datos no existe
 		}
-
 	}
-
 }
